@@ -1,0 +1,34 @@
+{
+    "token": "",
+    "prefix": "p!",
+    "api_keys": {
+        "bot_list": {
+            "discordbots.org": "",
+            "bots.discord.pw": ""
+        },
+        "datadog": {
+            "api_key": "",
+            "app_key": ""
+        },
+        "youtube": "",
+        "steam": "",
+        "thecatapi": "",
+        "openweathermap": "",
+        "imgur": ""
+    },
+    "trusted": [
+        "153173425844781056",
+        "236514700257525772"
+    ],
+    "links": {
+        "bot": "https://bot.discord.io/prisma",
+        "server": "https://discord.gg/3hqURjk",
+        "paypal": "https://www.paypal.me/JacobGunther",
+        "patreon": "https://www.patreon.com/passthemayo",
+        "discordbots.org": "https://goo.gl/7Ctpdr",
+        "feedback": {
+            "form": "https://goo.gl/forms/jEfoFtHxodfcEy762",
+            "responses": "https://goo.gl/xXB8RX"
+        }
+    }
+}
