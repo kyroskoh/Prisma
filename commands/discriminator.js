@@ -33,7 +33,7 @@ module.exports = {
                 description: "Discriminators do not go below 1."
             }
         });
-        const users = bot.users.filter(u => u.discriminator === args[0] && u.id !== msg.author.id).map(u => u.tag);
+        const users = bot.users.filter(u => u.discriminator === args[0] && u.id !== msg.author.id && !u.bot).map(u => u.tag);
         if (users.length > 0) {
             if (args.length > 1) {
                 if (isNaN(Number(args[1]))) return msg.channel.send({
