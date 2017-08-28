@@ -100,6 +100,11 @@ module.exports = {
                                     name: "Commands",
                                     value: ((response.length > 0) ? response[0].commands : "0"),
                                     inline: true
+                                },
+                                {
+                                    name: "Member Statuses",
+                                    value: "<:online:313956277808005120> " + guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "online").size + "\n<:away:313956277220802560> " + guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "idle").size + "\n<:dnd:313956276893646850> " + guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "dnd").size + "\n<:offline:313956277237710868> " + guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "offline").size + "\n<:streaming:313956277132853248> " + guild.members.filter(m => m.presence && m.presence.game && m.presence.game.type === 1).size,
+                                    inline: true
                                 }
                             ]
                         }
@@ -193,6 +198,11 @@ module.exports = {
                             {
                                 name: "Commands",
                                 value: ((response.length > 0) ? response[0].commands : "0"),
+                                inline: true
+                            },
+                            {
+                                name: "Member Statuses",
+                                value: "<:online:313956277808005120> " + msg.guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "online").size + "\n<:away:313956277220802560> " + msg.guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "idle").size + "\n<:dnd:313956276893646850> " + msg.guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "dnd").size + "\n<:offline:313956277237710868> " + msg.guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "offline").size + "\n<:streaming:313956277132853248> " + msg.guild.members.filter(m => m.presence && m.presence.game && m.presence.game.type === 1).size,
                                 inline: true
                             }
                         ]
