@@ -45,19 +45,15 @@ module.exports = {
             }
             snekfetch.get(args[0]).then(body => {
                 try {
-                    gm(body.body).blur(amount).stream((error, stdout) => {
+                    gm(body.body).blur(amount).toBuffer((error, buffer) => {
                         if (error) return console.error(error);
-                        let chunks = [];
-                        stdout.on("data", chunk => chunks.push(chunk));
-                        stdout.on("end", () => {
-                            msg.channel.send({
-                                files: [
-                                    {
-                                        attachment: Buffer.from(chunks),
-                                        name: "image.png"
-                                    }
-                                ]
-                            });
+                        msg.channel.send({
+                            files: [
+                                {
+                                    attachment: buffer,
+                                    name: "image.png"
+                                }
+                            ]
                         });
                     });
                 } catch(e) {
