@@ -44,6 +44,7 @@ module.exports = {
                 amount = Number(args[1].replace("%", ""));
             }
             snekfetch.get(args[0]).then(body => {
+                console.log(body.body instanceof Buffer)
                 try {
                     gm(body.body).blur(amount).toBuffer((error, buffer) => {
                         if (error) return console.error(error);
