@@ -18,7 +18,7 @@ module.exports = {
             embed: {
                 title: "Random User",
                 color: 3066993,
-                description: "<@" + msg.guild.members.filter(u => !u.user.bot).random().user.id + ">"
+                description: msg.guild.members.filter(u => !u.user.bot).random().user
             }
         });
     }

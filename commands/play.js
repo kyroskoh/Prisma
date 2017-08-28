@@ -210,7 +210,7 @@ module.exports = {
                                                         embed: {
                                                             title: "Error!",
                                                             color: 0xE50000,
-                                                            description: "An unexpected error occured while playinf audio. Skipping, but queue is empty, left voice channel."
+                                                            description: "An unexpected error occured while playing audio. Skipping, but queue is empty, left voice channel."
                                                         }
                                                     })
                                                 }).catch(() => {

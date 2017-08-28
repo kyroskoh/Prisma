@@ -8,7 +8,7 @@ module.exports = {
         "bot"
     ],
     description: "Get information about a bot.",
-    usage: "botinfo [@bot | bot ID | bot username]",
+    usage: "botinfo <@bot | bot ID | bot username>",
     category: "Information",
     hidden: false,
     execute: (bot, database, msg, args) => {
@@ -142,7 +142,7 @@ module.exports = {
             msg.channel.send({
                 embed: {
                     title: "Error!",
-                    description: "Missing `[@bot | bot ID | bot username]` option.",
+                    description: "Missing `<@bot | bot ID | bot username>` option.",
                     color: 0xE50000
                 }
             });

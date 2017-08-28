@@ -174,7 +174,7 @@ module.exports = {
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
-                        description: "You need to supply `set` or `unset`."
+                        description: "Missing `<\"set\" | \"unset\" | \"list\">` option."
                     }
                 });
             }
