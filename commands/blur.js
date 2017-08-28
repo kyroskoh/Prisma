@@ -53,7 +53,7 @@ module.exports = {
                             msg.channel.send({
                                 files: [
                                     {
-                                        attachment: Buffer.concat(chunks),
+                                        attachment: Buffer.from(chunks),
                                         name: "image.png"
                                     }
                                 ]
