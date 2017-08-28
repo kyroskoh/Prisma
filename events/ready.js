@@ -23,6 +23,7 @@ module.exports = (bot, database) => {
         database.run("CREATE TABLE IF NOT EXISTS stopwatch (userID TEXT, time BIGINT)");
         database.run("CREATE TABLE IF NOT EXISTS tags (serverID TEXT, name TEXT, value TEXT)");
         database.run("CREATE TABLE IF NOT EXISTS user_statistics (userID TEXT, messages BIGINT, commands BIGINT)");
+        database.run("CREATE TABLE IF NOT EXISTS command_usage (command TEXT, usage BIGINT)");
         const startload = Date.now();
         process.on("unhandledRejection", error => {
             if (error.name === "DiscordAPIError") {

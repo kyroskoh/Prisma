@@ -62,14 +62,14 @@ module.exports = (bot, database, msg) => {
             });
             console.error(e);
         }
-        database.all("SELECT * FROM statistics WHERE name = ?", ["command_" + command[0]], (error, response) => {
+        database.all("SELECT * FROM command_usage WHERE command = ?", [command[0]], (error, response) => {
             if (error) return handleDatabaseError(bot, error);
             if (response.length > 0) {
-                database.run("UPDATE statistics SET value = (value + 1) WHERE name = ?", ["command_" + command[0]], (error) => {
+                database.run("UPDATE command_usage SET usage = (usage + 1) WHERE command = ?", [command[0]], (error) => {
                     if (error) handleDatabaseError(bot, error);
                 });
             } else {
-                database.run("INSERT INTO statistics (name, value) VALUES (?, 1)", ["command_" + command[0]], (error) => {
+                database.run("INSERT INTO command_usage (command, usage) VALUES (?, 1)", [command[0]], (error) => {
                     if (error) handleDatabaseError(bot, error);
                 });
             }
