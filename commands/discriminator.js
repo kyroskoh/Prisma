@@ -36,7 +36,37 @@ module.exports = {
         const users = bot.users.filter(u => u.discriminator === args[0] && u.id !== msg.author.id).map(u => u.tag);
         if (users.length > 0) {
             if (args.length > 1) {
-
+                if (isNaN(Number(args[1]))) return msg.channel.send({
+                    embed: {
+                        title: "Error!",
+                        color: 0xE50000,
+                        description: "`" + args[0] + "` is not a valid number."
+                    }
+                });
+                if (Number(args[1]) < 1) return msg.channel.send({
+                    embed: {
+                        title: "Error!",
+                        color: 0xE50000,
+                        description: "The page number cannot be less than 1."
+                    }
+                });
+                if (Number(args[1]) > Math.ceil(users.length / 25)) return msg.channel.send({
+                    embed: {
+                        title: "Error!",
+                        color: 0xE50000,
+                        description: "Page `" + args[1] + "` does not exist."
+                    }
+                });
+                msg.channel.send({
+                    embed: {
+                        title: "Discriminators",
+                        color: 3066993,
+                        description: users.slice((Number(args[1]) * 25) - 25, Number(args[1]) * 25).join("\n"),
+                        footer: {
+                            text: "Page " + args[1] + " / " + Math.ceil(users.length / 25)
+                        }
+                    }
+                });
             } else {
                 msg.channel.send({
                     embed: {
