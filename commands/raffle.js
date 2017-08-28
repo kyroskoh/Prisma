@@ -14,11 +14,12 @@ module.exports = {
                 description: "This command cannot be used in a Direct Message."
             }
         });
+        var user = msg.guild.members.filter(u => !u.user.bot).random();
         msg.channel.send({
             embed: {
                 title: "Random User",
                 color: 3066993,
-                description: msg.guild.members.filter(u => !u.user.bot).random().user
+                description: (user.nickname) ? "<@!" + user.user.id + ">" : "<@" + user.user.id + ">"
             }
         });
     }
