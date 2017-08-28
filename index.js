@@ -4,9 +4,7 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const sqlite = require("sqlite3");
 
-let bot = new Discord.Client({
-    fetchAllMembers: true
-});
+let bot = new Discord.Client();
 
 const database = new sqlite.Database("./database.db");
 
