@@ -24,7 +24,7 @@ module.exports = {
                     color: 3066993,
                     description: "Your fidget spinner spun for `" + humanizeduration(spin_time, {
                         round: true
-                    }) + "."
+                    }) + "`."
                 }
             });
         }, spin_time);
