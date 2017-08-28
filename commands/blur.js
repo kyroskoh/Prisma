@@ -45,7 +45,7 @@ module.exports = {
             }
             snekfetch.get(args[0]).then(body => {
                 try {
-                    gm(body.body).blur(amount).toBuffer((error, buffer) => {
+                    gm(body.body).blur(50, amount).toBuffer((error, buffer) => {
                         if (error) return console.error(error);
                         msg.channel.send({
                             files: [
