@@ -44,17 +44,20 @@ module.exports = {
                 amount = Number(args[1].replace("%", ""));
             }
             snekfetch.get(args[0]).then(body => {
-                console.log(body.body instanceof Buffer)
                 try {
-                    gm(body.body).blur(amount).toBuffer((error, buffer) => {
+                    gm(body.body).blur(amount).stream((error, stdout) => {
                         if (error) return console.error(error);
-                        msg.channel.send({
-                            files: [
-                                {
-                                    attachment: buffer,
-                                    name: "image.png"
-                                }
-                            ]
+                        let chunks = [];
+                        stdout.on("data", chunk => chunks.push(chunk));
+                        stdout.on("end", () => {
+                            msg.channel.send({
+                                files: [
+                                    {
+                                        attachment: Buffer.concat(chunks),
+                                        name: "image.png"
+                                    }
+                                ]
+                            });
                         });
                     });
                 } catch(e) {
