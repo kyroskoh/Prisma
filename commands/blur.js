@@ -18,7 +18,7 @@ module.exports = {
                     description: "Invalid image URL."
                 }
             });
-            let amount = 50;
+            let amount = 15;
             if (args.length > 1) {
                 if (isNaN(Number(args[1].replace("%", "")))) return msg.channel.send({
                     embed: {
