@@ -60,7 +60,7 @@ module.exports = {
             }
             snekfetch.get(url).then(body => {
                 try {
-                    gm(body.body).quality(amount).toBuffer((error, buffer) => {
+                    gm(body.body).compress("jpeg").quality(amount).toBuffer((error, buffer) => {
                         if (error) return console.error(error);
                         msg.channel.send({
                             files: [
