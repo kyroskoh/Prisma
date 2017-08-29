@@ -4,6 +4,8 @@ module.exports = (bot, user) => {
             bot.fetchUser(String(user), true).then(user => resolve(user)).catch(e => reject(e));
         } else if (/^<@\d+>$/.test(user)) {
             bot.fetchUser(user.match(/\d+/)[0], true).then(user => resolve(user)).catch(e => reject(e));
+        } else if (/^<@!\d+>$/.test(user)) {
+            bot.fetchUser(user.match(/\d+/)[0], true).then(user => resolve(user)).catch(e => reject(e));
         } else if (/^\w+#\d{4}$/.test(user)) {
             const users = bot.users.filter(u => u.username === user.match(/^\w+/)[0] && u.discriminator === String(user.match(/\d{4}/)[0]));
             if (users.size > 0) {
