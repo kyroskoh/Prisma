@@ -7,15 +7,15 @@ module.exports = {
         "blur"
     ],
     description: "Blurs an image a certain percent.",
-    usage: "blur [url | @user | username | userID] [amount]",
+    usage: "blur [amount] [url | @user | username | userID]",
     category: "Image",
     hidden: false,
     execute: (bot, database, msg, args) => {
-        if (args.length > 0) {
-            if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[0])) {
-                next(args[0]);
+        if (args.length > 1) {
+            if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[1])) {
+                next(args[1]);
             } else {
-                resolveUser(bot, args[0]).then(user => {
+                resolveUser(bot, args[1]).then(user => {
                     next(user.avatarURL);
                 }).catch(error => {
                     msg.channel.send({
@@ -32,33 +32,33 @@ module.exports = {
         }
         function next(url) {
             let amount = 15;
-            if (args.length > 1) {
-                if (isNaN(Number(args[1].replace("%", "")))) return msg.channel.send({
+            if (args.length > 0) {
+                if (isNaN(Number(args[0]))) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
                         description: "`" + args[1] + "` is not a valid number."
                     }
                 });
-                if (Number(args[1].replace("%", "")) > 100) return msg.channel.send({
+                if (Number(args[0]) > 100) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
                         description: "The blur amount cannot be greater than 100%."
                     }
                 });
-                if (Number(args[1].replace("%", "")) < 1) return msg.channel.send({
+                if (Number(args[0]) < 1) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
                         description: "The blur amount cannot be less than 1%."
                     }
                 });
-                amount = Number(args[1].replace("%", ""));
+                amount = Number(args[0]);
             }
             snekfetch.get(url).then(body => {
                 try {
-                    gm(body.body).blur(25, amount).toBuffer((error, buffer) => {
+                    gm(body.body).blur(amount, amount).toBuffer((error, buffer) => {
                         if (error) return console.error(error);
                         msg.channel.send({
                             files: [
