@@ -65,7 +65,7 @@ module.exports = {
             const amount = Number(args[0]);
             snekfetch.get(url).then(body => {
                 try {
-                    gm(body.body).rotate(amount).toBuffer((error, buffer) => {
+                    gm(body.body).rotate("#000", amount).toBuffer((error, buffer) => {
                         if (error) return console.error(error);
                         msg.channel.send({
                             files: [
