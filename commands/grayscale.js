@@ -4,10 +4,13 @@ const resolveUser = require("../functions/resolve-user.js");
 
 module.exports = {
     commands: [
-        "blur"
+        "grayscale",
+        "greyscale",
+        "gray",
+        "grey"
     ],
-    description: "Blurs an image a certain percent.",
-    usage: "blur <url | @user | username | userID> [amount]",
+    description: "Makes an image black and white.",
+    usage: "blur <url | @user | username | userID>",
     category: "Image",
     hidden: false,
     execute: (bot, database, msg, args) => {
@@ -28,34 +31,9 @@ module.exports = {
                 });
             }
             function next(url) {
-                let amount = 15;
-                if (args.length > 1) {
-                    if (isNaN(Number(args[1].replace("%", "")))) return msg.channel.send({
-                        embed: {
-                            title: "Error!",
-                            color: 0xE50000,
-                            description: "`" + args[1] + "` is not a valid number."
-                        }
-                    });
-                    if (Number(args[1].replace("%", "")) > 100) return msg.channel.send({
-                        embed: {
-                            title: "Error!",
-                            color: 0xE50000,
-                            description: "The blur amount cannot be greater than 100%."
-                        }
-                    });
-                    if (Number(args[1].replace("%", "")) < 1) return msg.channel.send({
-                        embed: {
-                            title: "Error!",
-                            color: 0xE50000,
-                            description: "The blur amount cannot be less than 1%."
-                        }
-                    });
-                    amount = Number(args[1].replace("%", ""));
-                }
                 snekfetch.get(url).then(body => {
                     try {
-                        gm(body.body).blur(25, amount).toBuffer((error, buffer) => {
+                        gm(body.body).type("Grayscale").toBuffer((error, buffer) => {
                             if (error) return console.error(error);
                             msg.channel.send({
                                 files: [
