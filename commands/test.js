@@ -2,6 +2,7 @@ const snekfetch = require("snekfetch");
 const gm = require("gm");
 const resolveUser = require("../functions/resolve-user.js");
 const config = require("../config.json");
+const imagesize = require("image-size");
 
 module.exports = {
     commands: [
@@ -35,7 +36,8 @@ module.exports = {
         function next(url) {
             snekfetch.get(url).then(body => {
                 try {
-                    gm(body.body).shade(0, 0).toBuffer((error, buffer) => {
+                    const is = imagesize(body.body);
+                    gm(body.body).shade(is.width / 2, is.height / 2).toBuffer((error, buffer) => {
                         if (error) return console.error(error);
                         msg.channel.send({
                             files: [

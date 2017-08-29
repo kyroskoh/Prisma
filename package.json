@@ -31,7 +31,8 @@
         "node-dogstatsd": "^0.0.6",
         "google-translate-api": "^2.3.0",
         "dogapi": "^2.8.0",
-        "gm": "^1.23.0"
+        "gm": "^1.23.0",
+        "image-size": "^0.6.1"
     },
     "homepage": "https://jacobgunther12.github.io/Prisma/",
     "main": "index.js",
