@@ -1,16 +1,18 @@
 const snekfetch = require("snekfetch");
 const gm = require("gm");
 const resolveUser = require("../functions/resolve-user.js");
+const config = require("../config.json");
 
 module.exports = {
     commands: [
-        "coalesce"
+        "test"
     ],
-    description: "Testing.",
-    usage: "coalecse [url | @user | username | userID]",
+    description: "A test command for new features.",
+    usage: "test",
     category: "Image",
-    hidden: false,
+    hidden: true,
     execute: (bot, database, msg, args) => {
+        if (msg.author.id !== config.trusted[0]) return;
         if (args.length > 0) {
             if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[0])) {
                 next(args[0]);
@@ -33,7 +35,7 @@ module.exports = {
         function next(url) {
             snekfetch.get(url).then(body => {
                 try {
-                    gm(body.body).coalesce().toBuffer((error, buffer) => {
+                    gm(body.body).dissolve().toBuffer((error, buffer) => {
                         if (error) return console.error(error);
                         msg.channel.send({
                             files: [
