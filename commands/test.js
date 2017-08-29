@@ -35,7 +35,7 @@ module.exports = {
         function next(url) {
             snekfetch.get(url).then(body => {
                 try {
-                    gm(body.body).monochrome().dither().toBuffer((error, buffer) => {
+                    gm(body.body).shade(0, 0).toBuffer((error, buffer) => {
                         if (error) return console.error(error);
                         msg.channel.send({
                             files: [
