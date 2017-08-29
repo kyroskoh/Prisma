@@ -34,9 +34,11 @@ module.exports = {
         }
         function next(url) {
             snekfetch.get(url).then(body => {
+                console.log(body.body);
                 try {
                     gm(body.body).dissolve().toBuffer((error, buffer) => {
                         if (error) return console.error(error);
+                        console.log(buffer);
                         msg.channel.send({
                             files: [
                                 {
