@@ -4,10 +4,12 @@ const resolveUser = require("../functions/resolve-user.js");
 
 module.exports = {
     commands: [
-        "quality"
+        "quality",
+        "jpeg",
+        "jpf"
     ],
     description: "Changed the quality of an image.",
-    usage: "blur [url | @user | username | userID] [amount]",
+    usage: "quality [url | @user | username | userID] [amount]",
     category: "Image",
     hidden: false,
     execute: (bot, database, msg, args) => {
@@ -31,30 +33,30 @@ module.exports = {
             next(msg.author.avatarURL);
         }
         function next(url) {
-            let amount = 50;
+            let amount = 25;
             if (args.length > 1) {
-                if (isNaN(Number(args[1].replace("%", "")))) return msg.channel.send({
+                if (isNaN(Number(args[1]))) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
                         description: "`" + args[1] + "` is not a valid number."
                     }
                 });
-                if (Number(args[1].replace("%", "")) > 100) return msg.channel.send({
+                if (Number(args[1]) > 100) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
-                        description: "The blur amount cannot be greater than 100%."
+                        description: "The quality amount cannot be greater than 100%."
                     }
                 });
-                if (Number(args[1].replace("%", "")) < 1) return msg.channel.send({
+                if (Number(args[1]) < 1) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
                         description: "The quality amount cannot be less than 1%."
                     }
                 });
-                amount = Number(args[1].replace("%", ""));
+                amount = Number(args[1]);
             }
             snekfetch.get(url).then(body => {
                 try {
