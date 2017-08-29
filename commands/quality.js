@@ -9,15 +9,15 @@ module.exports = {
         "jpf"
     ],
     description: "Changed the quality of an image.",
-    usage: "quality [url | @user | username | userID] [amount]",
+    usage: "quality [amount] [url | @user | username | userID]",
     category: "Image",
     hidden: false,
     execute: (bot, database, msg, args) => {
-        if (args.length > 0) {
-            if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[0])) {
-                next(args[0]);
+        if (args.length > 1) {
+            if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[1])) {
+                next(args[1]);
             } else {
-                resolveUser(bot, args[0]).then(user => {
+                resolveUser(bot, args.slice(1).join(" ")).then(user => {
                     next(user.avatarURL);
                 }).catch(error => {
                     msg.channel.send({
@@ -35,28 +35,28 @@ module.exports = {
         function next(url) {
             let amount = 25;
             if (args.length > 1) {
-                if (isNaN(Number(args[1]))) return msg.channel.send({
+                if (isNaN(Number(args[0]))) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
                         description: "`" + args[1] + "` is not a valid number."
                     }
                 });
-                if (Number(args[1]) > 100) return msg.channel.send({
+                if (Number(args[0]) > 100) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
                         description: "The quality amount cannot be greater than 100%."
                     }
                 });
-                if (Number(args[1]) < 1) return msg.channel.send({
+                if (Number(args[0]) < 1) return msg.channel.send({
                     embed: {
                         title: "Error!",
                         color: 0xE50000,
                         description: "The quality amount cannot be less than 1%."
                     }
                 });
-                amount = Number(args[1]);
+                amount = Number(args[0]);
             }
             snekfetch.get(url).then(body => {
                 try {
