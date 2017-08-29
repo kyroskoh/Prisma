@@ -10,7 +10,7 @@ module.exports = {
         "grey"
     ],
     description: "Makes an image black and white.",
-    usage: "blur <url | @user | username | userID>",
+    usage: "blur [url | @user | username | userID]",
     category: "Image",
     hidden: false,
     execute: (bot, database, msg, args) => {
@@ -30,46 +30,40 @@ module.exports = {
                     });
                 });
             }
-            function next(url) {
-                snekfetch.get(url).then(body => {
-                    try {
-                        gm(body.body).type("Grayscale").toBuffer((error, buffer) => {
-                            if (error) return console.error(error);
-                            msg.channel.send({
-                                files: [
-                                    {
-                                        attachment: buffer,
-                                        name: "image.png"
-                                    }
-                                ]
-                            });
-                        });
-                    } catch (e) {
+        } else {
+            next(msg.author.avatarURL);
+        }
+        function next(url) {
+            snekfetch.get(url).then(body => {
+                try {
+                    gm(body.body).type("Grayscale").toBuffer((error, buffer) => {
+                        if (error) return console.error(error);
                         msg.channel.send({
-                            embed: {
-                                title: "Error!",
-                                color: 0xE50000,
-                                description: "An error occured while editing image."
-                            }
+                            files: [
+                                {
+                                    attachment: buffer,
+                                    name: "image.png"
+                                }
+                            ]
                         });
-                    }
-                }).catch(error => {
+                    });
+                } catch (e) {
                     msg.channel.send({
                         embed: {
                             title: "Error!",
                             color: 0xE50000,
-                            description: "Failed to load image. `" + error.message + "`"
+                            description: "An error occured while editing image."
                         }
                     });
-                });
-            }
-        } else {
-            msg.channel.send({
-                embed: {
-                    title: "Error!",
-                    color: 0xE50000,
-                    description: "Missing `<url | @user | username | userID>` option."
                 }
+            }).catch(error => {
+                msg.channel.send({
+                    embed: {
+                        title: "Error!",
+                        color: 0xE50000,
+                        description: "Failed to load image. `" + error.message + "`"
+                    }
+                });
             });
         }
     }
