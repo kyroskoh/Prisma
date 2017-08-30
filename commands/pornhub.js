@@ -19,7 +19,15 @@ module.exports = {
         });
         if (args.length > 0) {
             porn.search(args.join(" ")).videos().then(data => {
-                console.log(data);
+                msg.channel.send({
+                    embed: {
+                        title: "PornHub Video",
+                        description: "[" + data["0"].title + "](" + data["0"].url + ")",
+                        image: {
+                            url: data["0"].thumb
+                        }
+                    }
+                });
             }).catch(error => {
                 msg.channel.send({
                     embed: {
