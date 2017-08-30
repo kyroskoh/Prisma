@@ -1,6 +1,6 @@
 const config = require("../config.json");
 const cleverbot = require("cleverbot.io");
-const clever = new cleverbot(...config.api_keys.cleverbot);
+const clever = new cleverbot(config.api_keys.cleverbot[0], config.api_keys.cleverbot[1]);
 clever.create((error, session) => {
     if (error) throw new error();
     clever.setNick(session);
