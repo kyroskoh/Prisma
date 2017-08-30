@@ -7,7 +7,7 @@ module.exports = {
     ],
     description: "View the top bots by server count.",
     usage: "topbots",
-    category: "Utility",
+    category: "Information",
     hidden: false,
     execute: (bot, database, msg, args) => {
         var page = 1;

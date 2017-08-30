@@ -6,7 +6,7 @@ module.exports = {
     ],
     description: "Sends the help list to the user via Direct Message.",
     usage: "help [command]",
-    category: "Utility",
+    category: "Information",
     hidden: false,
     execute: (bot, database, msg, args) => {
         let commands;
