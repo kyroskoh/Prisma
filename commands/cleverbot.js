@@ -34,7 +34,7 @@ module.exports = {
                             description: "An unexpected error occured while asking cleverbot a question."
                         }
                     });
-                    console.error("Failed to ask cleverbot a question.", error);
+                    console.error("Failed to ask cleverbot a question.", response);
                 } else {
                     msg.channel.send({
                         embed: {
