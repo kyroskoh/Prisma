@@ -1,4 +1,4 @@
-const pornhub = require("pornhub");
+const pornhub = require("pornhub-api");
 
 module.exports = {
     commands: [
@@ -18,23 +18,20 @@ module.exports = {
             }
         });
         if (args.length > 0) {
-            pornhub.search({
-                search: args.join(" "),
-                thumbnail: "large_hd"
-            }, (error, data) => {
-                if (error) {
-                    msg.channel.send({
-                        embed: {
-                            title: "Error!",
-                            color: 0xE50000,
-                            description: "An unexpected error occured while searching for that video."
-                        }
-                    });
-                    console.error(error);
-                } else {
-                    console.log(data);
-                }
-            });
+            pornhubapi.search({
+                search: args.join(" ")
+            }).then(data => {
+                console.log(data);
+            }).catch(error => {
+                msg.channel.send({
+                    embed: {
+                        title: "Error!",
+                        color: 0xE50000,
+                        description: "An unexpected error occured while searching for that video."
+                    }
+                });
+                console.error(error);
+            })
         } else {
             msg.channel.send({
                 embed: {
