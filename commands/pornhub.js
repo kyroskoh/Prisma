@@ -1,4 +1,5 @@
 const pornhub = require("pornhub-api");
+const ph = new pornhub.Videos();
 
 module.exports = {
     commands: [
@@ -18,7 +19,7 @@ module.exports = {
             }
         });
         if (args.length > 0) {
-            pornhub.search({
+            ph.search({
                 search: args.join(" ")
             }).then(data => {
                 console.log(data);
