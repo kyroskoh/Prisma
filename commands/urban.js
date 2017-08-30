@@ -52,7 +52,7 @@ module.exports = {
                         description: "An error occured while searching for that word."
                     }
                 });
-                console.error(error);
+                console.error("Failed to search on the Urban Dictionary.", error);
             });
         } else {
             msg.channel.send({

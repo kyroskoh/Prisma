@@ -81,7 +81,7 @@ module.exports = {
                     description: "An error occured while generating stats."
                 }
             });
-            console.error(error);
+            console.error("Failed to generate statistics.", error);
         });
     }
 };

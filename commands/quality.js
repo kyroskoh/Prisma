@@ -68,7 +68,7 @@ module.exports = {
             snekfetch.get(url).then(body => {
                 try {
                     gm(body.body).compress("jpeg").quality(amount).toBuffer((error, buffer) => {
-                        if (error) return console.error(error);
+                        if (error) return console.error("Failed to change image quaility.", error);
                         msg.channel.send({
                             files: [
                                 {

@@ -34,7 +34,7 @@ module.exports = {
             snekfetch.get(url).then(body => {
                 try {
                     gm(body.body).charcoal().toBuffer((error, buffer) => {
-                        if (error) return console.error(error);
+                        if (error) return console.error("Failed to charcoal image.", error);
                         msg.channel.send({
                             files: [
                                 {

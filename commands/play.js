@@ -281,7 +281,7 @@ module.exports = {
                                     description: "An unexpected error occured while searching for `" + msg.content.split(" ").slice(1).join(" ") + "`."
                                 }
                             })
-                            return console.error(error);
+                            return console.error("Failed to search for a video.", error);
                         }
                         msg.channel.send({
                             embed: {

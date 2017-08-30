@@ -37,7 +37,7 @@ module.exports = {
             snekfetch.get(url).then(body => {
                 try {
                     gm(body.body).type("Grayscale").toBuffer((error, buffer) => {
-                        if (error) return console.error(error);
+                        if (error) return console.error("Failed to grayscale image.", error);
                         msg.channel.send({
                             files: [
                                 {

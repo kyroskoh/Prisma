@@ -10,6 +10,10 @@
             "api_key": "",
             "app_key": ""
         },
+        "cleverbot": [
+            "",
+            ""
+        ],
         "youtube": "",
         "steam": "",
         "thecatapi": "",

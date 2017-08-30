@@ -37,7 +37,7 @@ module.exports = {
                 try {
                     const is = imagesize(body.body);
                     gm(body.body).shade(is.width / 2, is.height / 2).toBuffer((error, buffer) => {
-                        if (error) return console.error(error);
+                        if (error) return console.error("Failed to shade image.", error);
                         msg.channel.send({
                             files: [
                                 {

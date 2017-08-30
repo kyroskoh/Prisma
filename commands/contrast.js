@@ -59,7 +59,7 @@ module.exports = {
             snekfetch.get(url).then(body => {
                 try {
                     gm(body.body).contrast((amount - 50) * 2).toBuffer((error, buffer) => {
-                        if (error) return console.error(error);
+                        if (error) return console.error("Failed to contrast image.", error);
                         msg.channel.send({
                             files: [
                                 {

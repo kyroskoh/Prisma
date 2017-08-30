@@ -65,7 +65,7 @@ module.exports = {
                                 description: "Failed to upload thumbnail to imgur."
                             }
                         });
-                        console.error(e);
+                        console.error("Failed to upload thumbnail for Minecraft server.", e);
                     });
                 } else {
                     msg.channel.send({

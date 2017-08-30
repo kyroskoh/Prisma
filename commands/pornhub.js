@@ -37,7 +37,7 @@ module.exports = {
                         description: "An unexpected error occured while searching for that video."
                     }
                 });
-                console.error(error);
+                console.error("Failed to search on PornHub.", error);
             })
         } else {
             msg.channel.send({

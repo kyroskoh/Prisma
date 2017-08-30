@@ -30,7 +30,7 @@ module.exports = {
                     description: "An error occured while getting shards information."
                 }
             });
-            console.error(error);
+            console.error("Failed to get shard information.", error);
         });
     }
 };
