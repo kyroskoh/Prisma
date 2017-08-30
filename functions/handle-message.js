@@ -59,7 +59,7 @@ module.exports = (bot, database, msg) => {
     let command = Object.keys(bot.commands).filter(c => bot.commands[c].commands.indexOf(msg.content.replace(prefix, "").split(" ")[0]) > -1);
     if (command.length > 0) {
         const args = ((msg.content.replace(prefix, "").split(" ").length > 1) ? msg.content.replace(prefix, "").split(" ").slice(1) : []);
-        database.run("INSERT INTO messages (userID, serverID, channelID, command, args, timestamp) VALUES (?, ?, ?, ?, ?, ?)", [
+        database.run("INSERT INTO commands (userID, serverID, channelID, command, args, timestamp) VALUES (?, ?, ?, ?, ?, ?)", [
             msg.author.id,
             (msg.guild) ? msg.guild.id : null,
             (msg.guild) ? msg.channel.id : null,
