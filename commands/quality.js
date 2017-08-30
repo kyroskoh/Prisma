@@ -13,6 +13,13 @@ module.exports = {
     category: "Image",
     hidden: false,
     execute: (bot, database, msg, args) => {
+        return msg.channel.send({
+            embed: {
+                title: "Error!",
+                color: 0xE50000,
+                description: "The quality command currently does not work."
+            }
+        });
         if (args.length > 1) {
             if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[1])) {
                 next(args[1]);

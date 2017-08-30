@@ -44,7 +44,7 @@ module.exports = {
             } else {
                 msg.channel.send({
                     embed: {
-                        title: "Unknown command!",
+                        title: "Error!",
                         color: 0xE50000,
                         description: "`" + args.join(" ") + "` is not a command that I know of."
                     }
@@ -73,12 +73,19 @@ module.exports = {
                 }
                 return 0;
             });
+            fields.map(f => {
+                f.name = f.name + " — " + f.value.split(",").length;
+                return f;
+            });
             msg.channel.send({
                 embed: {
                     title: "Command List",
                     description: "To view specific information about a command, run `" + ((msg.guild) ? msg.guild.data.prefix : config.prefix) + "help <command>`.",
                     color: 3066993,
-                    fields
+                    fields,
+                    footer: {
+                        text: "There are " + commands.length + " commands in total."
+                    }
                 }
             });
         }
