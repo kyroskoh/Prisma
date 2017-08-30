@@ -22,6 +22,7 @@ module.exports = {
                 msg.channel.send({
                     embed: {
                         title: "PornHub Video",
+                        color: 3066993,
                         description: "[" + data["0"].title + "](" + data["0"].url + ")",
                         image: {
                             url: data["0"].thumb
