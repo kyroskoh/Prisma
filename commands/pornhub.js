@@ -18,7 +18,7 @@ module.exports = {
             }
         });
         if (args.length > 0) {
-            pornhubapi.search({
+            pornhub.search({
                 search: args.join(" ")
             }).then(data => {
                 console.log(data);
