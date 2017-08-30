@@ -32,7 +32,8 @@
         "google-translate-api": "^2.3.0",
         "dogapi": "^2.8.0",
         "gm": "^1.23.0",
-        "image-size": "^0.6.1"
+        "image-size": "^0.6.1",
+        "pornhub": "^0.0.5"
     },
     "homepage": "https://jacobgunther12.github.io/Prisma/",
     "main": "index.js",
