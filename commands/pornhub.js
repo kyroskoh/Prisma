@@ -1,5 +1,4 @@
-const pornhub = require("pornhub-api");
-const ph = new pornhub.Videos();
+const porn = require("pornsearch");
 
 module.exports = {
     commands: [
@@ -19,9 +18,7 @@ module.exports = {
             }
         });
         if (args.length > 0) {
-            ph.search({
-                search: args.join(" ")
-            }).then(data => {
+            porn.search(args.join(" ")).videos().then(data => {
                 console.log(data);
             }).catch(error => {
                 msg.channel.send({
