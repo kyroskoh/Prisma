@@ -33,7 +33,8 @@
         "dogapi": "^2.8.0",
         "gm": "^1.23.0",
         "image-size": "^0.6.1",
-        "pornsearch": "^2.0.2"
+        "pornsearch": "^2.0.2",
+        "uws": "^8.14.1"
     },
     "homepage": "https://jacobgunther12.github.io/Prisma/",
     "main": "index.js",
