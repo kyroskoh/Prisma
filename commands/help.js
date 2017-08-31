@@ -15,7 +15,32 @@ module.exports = {
         } else {
             commands = Object.keys(bot.commands).filter(c => !bot.commands[c].hidden);
         }
-        commands.sort((a, b) => a < b);
+        let fields = [];
+        commands.forEach(c => {
+            let filter = fields.filter(f => f.name === bot.commands[c].category);
+            if (filter.length > 0) {
+                fields[fields.indexOf(filter[0])].value += ", `" + bot.commands[c].commands[0] + "`";
+            } else {
+                fields[fields.length] = {
+                    name: bot.commands[c].category,
+                    value: "`" + bot.commands[c].commands[0] + "`",
+                    inline: false
+                };
+            }
+        });
+        fields.sort((a, b) => {
+            if (a.name.toUpperCase() < b.name.toUpperCase()) {
+                return -1;
+            }
+            if (a.name.toUpperCase() > b.name.toUpperCase()) {
+                return 1;
+            }
+            return 0;
+        });
+        fields.map(f => {
+            f.name = f.name + " — " + f.value.split(",").length;
+            return f;
+        });
         if (args.length > 0) {
             if ([].concat.apply([], Object.keys(bot.commands).map(c => bot.commands[c].commands)).indexOf(args[0]) > -1) {
                 commands.forEach((command) => {
@@ -39,6 +64,22 @@ module.exports = {
                                 ]
                             }
                         });
+                    }
+                });
+            } else if (fields.map(f => f.name.split(" — ")[0]).indexOf(args[0]) > -1) {
+                const field = fields.filter(f => f.name.split(" — ")[0] === args[0])[0];
+                msg.channel.send({
+                    embed: {
+                        title: "Command List",
+                        description: "Displaying all commands for category `" + field.name.split(" — ")[0] + "`.",
+                        color: 3066993,
+                        fields: field.value.split(",").map(v => v.replace(/`/g, "")).map(v => {
+                            return {
+                                name: v,
+                                value: Object.keys(bot.commands).filter(c => bot.commands[c].commands.indexOf(v) > -1)[0].description,
+                                inline: true
+                            }
+                        })
                     }
                 });
             } else {
@@ -80,7 +121,7 @@ module.exports = {
             msg.channel.send({
                 embed: {
                     title: "Command List",
-                    description: "To view specific information about a command, run `" + ((msg.guild) ? msg.guild.data.prefix : config.prefix) + "help <command>`.",
+                    description: "To view specific information about a command, run `" + ((msg.guild) ? msg.guild.data.prefix : config.prefix) + "help <command>`. You can additionally use `" + ((msg.guild) ? msg.guild.data.prefix : config.prefix) + "help <category>` to view all commands and information in a category.",
                     color: 3066993,
                     fields,
                     footer: {
