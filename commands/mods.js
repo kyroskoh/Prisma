@@ -38,8 +38,8 @@ module.exports = {
             } else {
                 const sorted = {};
                 allMods.map(m => {
-                    if (!(m.presence in sorted)) sorted[m.presence] = [];
-                    sorted[m.presence].push(m.tag);
+                    if (!(m.status in sorted)) sorted[m.status] = [];
+                    sorted[m.status].push(m.tag);
                 });
                 const keys = Object.keys(sorted);
                 msg.channel.send({
