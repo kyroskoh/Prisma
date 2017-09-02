@@ -3,7 +3,7 @@ const config = require("../config.json");
 const util = require("util");
 
 module.exports = (bot, r, msg) => {
-    r.table("user_statistics").filter({userID: msg.author.id}).run((error, response) => {
+    /* r.table("user_statistics").filter({userID: msg.author.id}).run((error, response) => {
         if (error) return handleDatabaseError(bot, error);
         if (response.length > 0) {
             r.table("user_statistics").filter({userID: msg.author.id}).update({messages: response[0].messages + 1}).run((error) => {
@@ -52,7 +52,7 @@ module.exports = (bot, r, msg) => {
                 });
             }
         });
-    }
+    } */
     if (msg.author.bot) return;
     if (!msg.content.startsWith(((msg.guild) ? msg.guild.data.prefix : config.prefix)) && !msg.content.startsWith("<@" + bot.user.id + "> ") && !msg.content.startsWith("<@!" + bot.user.id + "> ")) return;
     let prefix;
@@ -74,7 +74,7 @@ module.exports = (bot, r, msg) => {
             });
             console.error("Failed to run '" + bot.commands[command[0]].commands[0] + "' command.", e);
         }
-        r.table("user_statistics").filter({userID: msg.author.id}).run((error, response) => {
+        /* r.table("user_statistics").filter({userID: msg.author.id}).run((error, response) => {
             if (error) return handleDatabaseError(bot, error);
             if (response.length > 0) {
                 r.table("user_statistics").filter({userID: msg.author.id}).update({commands: response[0].commands + 1}).run((error) => {
@@ -123,6 +123,6 @@ module.exports = (bot, r, msg) => {
                     });
                 }
             });
-        }
+        } */
     }
 }
