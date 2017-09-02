@@ -1,5 +1,6 @@
 const snekfetch = require("snekfetch");
 const gm = require("gm");
+const imageSize = require("image-size");
 const resolveUser = require("../functions/resolve-user.js");
 
 module.exports = {
@@ -15,7 +16,8 @@ module.exports = {
         function next(url) {
             snekfetch.get(url).then((body) => {
                 try {
-                    gm(body.body).composite(__dirname + "/../data/pornhub.png").geometry("+15+15").toBuffer((error, buffer) => {
+                    const is = imageSize(body.body);
+                    gm(body.body).composite(__dirname + "/../data/pornhub.png").scale(Math.round(is.width) / 15, Math.round(is.height) / 15).geometry("+15+15").toBuffer((error, buffer) => {
                         if (error) return console.error("Failed to overlap pornhub logo.", error);
                         msg.channel.send({
                             files: [
