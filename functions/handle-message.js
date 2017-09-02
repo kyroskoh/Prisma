@@ -60,7 +60,7 @@ module.exports = (bot, database, msg) => {
                     description: "An error occured when attempting to execute command."
                 }
             });
-            console.error("Failed to run '" + bot.commands[commands[0]].commands[0] + "' command.", e);
+            console.error("Failed to run '" + bot.commands[command[0]].commands[0] + "' command.", e);
         }
         database.all("SELECT * FROM command_usage WHERE command = ?", [command[0]], (error, response) => {
             if (error) return handleDatabaseError(bot, error);

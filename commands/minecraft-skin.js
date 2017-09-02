@@ -1,4 +1,4 @@
-const snekfetch = require("snekfetch");;
+const snekfetch = require("snekfetch");
 
 module.exports = {
     commands: [

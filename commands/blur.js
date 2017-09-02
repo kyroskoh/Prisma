@@ -11,25 +11,6 @@ module.exports = {
     category: "Image",
     hidden: false,
     execute: (bot, database, msg, args) => {
-        if (args.length > 1) {
-            if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[1])) {
-                next(args[1]);
-            } else {
-                resolveUser(bot, args[1]).then(user => {
-                    next(user.avatarURL);
-                }).catch(error => {
-                    msg.channel.send({
-                        embed: {
-                            title: "Error!",
-                            color: 0xE50000,
-                            description: "Unable to find any users by that search."
-                        }
-                    });
-                });
-            }
-        } else {
-            next(msg.author.avatarURL);
-        }
         function next(url) {
             let amount = 15;
             if (args.length > 0) {
@@ -87,6 +68,25 @@ module.exports = {
                     }
                 });
             });
+        }
+        if (args.length > 1) {
+            if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[1])) {
+                next(args[1]);
+            } else {
+                resolveUser(bot, args[1]).then(user => {
+                    next(user.avatarURL);
+                }).catch(error => {
+                    msg.channel.send({
+                        embed: {
+                            title: "Error!",
+                            color: 0xE50000,
+                            description: "Unable to find any users by that search."
+                        }
+                    });
+                });
+            }
+        } else {
+            next(msg.author.avatarURL);
         }
     }
 };

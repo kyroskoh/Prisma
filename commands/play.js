@@ -160,7 +160,7 @@ module.exports = {
                                                 }
                                             });
                                             return msg.member.voiceChannel.leave();
-                                        };
+                                        }
                                         msg.channel.send({
                                             embed: {
                                                 title: "Playing...",

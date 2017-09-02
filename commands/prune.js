@@ -59,6 +59,13 @@ module.exports = {
                                 msg.delete(3500);
                             });
                         }).catch(error => {
+                            if (error.message === "You can only bulk delete messages that are under 14 days old.") return msg.channel.send({
+                                embed: {
+                                    title: "Error!",
+                                    color: 0xE50000,
+                                    description: "Due to API restrictions, I am unable to delete messages over 14 days old."
+                                }
+                            });
                             msg.channel.send({
                                 embed: {
                                     title: "Error!",

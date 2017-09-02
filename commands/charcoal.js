@@ -11,25 +11,6 @@ module.exports = {
     category: "Image",
     hidden: false,
     execute: (bot, database, msg, args) => {
-        if (args.length > 0) {
-            if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[0])) {
-                next(args[0]);
-            } else {
-                resolveUser(bot, args[0]).then(user => {
-                    next(user.avatarURL);
-                }).catch(error => {
-                    msg.channel.send({
-                        embed: {
-                            title: "Error!",
-                            color: 0xE50000,
-                            description: "Unable to find any users by that search."
-                        }
-                    });
-                });
-            }
-        } else {
-            next(msg.author.avatarURL);
-        }
         function next(url) {
             snekfetch.get(url).then(body => {
                 try {
@@ -62,6 +43,25 @@ module.exports = {
                     }
                 });
             });
+        }
+        if (args.length > 0) {
+            if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[0])) {
+                next(args[0]);
+            } else {
+                resolveUser(bot, args[0]).then(user => {
+                    next(user.avatarURL);
+                }).catch(error => {
+                    msg.channel.send({
+                        embed: {
+                            title: "Error!",
+                            color: 0xE50000,
+                            description: "Unable to find any users by that search."
+                        }
+                    });
+                });
+            }
+        } else {
+            next(msg.author.avatarURL);
         }
     }
 };
