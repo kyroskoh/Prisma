@@ -44,10 +44,10 @@ module.exports = {
                 });
                 const keys = Object.keys(sorted);
                 keys.sort((a, b) => {
-                    if (a === "online") return 1;
-                    if (a === "idle") return 2;
-                    if (a === "dnd") return 3;
-                    if (a === "offline") return 4;
+                    if (a.status === "online") return 1;
+                    if (a.status === "idle") return 2;
+                    if (a.status === "dnd") return 3;
+                    if (a.status === "offline") return 4;
                 });
                 msg.channel.send({
                     embed: {
