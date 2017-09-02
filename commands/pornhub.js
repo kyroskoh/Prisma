@@ -15,7 +15,7 @@ module.exports = {
         function next(url) {
             snekfetch.get(url).then((body) => {
                 try {
-                    gm(body.body).compose("Atop", "/../data/pornhub.png", false).toBuffer((error, buffer) => {
+                    gm(body.body).composite("/../data/pornhub.png").geometry("+15+15").toBuffer((error, buffer) => {
                         if (error) return console.error("Failed to overlap pornhub logo.", error);
                         msg.channel.send({
                             files: [
