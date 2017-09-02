@@ -21,15 +21,13 @@ module.exports = (bot, channel) => {
             } else {
                 reject();
             }
-        } else if (/^.+$/) {
+        } else {
             const channels = bot.channels.find("name", channel);
             if (channels) {
                 resolve(channels);
             } else {
                 reject();
             }
-        } else {
-            reject();
         }
     });
 };
