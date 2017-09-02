@@ -43,6 +43,12 @@ module.exports = {
                     sorted[m.status].push(m.tag);
                 });
                 const keys = Object.keys(sorted);
+                keys.sort((a, b) => {
+                    if (a === "online") return 1;
+                    if (a === "idle") return 2;
+                    if (a === "dnd") return 3;
+                    if (a === "offline") return 4;
+                });
                 msg.channel.send({
                     embed: {
                         title: "Moderators",
