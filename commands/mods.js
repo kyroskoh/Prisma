@@ -19,9 +19,9 @@ module.exports = {
                 description: "This command cannot be used in a Direct Message."
             }
         });
-        const mods = msg.guild.roles.filter(r => r.name.toLowerCase() === "mods" || r.name.toLowerCase() === "moderators" || r.name.toLowerCase() === "moderator" || r.name.toLowerCase() === "mod" || r.name.toLowerCase() === "admins" || r.name.toLowerCase() === "administrators" || r.name.toLowerCase() === "admin" || r.name.toLowerCase() === "administrator");
+        const mods = msg.guild.roles.filter((r) => r.name.toLowerCase() === "mods" || r.name.toLowerCase() === "moderators" || r.name.toLowerCase() === "moderator" || r.name.toLowerCase() === "mod" || r.name.toLowerCase() === "admins" || r.name.toLowerCase() === "administrators" || r.name.toLowerCase() === "admin" || r.name.toLowerCase() === "administrator");
         if (mods.size > 0) {
-            const allMods = [].concat.apply([], mods.map(r => r.members.filter(u => !u.user.bot).map(u => {
+            const allMods = [].concat.apply([], mods.map((r) => r.members.filter((u) => !u.user.bot).map((u) => {
                 return {
                     tag: u.user.tag,
                     status: u.presence.status
@@ -36,9 +36,8 @@ module.exports = {
                     }
                 });
             } else {
-                console.log(allMods);
                 const sorted = {};
-                allMods.map(m => {
+                allMods.map((m) => {
                     if (!(m.status in sorted)) sorted[m.status] = [];
                     sorted[m.status].push(m.tag);
                 });
@@ -53,7 +52,7 @@ module.exports = {
                     embed: {
                         title: "Moderators",
                         color: 3066993,
-                        description: keys.map(k => ((k === "online") ? "<:online:313956277808005120>" : ((k === "idle") ? "<:away:313956277220802560>" : ((k === "dnd") ? "<:dnd:313956276893646850>" : ((k === "offline") ? "<:offline:313956277237710868>" : "unknown")))) + " " + sorted[k].join(", ")).join("\n\n")
+                        description: keys.map((k) => ((k === "online") ? "<:online:313956277808005120>" : ((k === "idle") ? "<:away:313956277220802560>" : ((k === "dnd") ? "<:dnd:313956276893646850>" : ((k === "offline") ? "<:offline:313956277237710868>" : "unknown")))) + " " + sorted[k].join(", ")).join("\n\n")
                     }
                 });
             }
