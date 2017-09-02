@@ -21,7 +21,7 @@ module.exports = {
         });
         const mods = msg.guild.roles.filter(r => r.name.toLowerCase() === "mods" || r.name.toLowerCase() === "moderators" || r.name.toLowerCase() === "moderator" || r.name.toLowerCase() === "mod" || r.name.toLowerCase() === "admins" || r.name.toLowerCase() === "administrators" || r.name.toLowerCase() === "admin" || r.name.toLowerCase() === "administrator");
         if (mods.size > 0) {
-            const allMods = [].concat.apply(mods.map(r => r.members.filter(u => !u.user.bot).map(u => {
+            const allMods = [].concat.apply([], mods.map(r => r.members.filter(u => !u.user.bot).map(u => {
                 return {
                     tag: u.user.tag,
                     status: u.presence.status
