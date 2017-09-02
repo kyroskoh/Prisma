@@ -20,7 +20,7 @@ module.exports = {
         if (msg.guild.members.get(bot.user.id).voiceChannel) {
             if (msg.member.voiceChannel) {
                 if (msg.guild.members.get(bot.user.id).voiceChannel.id === msg.member.voiceChannel.id) {
-                    const queue = queue[msg.member.voiceChannel.id].songs.map(s => s.title + " (" + s.duration + ")");
+                    const queue = msg.member.voiceChannel.queue.songs.map(s => s.title + " (" + s.duration + ")");
                     msg.channel.send({
                         embed: {
                             title: "Queue",
