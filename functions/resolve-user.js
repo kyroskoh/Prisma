@@ -13,15 +13,13 @@ module.exports = (bot, user) => {
             } else {
                 reject();
             }
-        } else if (/^\w+$/) {
+        } else {
             const users = bot.users.filter(u => u.username.toLowerCase().includes(user.toLowerCase()));
             if (users) {
                 resolve(users);
             } else {
                 reject();
             }
-        } else {
-            reject();
         }
     });
 };
