@@ -8,7 +8,7 @@ module.exports = {
     usage: "figlet <text>",
     category: "Fun",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
             figlet(args.join(" "), (error, data) => {
                 if (error) {

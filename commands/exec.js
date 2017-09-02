@@ -11,7 +11,7 @@ module.exports = {
     usage: "exec <command>",
     category: "Developers",
     hidden: true,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (config.trusted.indexOf(msg.author.id) > -1) {
             if (args.length > 0) {
                 child_process.exec(args.join(" "), (error, out, err) => {
@@ -20,7 +20,7 @@ module.exports = {
                     result = removeSensitiveInformation(result);
                     result = result.replace(/```/g, "'''");
                     if (result.length > 1985) {
-                        snekfetch.post("https://hastebin.com/documents").send(result).then(body => {
+                        snekfetch.post("https://hastebin.com/documents").send(result).then((body) => {
                             msg.channel.send({
                                 embed: {
                                     title: "Warning!",
@@ -28,7 +28,7 @@ module.exports = {
                                     description: "Result was over 2,000 characters, generated hastebin link instead. https://hastebin.com/" + body.body.key 
                                 }
                             });
-                        }).catch(error => {
+                        }).catch((error) => {
                             msg.channel.send({
                                 embed: {
                                     title: "Error!",

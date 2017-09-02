@@ -11,7 +11,7 @@ module.exports = {
     usage: "channelinfo [#channel | channel ID | channel name]",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -20,8 +20,8 @@ module.exports = {
             }
         });
         if (args.length > 0) {
-            resolveChannel(bot, args.join(" ")).then(channel => {
-                database.all("SELECT * FROM channel_statistics WHERE channelID = ?", [channel.id], (error, response) => {
+            resolveChannel(bot, args.join(" ")).then((channel) => {
+                r.table("channel_statistics").filter({channelID: channel.id}).run((error, response) => {
                     if (error) return handleDatabaseError(bot, error, msg);
                     msg.channel.send({
                         embed: {
@@ -72,7 +72,7 @@ module.exports = {
                         }
                     });
                 });
-            }).catch(e => {
+            }).catch((e) => {
                 msg.channel.send({
                     embed: {
                         title: "Error!",
@@ -82,7 +82,7 @@ module.exports = {
                 });
             });
         } else {
-            database.all("SELECT * FROM channel_statistics WHERE channelID = ?", [msg.channel.id], (error, response) => {
+            r.table("channel_statistics").filter({channelID: msg.channel.id}).run((error, response) => {
                 if (error) return handleDatabaseError(bot, error, msg);
                 msg.channel.send({
                     embed: {

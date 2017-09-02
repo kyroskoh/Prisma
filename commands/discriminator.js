@@ -10,7 +10,7 @@ module.exports = {
     usage: "discriminator <discrim> [page #]",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length < 1) args[0] = msg.author.discriminator;
         if (isNaN(Number(args[0]))) return msg.channel.send({
             embed: {
@@ -33,7 +33,7 @@ module.exports = {
                 description: "Discriminators do not go below 1."
             }
         });
-        const users = bot.users.filter(u => u.discriminator === args[0] && u.id !== msg.author.id && !u.bot).map(u => u.tag);
+        const users = bot.users.filter((u) => u.discriminator === args[0] && u.id !== msg.author.id && !u.bot).map((u) => u.tag);
         if (users.length > 0) {
             if (args.length > 1) {
                 if (isNaN(Number(args[1]))) return msg.channel.send({

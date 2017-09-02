@@ -10,7 +10,7 @@ module.exports = {
     usage: "tag <\"add\" | \"list\" | \"edit\" | \"remove\"> <tag name> [new value]",
     category: "Utility",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -22,7 +22,7 @@ module.exports = {
             if (args[0] === "add") {
                 if (args.length > 1) {
                     if (args.length > 2) {
-                        database.all("SELECT * FROM tags WHERE serverID = ? AND name = ?", [msg.guild.id, args[2]], (error, response) => {
+                        r.table("tags").filter({serverID: msg.guild.id, name: args[2]}).run((error, response) => {
                             if (error) return handleDatabaseError(bot, error, msg);
                             if (response.length > 0) {
                                 msg.channel.send({
@@ -33,7 +33,11 @@ module.exports = {
                                     }
                                 });
                             } else {
-                                database.run("INSERT INTO tags (serverID, name, value) VALUES (?, ?, ?)", [msg.guild.id, args[1], args.slice(2).join(" ")], (error) => {
+                                r.table("tags").insert({
+                                    serverID: msg.guild.id,
+                                    name: args[1],
+                                    value: args.slice(2).join(" ")
+                                }).run((error) => {
                                     if (error) return handleDatabaseError(bot, error, msg);
                                     msg.channel.send({
                                         embed: {
@@ -64,14 +68,14 @@ module.exports = {
                     });
                 }
             } else if (args[0] === "list") {
-                database.all("SELECT * FROM tags WHERE serverID = ?", [msg.guild.id], (error, response) => {
+                r.table("tags").filter({serverID: msg.guild.id}).run((error, response) => {
                     if (error) return handleDatabaseError(bot, error, msg);
                     if (response.length > 0) {
                         msg.channel.send({
                             embed: {
                                 title: "Tags",
                                 color: 3066993,
-                                description: response.map(t => "› " + t.name).join("\n")
+                                description: response.map((t) => "› " + t.name).join("\n")
                             }
                         });
                     } else {
@@ -87,10 +91,10 @@ module.exports = {
             } else if (args[0] === "edit") {
                 if (args.length > 1) {
                     if (args.length > 2) {
-                        database.all("SELECT * FROM tags WHERE serverID = ? AND name = ?", [msg.guild.id, args[1]], (error, response) => {
+                        r.table("tags").filter({serverID: msg.guild.id, name: args[1]}).run((error, response) => {
                             if (error) return handleDatabaseError(bot, error, msg);
                             if (response.length > 0) {
-                                database.run("UPDATE tags SET value = ? WHERE serverID = ? AND name = ?", [args.slice(2).join(" "), msg.guild.id, args[1]], (error) => {
+                                r.table("tags").filter({serverID: msg.guild.id, name: args[1]}).update({value: args.slice(2).join(" ")}).run((error) => {
                                     if (error) return handleDatabaseError(bot, error, msg);
                                     msg.channel.send({
                                         embed: {
@@ -130,10 +134,10 @@ module.exports = {
                 }
             } else if (args[0] === "remove") {
                 if (args.length > 1) {
-                    database.all("SELECT * FROM tags WHERE name = ? AND serverID = ?", [args[1], msg.guild.id], (error, response) => {
+                    r.table("tags").filter({serverID: msg.guild.id, name: args[1]}).run((error, response) => {
                         if (error) return handleDatabaseError(bot, error, msg);
                         if (response.length > 0) {
-                            database.run("DELETE FROM tags WHERE serverID = ? AND name = ?", [msg.guild.id, args[1]], (error) => {
+                            r.table("tags").filter({serverID: msg.guild.id, name: args[1]}).delete().run((error) => {
                                 if (error) return handleDatabaseError(bot, error, msg);
                                 msg.channel.send({
                                     embed: {
@@ -163,7 +167,7 @@ module.exports = {
                     });
                 }
             } else {
-                database.all("SELECT * FROM tags WHERE serverID = ? AND name = ?", [msg.guild.id, args[0]], (error, response) => {
+                r.table("tags").filter({serverID: msg.guild.id, name: args[0]}).run((error, response) => {
                     if (error) return handleDatabaseError(bot, error, msg);
                     if (response.length > 0) {
                         msg.channel.send(response[0].value);

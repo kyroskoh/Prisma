@@ -9,7 +9,7 @@ module.exports = {
     usage: "8ball <question>",
     category: "Fun",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
             msg.channel.send({
                 embed: {

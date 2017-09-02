@@ -9,7 +9,7 @@ const shard = new Discord.ShardingManager("./index.js", {
     respawn: true
 });
 
-shard.on("launch", s => {
+shard.on("launch", (s) => {
     log("Launching shard " + (s.id + 1) + "/" + shard.totalShards);
 });
 

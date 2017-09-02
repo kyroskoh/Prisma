@@ -11,7 +11,7 @@ module.exports = {
     usage: "serverinfo [server ID]",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -20,8 +20,8 @@ module.exports = {
             }
         });
         if (args.length > 0) {
-            resolveServer(bot, args.join(" ")).then(guild => {
-                database.all("SELECT * FROM server_statistics WHERE serverID = ?", [guild.id], (error, response) => {
+            resolveServer(bot, args.join(" ")).then((guild) => {
+                r.table("server_statistics").filter({serverID: guild.id}).run((error, response) => {
                     if (error) return handleDatabaseError(bot, error, msg);
                     msg.channel.send({
                         embed: {
@@ -103,14 +103,14 @@ module.exports = {
                                 },
                                 {
                                     name: "Member Statuses",
-                                    value: "<:online:313956277808005120> " + guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "online").size + "\n<:away:313956277220802560> " + guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "idle").size + "\n<:dnd:313956276893646850> " + guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "dnd").size + "\n<:offline:313956277237710868> " + guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "offline").size + "\n<:streaming:313956277132853248> " + guild.members.filter(m => m.presence && m.presence.game && m.presence.game.type === 1).size,
+                                    value: "<:online:313956277808005120> " + guild.members.filter((m) => m.presence && m.presence.status && m.presence.status === "online").size + "\n<:away:313956277220802560> " + guild.members.filter((m) => m.presence && m.presence.status && m.presence.status === "idle").size + "\n<:dnd:313956276893646850> " + guild.members.filter((m) => m.presence && m.presence.status && m.presence.status === "dnd").size + "\n<:offline:313956277237710868> " + guild.members.filter((m) => m.presence && m.presence.status && m.presence.status === "offline").size + "\n<:streaming:313956277132853248> " + guild.members.filter((m) => m.presence && m.presence.game && m.presence.game.type === 1).size,
                                     inline: true
                                 }
                             ]
                         }
                     });
                 });
-            }).catch(error => {
+            }).catch((error) => {
                 msg.channel.send({
                     embed: {
                         title: "Error!",
@@ -120,7 +120,7 @@ module.exports = {
                 });
             })
         } else {
-            database.all("SELECT * FROM server_statistics WHERE serverID = ?", [msg.guild.id], (error, response) => {
+            r.table("server_statistics").filter({serverID: msg.guild.id}).run((error, response) => {
                 if (error) return handleDatabaseError(bot, error, msg);
                 msg.channel.send({
                     embed: {
@@ -202,7 +202,7 @@ module.exports = {
                             },
                             {
                                 name: "Member Statuses",
-                                value: "<:online:313956277808005120> " + msg.guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "online").size + "\n<:away:313956277220802560> " + msg.guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "idle").size + "\n<:dnd:313956276893646850> " + msg.guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "dnd").size + "\n<:offline:313956277237710868> " + msg.guild.members.filter(m => m.presence && m.presence.status && m.presence.status === "offline").size + "\n<:streaming:313956277132853248> " + msg.guild.members.filter(m => m.presence && m.presence.game && m.presence.game.type === 1).size,
+                                value: "<:online:313956277808005120> " + msg.guild.members.filter((m) => m.presence && m.presence.status && m.presence.status === "online").size + "\n<:away:313956277220802560> " + msg.guild.members.filter((m) => m.presence && m.presence.status && m.presence.status === "idle").size + "\n<:dnd:313956276893646850> " + msg.guild.members.filter((m) => m.presence && m.presence.status && m.presence.status === "dnd").size + "\n<:offline:313956277237710868> " + msg.guild.members.filter((m) => m.presence && m.presence.status && m.presence.status === "offline").size + "\n<:streaming:313956277132853248> " + msg.guild.members.filter((m) => m.presence && m.presence.game && m.presence.game.type === 1).size,
                                 inline: true
                             }
                         ]

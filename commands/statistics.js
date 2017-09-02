@@ -10,11 +10,11 @@ module.exports = {
     usage: "stats",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
-        bot.shard.broadcastEval("[this.guilds.size, this.users.size, this.voiceConnections.size, (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(1)]").then(data => {
+    execute: (bot, r, msg, args) => {
+        bot.shard.broadcastEval("[this.guilds.size, this.users.size, this.voiceConnections.size, (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(1)]").then((data) => {
             let newdata = [0, 0, 0, 0];
-            data.forEach(v => {
-                v.forEach(nv => {
+            data.forEach((v) => {
+                v.forEach((nv) => {
                     newdata[v.indexOf(nv)] += Number(nv);
                 });
             });
@@ -51,7 +51,7 @@ module.exports = {
                         {
                             name: "Uptime",
                             value: humanizeduration(Date.now() - bot.startuptime, {
-                                language: 'shortEn',
+                                language: "shortEn",
                                 spacer: "",
                                 delimiter: "",
                                 round: true,
@@ -73,7 +73,7 @@ module.exports = {
                     ]
                 }
             });
-        }).catch(error => {
+        }).catch((error) => {
             msg.channel.send({
                 embed: {
                     title: "Error!",

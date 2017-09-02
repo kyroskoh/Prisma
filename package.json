@@ -16,7 +16,7 @@
         "get-youtube-id": "^1.0.0",
         "humanize-duration": "^3.10.0",
         "jimp": "^0.2.28",
-        "sqlite3": "^3.1.9",
+        "rethinkdbdash": "^2.3.31",
         "node-opus": "^0.2.6",
         "pm2": "^2.4.6",
         "simplerandom.js": "^1.0.0",

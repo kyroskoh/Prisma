@@ -10,9 +10,9 @@ module.exports = {
     usage: "github <username/repo>",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            snekfetch.get("https://api.github.com/repos/" + ((args[0].indexOf("/") > -1) ? args[0] : args[0] + "/" + args[1])).then(body => {
+            snekfetch.get("https://api.github.com/repos/" + ((args[0].indexOf("/") > -1) ? args[0] : args[0] + "/" + args[1])).then((body) => {
                 msg.channel.send({
                     embed: {
                         title: "GitHub Repository",
@@ -71,7 +71,7 @@ module.exports = {
                         ]
                     }
                 });
-            }).catch(error => {
+            }).catch((error) => {
                 if (error.status === 404) return msg.channel.send({
                     embed: {
                         title: "Error!",

@@ -11,7 +11,7 @@ module.exports = {
     usage: "reload <command | file>",
     category: "Developers",
     hidden: true,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (config.trusted.indexOf(msg.author.id) > -1) {
             if (args.length > 0) {
                 if (args[0] === "all") {
@@ -23,7 +23,7 @@ module.exports = {
                                 description: "An unexpected error occured while reading commands directory."
                             }
                         });
-                        files.forEach(c => {
+                        files.forEach((c) => {
                             delete require.cache[path.normalize(__dirname + "/" + c)];
                             try {
                                 bot.commands[c.replace(/\..*/g, "")] = require(path.normalize("./" + c));
@@ -48,7 +48,7 @@ module.exports = {
                         });
                     });
                 } else {
-                    const check = Object.keys(bot.commands).filter(c => bot.commands[c].commands.indexOf(args[0]) > -1);
+                    const check = Object.keys(bot.commands).filter((c) => bot.commands[c].commands.indexOf(args[0]) > -1);
                     if (check.length > 0) {
                         delete require.cache[path.normalize(__dirname + "/" + check[0] + ".js")];
                         try {

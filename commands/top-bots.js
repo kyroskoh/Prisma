@@ -1,4 +1,4 @@
-const allbots = require("../data/bots.json").filter(b => b.servercount !== "0");
+const allbots = require("../data/bots.json").filter((b) => b.servercount !== "0");
 
 module.exports = {
     commands: [
@@ -9,7 +9,7 @@ module.exports = {
     usage: "topbots",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         let page = 1;
         if (args.length > 0) {
             if (isNaN(args[0])) return msg.channel.send({
@@ -41,7 +41,7 @@ module.exports = {
             embed: {
                 title: "Top Bots",
                 color: 3066993,
-                fields: bots.map(b => {
+                fields: bots.map((b) => {
                     return {
                         name: b.name,
                         value: "**Servers**: " + b.servercount,

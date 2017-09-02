@@ -6,7 +6,7 @@ module.exports = {
     usage: "coinflip",
     category: "Random",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         const result = Math.round(Math.random());
         if (result) {
             msg.channel.send({

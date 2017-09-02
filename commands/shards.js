@@ -6,14 +6,14 @@ module.exports = {
     description: "Shows a list of shards and their stats.",
     category: "General",
     hidden: false,
-    execute: (bot, database, msg, args) => {
-        bot.shard.broadcastEval("[(this.shard.id + 1), this.guilds.size, this.users.size, Math.round(this.ping) + 'ms', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(1) + ' MB']").then(r => {
+    execute: (bot, r, msg, args) => {
+        bot.shard.broadcastEval("[(this.shard.id + 1), this.guilds.size, this.users.size, Math.round(this.ping) + \"ms\", (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(1) + \" MB\"]").then((r) => {
             msg.channel.send({
                 embed: {
                     title: "Shards",
                     description: "Each of these values is a shard within the bot, containing a portion of servers.",
                     color: 3066993,
-                    fields: r.map(v => {
+                    fields: r.map((v) => {
                         return {
                             name: "Shard #" + v[0],
                             value: "**Servers**: " + v[1] + "\n**Users**: " + v[2] + "\n**Ping**: " + v[3] + "\n**Memory Usage**: " + v[4],
@@ -22,7 +22,7 @@ module.exports = {
                     })
                 }
             });
-        }).catch(error => {
+        }).catch((error) => {
             msg.channel.send({
                 embed: {
                     title: "Error!",

@@ -6,7 +6,7 @@ module.exports = {
     usage: "random [max | min] [max]",
     category: "Random",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
             if (!isNaN(args[0])) {
                 if (args[0] >= 0) {

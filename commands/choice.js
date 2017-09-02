@@ -7,9 +7,9 @@ module.exports = {
     usage: "choose <choice 1>; <choice 2>; <choice 3>",
     category: "Random",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            const choices = args.join(" ").split(";").map(v => v.trim());
+            const choices = args.join(" ").split(";").map((v) => v.trim());
             msg.channel.send({
                 embed: {
                     title: "Choice",

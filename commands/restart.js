@@ -1,5 +1,4 @@
 const config = require("../config.json");
-const handleDatabaseError = require("../functions/handle-database-error.js");
 
 module.exports = {
     commands: [
@@ -10,7 +9,7 @@ module.exports = {
     description: "Restarts the bot.",
     category: "Developers",
     hidden: true,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (config.trusted.indexOf(msg.author.id) > -1) {
             if (args.length > 0) {
                 if (isNaN(Number(args[0]))) return msg.channel.send({
@@ -42,7 +41,7 @@ module.exports = {
                             description: "Shard `#" + args[0] + "` is restarting."
                         }
                     });
-                }).catch(e => {
+                }).catch((e) => {
                     msg.channel.send({
                         embed: {
                             title: "Error!",
@@ -59,7 +58,7 @@ module.exports = {
                         description: "All shards are currently restarting."
                     }
                 }).then(() => {
-                    bot.shard.broadcastEval("process.exit()").catch(e => {
+                    bot.shard.broadcastEval("process.exit()").catch((e) => {
                         msg.channel.send({
                             embed: {
                                 title: "Error!",

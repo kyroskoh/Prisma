@@ -6,14 +6,14 @@ module.exports = {
     description: "See how long it takes to ping the bot.",
     category: "General",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         const start = Date.now();
         msg.channel.send({
             embed: {
                 title: "Pinging...",
                 color: 3066993
             }
-        }).then(newmsg => {
+        }).then((newmsg) => {
             const end = Date.now();
             newmsg.edit({
                 embed: {

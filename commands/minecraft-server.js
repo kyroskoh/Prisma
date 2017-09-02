@@ -10,9 +10,9 @@ module.exports = {
     usage: "mcserver <IP address>[:port]",
     category: "Utility",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            snekfetch.get("https://mcapi.ca/query/" + args.join(" ") + "/info").then(body => {
+            snekfetch.get("https://mcapi.ca/query/" + args.join(" ") + "/info").then((body) => {
                 if (body.body.error) return msg.channel.send({
                     embed: {
                         title: "Error!",
@@ -25,7 +25,7 @@ module.exports = {
                         image: body.body.favicon.replace(/^data:image\/png;base64,/,""),
                         title: "Minecraft Server Thumbnail Upload",
                         name: "icon.png"
-                    }).then(image => {
+                    }).then((image) => {
                         msg.channel.send({
                             embed: {
                                 title: "Minecraft Server",
@@ -57,7 +57,7 @@ module.exports = {
                                 ]
                             }
                         });
-                    }).catch(e => {
+                    }).catch((e) => {
                         msg.channel.send({
                             embed: {
                                 title: "Error!",
@@ -97,7 +97,7 @@ module.exports = {
                         }
                     });
                 }
-            }).catch(error => {
+            }).catch((error) => {
                 msg.channel.send({
                     embed: {
                         title: "Error!",

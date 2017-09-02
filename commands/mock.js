@@ -9,7 +9,7 @@ module.exports = {
     usage: "mock <text>",
     category: "Fun",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
             const text = aids(args.join(" "));
             msg.channel.send(text).then(() => {

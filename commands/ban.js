@@ -9,7 +9,7 @@ module.exports = {
     usage: "ban [@user | user ID]",
     category: "Moderation",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",

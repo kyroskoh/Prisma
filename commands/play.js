@@ -16,7 +16,7 @@ module.exports = {
     usage: "play <YouTube URL | search query>",
     category: "Music",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -62,28 +62,28 @@ module.exports = {
                                     languages: {
                                         shortEn: {
                                             y: function () {
-                                                return 'y'
+                                                return "y"
                                             },
                                             mo: function () {
-                                                return 'mo'
+                                                return "mo"
                                             },
                                             w: function () {
-                                                return 'w'
+                                                return "w"
                                             },
                                             d: function () {
-                                                return 'd'
+                                                return "d"
                                             },
                                             h: function () {
-                                                return 'h'
+                                                return "h"
                                             },
                                             m: function () {
-                                                return 'm'
+                                                return "m"
                                             },
                                             s: function () {
-                                                return 's'
+                                                return "s"
                                             },
                                             ms: function () {
-                                                return 'ms'
+                                                return "ms"
                                             },
                                         }
                                     }
@@ -109,28 +109,28 @@ module.exports = {
                                         languages: {
                                             shortEn: {
                                                 y: function () {
-                                                    return 'y'
+                                                    return "y"
                                                 },
                                                 mo: function () {
-                                                    return 'mo'
+                                                    return "mo"
                                                 },
                                                 w: function () {
-                                                    return 'w'
+                                                    return "w"
                                                 },
                                                 d: function () {
-                                                    return 'd'
+                                                    return "d"
                                                 },
                                                 h: function () {
-                                                    return 'h'
+                                                    return "h"
                                                 },
                                                 m: function () {
-                                                    return 'm'
+                                                    return "m"
                                                 },
                                                 s: function () {
-                                                    return 's'
+                                                    return "s"
                                                 },
                                                 ms: function () {
-                                                    return 'ms'
+                                                    return "ms"
                                                 },
                                             }
                                         }
@@ -141,7 +141,7 @@ module.exports = {
                                 ytdl: null,
                                 pipe: null
                             };
-                            msg.member.voiceChannel.join().then(stream => {
+                            msg.member.voiceChannel.join().then((stream) => {
                                 msg.channel.send({
                                     embed: {
                                         title: "Joined!",
@@ -260,7 +260,7 @@ module.exports = {
                                     });
                                 };
                                 checkqueue();
-                            }).catch(e => {
+                            }).catch((e) => {
                                 msg.channel.send({
                                     embed: {
                                         title: "Error!",
@@ -305,10 +305,10 @@ module.exports = {
                                     }
                                 ]
                             }
-                        }).then(m => {
-                            msg.channel.awaitMessages(m => m.author.id === msg.author.id, {
+                        }).then((m) => {
+                            msg.channel.awaitMessages((m) => m.author.id === msg.author.id, {
                                 max: 1
-                            }).then(m => {
+                            }).then((m) => {
                                 if (m.first().content.toLowerCase() === "cancel") return msg.channel.send({
                                     embed: {
                                         title: "Cancelled",
@@ -319,13 +319,13 @@ module.exports = {
                                 let newevent = Object.create(msg);
                                 if (m.first().content === "1") {
                                     newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[0].id.videoId;
-                                    play.execute(bot, database, newevent, newevent.content.split(" ").slice(1));
+                                    play.execute(bot, r, newevent, newevent.content.split(" ").slice(1));
                                 } else if (m.first().content === "2") {
                                     newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[1].id.videoId;
-                                    play.execute(bot, database, newevent, newevent.content.split(" ").slice(1));
+                                    play.execute(bot, r, newevent, newevent.content.split(" ").slice(1));
                                 } else if (m.first().content === "3") {
                                     newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[2].id.videoId;
-                                    play.execute(bot, database, newevent, newevent.content.split(" ").slice(1));
+                                    play.execute(bot, r, newevent, newevent.content.split(" ").slice(1));
                                 } else {
                                     msg.channel.send({
                                         embed: {

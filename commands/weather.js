@@ -11,9 +11,9 @@ module.exports = {
     usage: "weather <city | zip>",
     category: "Utility",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            snekfetch.post("http://api.openweathermap.org/data/2.5/weather?q=" + encodeURIComponent(args.join(" ")) + "&appid=" + config.api_keys.openweathermap).then(body => {
+            snekfetch.post("http://api.openweathermap.org/data/2.5/weather?q=" + encodeURIComponent(args.join(" ")) + "&appid=" + config.api_keys.openweathermap).then((body) => {
                 msg.channel.send({
                     embed: {
                         title: "Weather Information",

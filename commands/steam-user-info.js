@@ -14,7 +14,7 @@ module.exports = {
     usage: "steamuserinfo [vanity URL | steamID]",
     category: "Utility",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         return msg.channel.send({
             embed: {
                 title: "Information!",
@@ -118,7 +118,7 @@ module.exports = {
                                                     },
                                                     {
                                                         name: "In-Game",
-                                                        value: ((summary.players[0].gameid) ? ((games.games.filter(v => v.appid === summary.players[0].gameid).length > 0) ? games.games.filter(v => v.appid === summary.players[0].gameid)[0].name : "Unknown") : "No"),
+                                                        value: ((summary.players[0].gameid) ? ((games.games.filter((v) => v.appid === summary.players[0].gameid).length > 0) ? games.games.filter((v) => v.appid === summary.players[0].gameid)[0].name : "Unknown") : "No"),
                                                         inline: true
                                                     },
                                                     {
@@ -284,7 +284,7 @@ module.exports = {
                                                         },
                                                         {
                                                             name: "In-Game",
-                                                            value: ((summary.players[0].gameid) ? ((games.games.filter(v => v.appid === summary.players[0].gameid).length > 0) ? games.games.filter(v => v.appid === summary.players[0].gameid)[0].name : "Unknown") : "No"),
+                                                            value: ((summary.players[0].gameid) ? ((games.games.filter((v) => v.appid === summary.players[0].gameid).length > 0) ? games.games.filter((v) => v.appid === summary.players[0].gameid)[0].name : "Unknown") : "No"),
                                                             inline: true
                                                         },
                                                         {
@@ -347,7 +347,7 @@ module.exports = {
                 });
             }
         } else {
-            database.all("SELECT * FROM steam_profiles WHERE userID = ?", [msg.author.id], (error, response) => {
+            r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
                 if (error) return handleDatabaseError(bot, error, msg);
                 if (response.length > 0) {
                     steam.getPlayerSummaries({
@@ -444,7 +444,7 @@ module.exports = {
                                                         },
                                                         {
                                                             name: "In-Game",
-                                                            value: ((summary.players[0].gameid) ? ((games.games.filter(v => v.appid === summary.players[0].gameid).length > 0) ? games.games.filter(v => v.appid === summary.players[0].gameid)[0].name : "Unknown") : "No"),
+                                                            value: ((summary.players[0].gameid) ? ((games.games.filter((v) => v.appid === summary.players[0].gameid).length > 0) ? games.games.filter((v) => v.appid === summary.players[0].gameid)[0].name : "Unknown") : "No"),
                                                             inline: true
                                                         },
                                                         {

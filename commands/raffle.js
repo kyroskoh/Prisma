@@ -6,7 +6,7 @@ module.exports = {
     usage: "raffle",
     category: "Random",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -14,7 +14,7 @@ module.exports = {
                 description: "This command cannot be used in a Direct Message."
             }
         });
-        const user = msg.guild.members.filter(u => !u.user.bot).random();
+        const user = msg.guild.members.filter((u) => !u.user.bot).random();
         msg.channel.send({
             embed: {
                 title: "Random User",

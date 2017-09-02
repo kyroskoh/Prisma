@@ -6,7 +6,7 @@ module.exports = {
     usage: "crime",
     category: "Economy",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         msg.channel.send({
             embed: {
                 title: "Information!",

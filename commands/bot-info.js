@@ -11,9 +11,9 @@ module.exports = {
     usage: "botinfo <@bot | bot ID | bot username>",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            resolveUser(bot, args.join(" ")).then(user => {
+            resolveUser(bot, args.join(" ")).then((user) => {
                 if (!user.bot) return msg.channel.send({
                     embed: {
                         title: "Error!",
@@ -21,7 +21,7 @@ module.exports = {
                         description: "That user is not a bot."
                     }
                 });
-                snekfetch.get("http://bots.discord.pw/api/bots/" + user.id + "/").set("Authorization", config.api_keys.bot_list["bots.discord.pw"]).then(body => {
+                snekfetch.get("http://bots.discord.pw/api/bots/" + user.id + "/").set("Authorization", config.api_keys.bot_list["bots.discord.pw"]).then((body) => {
                     msg.channel.send({
                         embed: {
                             title: "Bot Information",
@@ -54,13 +54,13 @@ module.exports = {
                                 },
                                 {
                                     name: "Owner(s)",
-                                    value: body.body.owner_ids.map(id => "<@" + id + ">").join(" "),
+                                    value: body.body.owner_ids.map((id) => "<@" + id + ">").join(" "),
                                     inline: true
                                 }
                             ]
                         }
                     });
-                }).catch(e => {
+                }).catch((e) => {
                     if (e.status !== 404) {
                         msg.channel.send({
                             embed: {
@@ -72,7 +72,7 @@ module.exports = {
                         console.error("Failed to get information on bot.", e.message);
                         return;
                     }
-                    snekfetch.get("http://discordbots.org/api/bots/" + user.id + "/").then(body => {
+                    snekfetch.get("http://discordbots.org/api/bots/" + user.id + "/").then((body) => {
                         msg.channel.send({
                             embed: {
                                 title: "Bot Information",
@@ -105,13 +105,13 @@ module.exports = {
                                     },
                                     {
                                         name: "Owner(s)",
-                                        value: body.body.owners.map(id => "<@" + id + ">").join(" "),
+                                        value: body.body.owners.map((id) => "<@" + id + ">").join(" "),
                                         inline: true
                                     }
                                 ]
                             }
                         });
-                    }).catch(e => {
+                    }).catch((e) => {
                         if (e.status === 404) return msg.channel.send({
                             embed: {
                                 title: "Error!",
@@ -129,7 +129,7 @@ module.exports = {
                         console.error("Failed to get information on bot.", e.message);
                     });
                 });
-            }).catch(error => {
+            }).catch((error) => {
                 msg.channel.send({
                     embed: {
                         title: "Error!",

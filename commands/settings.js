@@ -12,7 +12,7 @@ module.exports = {
     usage: "settings <\"set\" | \"unset\" | \"list\"> [setting name] [value]",
     category: "Moderation",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -26,11 +26,11 @@ module.exports = {
                     if (args.length > 1) {
                         if (args[1] === "logs") {
                             if (args.length > 0) {
-                                resolveUser(bot, args.slice(2).join(" ")).then(channel => {
-                                    database.all("SELECT * FROM settings WHERE serverID = ? AND name = 'log_channel'", [msg.guild.id], (error, response) => {
+                                resolveUser(bot, args.slice(2).join(" ")).then((channel) => {
+                                    r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
                                         if (error) return handleDatabaseError(bot, error, msg);
                                         if (response.length > 0) {
-                                            database.run("UPDATE settings SET value = ? WHERE name = 'log_channel' AND serverID = ?", [channel.id, msg.guild.id], (error) => {
+                                            r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).update({value: channel.id}).run((error) => {
                                                 if (error) return handleDatabaseError(bot, error, msg);
                                                 msg.channel.send({
                                                     embed: {
@@ -41,7 +41,11 @@ module.exports = {
                                                 });
                                             });
                                         } else {
-                                            database.run("INSERT INTO settings (serverID, name, value) VALUES (?, 'log_channel', ?)", [msg.guild.id, channel.id], (error) => {
+                                            r.table("settings").insert({
+                                                serverID: msg.guild.id,
+                                                name: "log_channel",
+                                                value: channel.id
+                                            }).run((error) => {
                                                 if (error) return handleDatabaseError(bot, error, msg);
                                                 msg.channel.send({
                                                     embed: {
@@ -53,7 +57,7 @@ module.exports = {
                                             });
                                         }
                                     });
-                                }).catch(error => {
+                                }).catch((error) => {
                                     msg.channel.send({
                                         embed: {
                                             title: "Error!",
@@ -63,10 +67,10 @@ module.exports = {
                                     });
                                 });
                             } else {
-                                database.all("SELECT * FROM settings WHERE serverID = ? AND name = 'log_channel'", [msg.guild.id], (error, response) => {
+                                r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
                                     if (error) return handleDatabaseError(bot, error, msg);
                                     if (response.length > 0) {
-                                        database.run("UPDATE settings SET value = ? WHERE name = 'log_channel' AND serverID = ?", [msg.channel.id, msg.guild.id], (error) => {
+                                        r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).update({value: msg.channel.id}).run((error) => {
                                             if (error) return handleDatabaseError(bot, error, msg);
                                             msg.channel.send({
                                                 embed: {
@@ -77,7 +81,11 @@ module.exports = {
                                             });
                                         });
                                     } else {
-                                        database.run("INSERT INTO settings (serverID, name, value) VALUES (?, 'log_channel', ?)", [msg.guild.id, msg.channel.id], (error) => {
+                                        r.table("settings").insert({
+                                            serverID: msg.guild.id,
+                                            name: "log_channel",
+                                            value: msg.channel.id
+                                        }).run((error) => {
                                             if (error) return handleDatabaseError(bot, error, msg);
                                             msg.channel.send({
                                                 embed: {
@@ -111,10 +119,10 @@ module.exports = {
                 } else if (args[0] === "unset") {
                     if (args.length > 1) {
                         if (args[1] === "logs") {
-                            database.all("SELECT * FROM settings WHERE serverID = ? AND name = 'log_channel'", [msg.guild.id], (error, response) => {
+                            r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
                                 if (error) return handleDatabaseError(bot, error, msg);
                                 if (response.length > 0) {
-                                    database.run("DELETE FROM settings WHERE serverID = ? AND name = 'log_channel'", [msg.guild.id], (error) => {
+                                    r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).delete().run((error) => {
                                         if (error) return handleDatabaseError(bot, error, msg);
                                         msg.channel.send({
                                             embed: {

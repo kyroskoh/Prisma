@@ -12,7 +12,7 @@ module.exports = {
     usage: "test",
     category: "Image",
     hidden: true,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.author.id !== config.trusted[0]) return;
         // do stuff
     }

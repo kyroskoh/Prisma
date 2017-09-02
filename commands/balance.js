@@ -11,9 +11,9 @@ module.exports = {
     usage: "balance [@user | user ID | username]",
     category: "Economy",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            resolveUser(bot, args.join(" ")).then(user => {
+            resolveUser(bot, args.join(" ")).then((user) => {
                 if (user.bot) return msg.channel.send({
                     embed: {
                         title: "Error!",
@@ -21,7 +21,7 @@ module.exports = {
                         color: 0xE50000
                     }
                 });
-                database.all("SELECT * FROM economy WHERE userID = ?", [user.id], (error, response) => {
+                r.table("economy").filter({userID: msg.author.id}).run((error, response) => {
                     if (error) return handleDatabaseError(bot, error, msg);
                     msg.channel.send({
                         embed: {
@@ -47,7 +47,7 @@ module.exports = {
                         }
                     });
                 });
-            }).catch(e => {
+            }).catch((e) => {
                 msg.channel.send({
                     embed: {
                         title: "Error!",
@@ -57,7 +57,7 @@ module.exports = {
                 });
             });
         } else {
-            database.all("SELECT * FROM economy WHERE userID = ?", [msg.author.id], (error, response) => {
+            r.table("economy").filter({userID: msg.author.id}).run((error, response) => {
                 if (error) return handleDatabaseError(bot, error, msg);
                 msg.channel.send({
                     embed: {

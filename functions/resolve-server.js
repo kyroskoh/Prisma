@@ -8,7 +8,7 @@ module.exports = (bot, server) => {
                 reject();
             }
         } else {
-            const servercheck = bot.guilds.filter(g => g.name.toLowerCase().includes(server.toLowerCase()));
+            const servercheck = bot.guilds.filter((g) => g.name.toLowerCase().includes(server.toLowerCase()));
             if (servercheck.size > 0) {
                 resolve(servercheck.first());
             } else {

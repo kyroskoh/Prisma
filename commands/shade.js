@@ -12,9 +12,9 @@ module.exports = {
     usage: "shade [@user | username | userID]",
     category: "Image",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         function next(url) {
-            snekfetch.get(url).then(body => {
+            snekfetch.get(url).then((body) => {
                 try {
                     const is = imagesize(body.body);
                     gm(body.body).shade(is.width / 2, is.height / 2).toBuffer((error, buffer) => {
@@ -37,7 +37,7 @@ module.exports = {
                         }
                     });
                 }
-            }).catch(error => {
+            }).catch((error) => {
                 msg.channel.send({
                     embed: {
                         title: "Error!",
@@ -51,9 +51,9 @@ module.exports = {
             if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[0])) {
                 next(args[0]);
             } else {
-                resolveUser(bot, args[0]).then(user => {
+                resolveUser(bot, args[0]).then((user) => {
                     next(user.avatarURL);
-                }).catch(error => {
+                }).catch((error) => {
                     msg.channel.send({
                         embed: {
                             title: "Error!",

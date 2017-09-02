@@ -11,7 +11,7 @@ module.exports = {
     description: "Link your Steam account to this bot.",
     category: "Utility",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         return msg.channel.send({
             embed: {
                 title: "Information!",
@@ -38,10 +38,10 @@ module.exports = {
                             description: "Your profile is private. I cannot get information on a profile that is private."
                         }
                     });
-                    database.all("SELECT * FROM steam_profiles WHERE userID = ?", [msg.author.id], (error, response) => {
+                    r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
                         if (error) return handleDatabaseError(bot, error, msg);
                         if (response.length > 0) {
-                            database.run("UPDATE steam_profiles SET id = ? WHERE userID = ?", [args[0], msg.author.id], (error) => {
+                            r.table("steam_profiles").filter({userID: msg.author.id}).update({id: args[0]}).run((error) => {
                                 if (error) return handleDatabaseError(bot, error, msg);
                                 msg.channel.send({
                                     embed: {
@@ -52,7 +52,10 @@ module.exports = {
                                 });
                             });
                         } else {
-                            database.run("INSERT INTO steam_profiles (userID, id) VALUES (?, ?)", [msg.author.id, args[0]], (error) => {
+                            r.table("steam_profiles").insert({
+                                userID: msg.author.id,
+                                id: args[0]
+                            }).run((error) => {
                                 if (error) return handleDatabaseError(bot, error, msg);
                                 msg.channel.send({
                                     embed: {
@@ -94,10 +97,10 @@ module.exports = {
                                 description: "Your profile is private. I cannot get information on a profile that is private."
                             }
                         });
-                        database.all("SELECT * FROM steam_profiles WHERE userID = ?", [msg.author.id], (error, response) => {
+                        r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
                             if (error) return handleDatabaseError(bot, error, msg);
                             if (response.length > 0) {
-                                database.run("UPDATE steam_profiles SET id = ? WHERE userID = ?", [summary.players[0].steamid, msg.author.id], (error) => {
+                                r.table("steam_profiles").filter({userID: msg.author.id}).update({id: summary.players[0].steamid}).run((error) => {
                                     if (error) return handleDatabaseError(bot, error, msg);
                                     msg.channel.send({
                                         embed: {
@@ -108,7 +111,10 @@ module.exports = {
                                     });
                                 });
                             } else {
-                                database.run("INSERT INTO steam_profiles (userID, id) VALUES (?, ?)", [msg.author.id, summary.players[0].steamid], (error) => {
+                                r.table("steam_profiles").insert({
+                                    userID: msg.author.id,
+                                    id: summary.players[0].steamid
+                                }).run((error) => {
                                     if (error) return handleDatabaseError(bot, error, msg);
                                     msg.channel.send({
                                         embed: {

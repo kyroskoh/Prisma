@@ -11,8 +11,8 @@ module.exports = {
     description: "Returns a random meme from reddit's /r/DankMemes.",
     category: "Fun",
     hidden: false,
-    execute: (bot, database, msg, args) => {
-        snekfetch.get("https://www.reddit.com/r/dankmemes/top/.json").then(body => {
+    execute: (bot, r, msg, args) => {
+        snekfetch.get("https://www.reddit.com/r/dankmemes/top/.json").then((body) => {
             if (body.body.data && body.body.data.children && body.body.data.children.length > 0) {
                 const meme = body.body.data.children[Math.floor(Math.random() * body.body.data.children.length) - 1];
                 msg.channel.send({
@@ -33,7 +33,7 @@ module.exports = {
                     }
                 });
             }
-        }).catch(error => {
+        }).catch((error) => {
             msg.channel.send({
                 embed: {
                     title: "Error!",

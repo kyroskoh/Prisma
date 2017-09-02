@@ -16,7 +16,7 @@ module.exports = {
     usage: "cleverbot <question>",
     category: "Fun",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
             clever.ask(args.join(" "), (error, response) => {
                 if (error) {

@@ -9,14 +9,14 @@ module.exports = {
     usage: "bitcoin",
     category: "Economy",
     hidden: false,
-    execute: (bot, database, msg, args) => {
-        snekfetch.get("https://blockchain.info/ticker").then(body => {
+    execute: (bot, r, msg, args) => {
+        snekfetch.get("https://blockchain.info/ticker").then((body) => {
             msg.channel.send({
                 embed: {
                     title: "Bitcoin Worth",
                     description: "Each of these values is the worth of a Bitcoin that it's worth in different countries.",
                     color: 3066993,
-                    fields: Object.keys(body.body).map(c => {
+                    fields: Object.keys(body.body).map((c) => {
                         return {
                             name: c,
                             value: "**Buy Price**: " + body.body[c].symbol + body.body[c].buy + "\n**Sell Value**: " + body.body[c].symbol + body.body[c].sell,
@@ -25,7 +25,7 @@ module.exports = {
                     })
                 }
             });
-        }).catch(error => {
+        }).catch((error) => {
             msg.channel.send({
                 embed: {
                     title: "Error!",

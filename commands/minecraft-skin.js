@@ -9,15 +9,15 @@ module.exports = {
     usage: "mcuser <username>",
     category: "Utility",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            snekfetch.get("http://www.minecraft-skin-viewer.net/3d.php?layers=true&aa=true&a=330&w=40&wt=0&abg=0&abd=0&ajg=0&ajd=0&ratio=13&format=png&login=" + encodeURIComponent(args.join(" ")) + "&headOnly=false&displayHairs=true&randomness=185").then(body => {
+            snekfetch.get("http://www.minecraft-skin-viewer.net/3d.php?layers=true&aa=true&a=330&w=40&wt=0&abg=0&abd=0&ajg=0&ajd=0&ratio=13&format=png&login=" + encodeURIComponent(args.join(" ")) + "&headOnly=false&displayHairs=true&randomness=185").then((body) => {
                 msg.channel.send({
                     files: [{
                         name: args.join(" ") + ".png",
                         attachment: body.body
                     }]
-                }).catch(error => {
+                }).catch((error) => {
                     msg.channel.send({
                         embed: {
                             title: "Error!",

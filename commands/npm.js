@@ -10,9 +10,9 @@ module.exports = {
     usage: "npm <name>",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            snekfetch.get("https://skimdb.npmjs.com/registry/" + args[0].toLowerCase()).then(body => {
+            snekfetch.get("https://skimdb.npmjs.com/registry/" + args[0].toLowerCase()).then((body) => {
                 msg.channel.send({
                     embed: {
                         title: "npm package",
@@ -40,7 +40,7 @@ module.exports = {
                             },
                             {
                                 name: "Maintainers",
-                                value: body.body.maintainers.map(m => m.name).join(", "),
+                                value: body.body.maintainers.map((m) => m.name).join(", "),
                                 inline: true
                             },
                             {
@@ -54,7 +54,7 @@ module.exports = {
                         ]
                     }
                 });
-            }).catch(error => {
+            }).catch((error) => {
                 if (error.status === 404) return msg.channel.send({
                     embed: {
                         title: "Error!",

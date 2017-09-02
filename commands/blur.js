@@ -10,7 +10,7 @@ module.exports = {
     usage: "blur [amount] [url | @user | username | userID]",
     category: "Image",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         function next(url) {
             let amount = 15;
             if (args.length > 0) {
@@ -37,7 +37,7 @@ module.exports = {
                 });
                 amount = Number(args[0]);
             }
-            snekfetch.get(url).then(body => {
+            snekfetch.get(url).then((body) => {
                 try {
                     gm(body.body).blur(amount, amount).toBuffer((error, buffer) => {
                         if (error) return console.error("Failed to blur image.", error);
@@ -59,7 +59,7 @@ module.exports = {
                         }
                     });
                 }
-            }).catch(error => {
+            }).catch((error) => {
                 msg.channel.send({
                     embed: {
                         title: "Error!",
@@ -73,9 +73,9 @@ module.exports = {
             if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[1])) {
                 next(args[1]);
             } else {
-                resolveUser(bot, args[1]).then(user => {
+                resolveUser(bot, args[1]).then((user) => {
                     next(user.avatarURL);
-                }).catch(error => {
+                }).catch((error) => {
                     msg.channel.send({
                         embed: {
                             title: "Error!",

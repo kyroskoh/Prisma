@@ -9,7 +9,7 @@ module.exports = {
     usage: "skip",
     category: "Music",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -20,7 +20,7 @@ module.exports = {
         if (msg.member.voiceChannel) {
             if (msg.guild.me.voiceChannel) {
                 if (msg.guild.me.voiceChannel.id === msg.member.voiceChannel.id) {
-                    if (msg.member.voiceChannel.queue.songs[0].userID === msg.author.id || config.trusted.indexOf(msg.author.id) > -1 || msg.member.voiceChannel.members.filter(m => !m.user.bot).size / 2 <= msg.member.voiceChannel.queue.vote_skips.length) {
+                    if (msg.member.voiceChannel.queue.songs[0].userID === msg.author.id || config.trusted.indexOf(msg.author.id) > -1 || msg.member.voiceChannel.members.filter((m) => !m.user.bot).size / 2 <= msg.member.voiceChannel.queue.vote_skips.length) {
                         msg.member.voiceChannel.queue.pipe.end();
                     } else {
                         if (msg.member.voiceChannel.queue.vote_skips.indexOf(msg.author.id) > -1) {
@@ -28,7 +28,7 @@ module.exports = {
                                 embed: {
                                     title: "Error!",
                                     color: 0xE50000,
-                                    description: "You have already voted to skip. I need `" + Math.ceil(msg.member.voiceChannel.members.filter(m => !m.user.bot && m.user.id !== msg.author.id).size / 2) + "` more votes to skip."
+                                    description: "You have already voted to skip. I need `" + Math.ceil(msg.member.voiceChannel.members.filter((m) => !m.user.bot && m.user.id !== msg.author.id).size / 2) + "` more votes to skip."
                                 }
                             });
                         } else {
@@ -37,7 +37,7 @@ module.exports = {
                                 embed: {
                                     title: "Vote Skipped!",
                                     color: 3066993,
-                                    description: "You have voted to skip the current song. You need `" + Math.ceil(msg.member.voiceChannel.members.filter(m => !m.user.bot && m.user.id !== msg.author.id).size / 2) + "` more requests to skip."
+                                    description: "You have voted to skip the current song. You need `" + Math.ceil(msg.member.voiceChannel.members.filter((m) => !m.user.bot && m.user.id !== msg.author.id).size / 2) + "` more requests to skip."
                                 }
                             });
                         }

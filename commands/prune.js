@@ -9,7 +9,7 @@ module.exports = {
     category: "Moderation",
     usage: "prune [@user | user ID | username | \"bots\"] <amount>",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -39,7 +39,7 @@ module.exports = {
                     msg.channel.fetchMessages({
                         limit: Math.min(amount, 100),
                         before: msg.id
-                    }).then(messages => {
+                    }).then((messages) => {
                         if (messages.size < 1) return msg.channel.send({
                             embed: {
                                 title: "Error!",
@@ -54,11 +54,11 @@ module.exports = {
                                     color: 3066993,
                                     description: "Deleted `" + messages.size + "` messages from <#" + msg.channel.id + ">."
                                 }
-                            }).then(newmsg => {
+                            }).then((newmsg) => {
                                 newmsg.delete(3500);
                                 msg.delete(3500);
                             });
-                        }).catch(error => {
+                        }).catch((error) => {
                             if (error.message === "You can only bulk delete messages that are under 14 days old.") return msg.channel.send({
                                 embed: {
                                     title: "Error!",
@@ -75,7 +75,7 @@ module.exports = {
                             });
                             console.error("Failed to delete prune messages.", error.message);
                         });
-                    }).catch(error => {
+                    }).catch((error) => {
                         msg.channel.send({
                             embed: {
                                 title: "Error!",

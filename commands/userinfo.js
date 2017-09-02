@@ -12,10 +12,10 @@ module.exports = {
     usage: "userinfo [@user | user ID | username | username#discrim]",
     category: "Information",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            resolveUser(bot, args.join(" ")).then(user => {
-                database.all("SELECT * FROM user_statistics WHERE userID = ?", [user.id], (error, response) => {
+            resolveUser(bot, args.join(" ")).then((user) => {
+                r.table("user_statistics").filter({userID: user.id}).run((error, response) => {
                     if (error) return handleDatabaseError(bot, error, msg);
                     const member = msg.guild.members.get(user.id);
                     if (member) {
@@ -180,7 +180,7 @@ module.exports = {
                 });
             });
         } else {
-            database.all("SELECT * FROM user_statistics WHERE userID = ?", [msg.author.id], (error, response) => {
+            r.table("user_statistics").filter({userID: msg.author.id}).run((error, response) => {
                 if (error) return handleDatabaseError(bot, error, msg);
                 if (msg.member) {
                     if (msg.member.voiceChannel) {

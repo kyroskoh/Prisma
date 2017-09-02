@@ -8,11 +8,11 @@ module.exports = {
     usage: "cowsay <text>",
     category: "Fun",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            snekfetch.get("http://cowsay.morecode.org/say?message=" + encodeURIComponent(args.join(" ")) + "&format=json").then(body => {
+            snekfetch.get("http://cowsay.morecode.org/say?message=" + encodeURIComponent(args.join(" ")) + "&format=json").then((body) => {
                 msg.channel.send("```\n" + body.body.cow + "```");
-            }).catch(error => {
+            }).catch((error) => {
                 msg.channel.send({
                     embed: {
                         title: "Error!",

@@ -10,6 +10,11 @@
             "api_key": "",
             "app_key": ""
         },
+        "rethink": {
+            "host": "",
+            "db": "prisma",
+            "silent": true
+        },
         "cleverbot": [
             "",
             ""

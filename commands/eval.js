@@ -12,7 +12,7 @@ module.exports = {
     description: "Evalute code inside the bot.",
     category: "Developers",
     hidden: true,
-    execute: async(bot, database, msg, args) => {
+    execute: async(bot, r, msg, args) => {
         if (config.trusted.indexOf(msg.author.id) > -1) {
             if (args.length > 0) {
                 try {
@@ -23,7 +23,7 @@ module.exports = {
                     });
                     result = removeSensitiveInformation(result);
                     if (result.length > 1985) {
-                        snekfetch.post("https://hastebin.com/documents").send(result).then(body => {
+                        snekfetch.post("https://hastebin.com/documents").send(result).then((body) => {
                             msg.channel.send({
                                 embed: {
                                     title: "Warning!",
@@ -31,7 +31,7 @@ module.exports = {
                                     description: "Result was over 2,000 characters, generated hastebin link instead. https://hastebin.com/" + body.body.key 
                                 }
                             });
-                        }).catch(error => {
+                        }).catch((error) => {
                             msg.channel.send({
                                 embed: {
                                     title: "Error!",

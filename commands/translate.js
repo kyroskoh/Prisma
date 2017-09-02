@@ -9,12 +9,12 @@ module.exports = {
     usage: "translate <language> <text>",
     category: "Utility",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
             if (args.length > 1) {
                 translate(args.slice(1).join(" "), {
                     to: args[0]
-                }).then(response => {
+                }).then((response) => {
                     msg.channel.send({
                         embed: {
                             title: "Translated Text",

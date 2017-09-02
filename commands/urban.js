@@ -10,9 +10,9 @@ module.exports = {
     usage: "urban <word>",
     category: "Fun",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (args.length > 0) {
-            snekfetch.get("http://api.urbandictionary.com/v0/define?term=" + encodeURIComponent(args.join(" "))).then(body => {
+            snekfetch.get("http://api.urbandictionary.com/v0/define?term=" + encodeURIComponent(args.join(" "))).then((body) => {
                 if (body.body.result_type === "no_results") return msg.channel.send({
                     embed: {
                         title: "Error!",

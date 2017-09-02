@@ -9,7 +9,7 @@ module.exports = {
     usage: "queue",
     category: "Music",
     hidden: false,
-    execute: (bot, database, msg, args) => {
+    execute: (bot, r, msg, args) => {
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
@@ -20,7 +20,7 @@ module.exports = {
         if (msg.guild.members.get(bot.user.id).voiceChannel) {
             if (msg.member.voiceChannel) {
                 if (msg.guild.members.get(bot.user.id).voiceChannel.id === msg.member.voiceChannel.id) {
-                    const queue = msg.member.voiceChannel.queue.songs.map(s => s.title + " (" + s.duration + ")");
+                    const queue = msg.member.voiceChannel.queue.songs.map((s) => s.title + " (" + s.duration + ")");
                     msg.channel.send({
                         embed: {
                             title: "Queue",
@@ -29,7 +29,7 @@ module.exports = {
                                 {
                                     name: "Now Playing",
                                     value: msg.member.voiceChannel.queue.songs[0].title + " (" + humanizeduration(msg.member.voiceChannel.queue.pipe.totalStreamTime, {
-                                        language: 'shortEn',
+                                        language: "shortEn",
                                         spacer: "",
                                         delimiter: "",
                                         round: true,
