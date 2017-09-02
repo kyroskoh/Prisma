@@ -49,7 +49,7 @@ module.exports = {
                                 },
                                 {
                                     name: "Website",
-                                    value: body.body.website,
+                                    value: (body.body.website) ? body.body.website : "No Website",
                                     inline: true
                                 },
                                 {
@@ -100,7 +100,7 @@ module.exports = {
                                     },
                                     {
                                         name: "Website",
-                                        value: body.body.website,
+                                        value: (body.body.website) ? body.body.website : "No Website",
                                         inline: true
                                     },
                                     {
