@@ -36,6 +36,7 @@ module.exports = {
                     }
                 });
             } else {
+                console.log(allMods);
                 const sorted = {};
                 allMods.map(m => {
                     if (!(m.status in sorted)) sorted[m.status] = [];
