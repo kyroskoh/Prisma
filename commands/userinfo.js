@@ -17,7 +17,7 @@ module.exports = {
             resolveUser(bot, args.join(" ")).then(user => {
                 database.all("SELECT * FROM user_statistics WHERE userID = ?", [user.id], (error, response) => {
                     if (error) return handleDatabaseError(bot, error, msg);
-                    var member = msg.guild.members.get(user.id);
+                    const member = msg.guild.members.get(user.id);
                     if (member) {
                         if (member.voiceChannel) {
                             msg.channel.send({

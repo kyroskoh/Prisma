@@ -9,7 +9,7 @@ module.exports = {
     hidden: false,
     execute: (bot, database, msg, args) => {
         if (args.length > 0) {
-            var choices = args.join(" ").split(";").map(v => v.trim());
+            const choices = args.join(" ").split(";").map(v => v.trim());
             msg.channel.send({
                 embed: {
                     title: "Choice",

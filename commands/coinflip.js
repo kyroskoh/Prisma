@@ -7,7 +7,7 @@ module.exports = {
     category: "Random",
     hidden: false,
     execute: (bot, database, msg, args) => {
-        var result = Math.round(Math.random());
+        const result = Math.round(Math.random());
         if (result) {
             msg.channel.send({
                 embed: {

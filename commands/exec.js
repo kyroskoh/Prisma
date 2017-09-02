@@ -15,7 +15,7 @@ module.exports = {
         if (config.trusted.indexOf(msg.author.id) > -1) {
             if (args.length > 0) {
                 child_process.exec(args.join(" "), (error, out, err) => {
-                    var result = out || err;
+                    let result = out || err;
                     result = result.toString();
                     result = removeSensitiveInformation(result);
                     result = result.replace(/```/g, "'''");

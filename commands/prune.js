@@ -35,7 +35,7 @@ module.exports = {
                             description: "You cannot prune more than 100 messages at once."
                         }
                     });
-                    var amount = Number(args[0] || 100);
+                    const amount = Number(args[0] || 100);
                     msg.channel.fetchMessages({
                         limit: Math.min(amount, 100),
                         before: msg.id

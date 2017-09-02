@@ -1,9 +1,9 @@
-var Discord = require("discord.js");
-var dateformat = require("dateformat");
-var config = require("./config.json");
-var log = require("./managers/logger.js");
+const Discord = require("discord.js");
+const dateformat = require("dateformat");
+const config = require("./config.json");
+const log = require("./managers/logger.js");
 
-var shard = new Discord.ShardingManager("./index.js", {
+const shard = new Discord.ShardingManager("./index.js", {
     totalShards: "auto",
     token: config.token,
     respawn: true

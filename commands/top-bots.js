@@ -10,7 +10,7 @@ module.exports = {
     category: "Information",
     hidden: false,
     execute: (bot, database, msg, args) => {
-        var page = 1;
+        let page = 1;
         if (args.length > 0) {
             if (isNaN(args[0])) return msg.channel.send({
                 embed: {
@@ -36,7 +36,7 @@ module.exports = {
             page = Number(args[0]);
         }
         allbots.sort((a, b) => b.servercount - a.servercount);
-        var bots = allbots.slice((page * 10) - 10, page * 10);
+        const bots = allbots.slice((page * 10) - 10, page * 10);
         msg.channel.send({
             embed: {
                 title: "Top Bots",

@@ -14,7 +14,7 @@ module.exports = {
                 description: "This command cannot be used in a Direct Message."
             }
         });
-        var user = msg.guild.members.filter(u => !u.user.bot).random();
+        const user = msg.guild.members.filter(u => !u.user.bot).random();
         msg.channel.send({
             embed: {
                 title: "Random User",

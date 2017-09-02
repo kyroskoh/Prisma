@@ -15,7 +15,7 @@ module.exports = {
         if (config.trusted.indexOf(msg.author.id) > -1) {
             if (args.length > 0) {
                 if (args[0] === "all") {
-                    var commands = fs.readdir("./commands/", (error, files) => {
+                    const commands = fs.readdir("./commands/", (error, files) => {
                         if (error) return msg.channel.send({
                             embed: {
                                 title: "Error!",
@@ -48,7 +48,7 @@ module.exports = {
                         });
                     });
                 } else {
-                    var check = Object.keys(bot.commands).filter(c => bot.commands[c].commands.indexOf(args[0]) > -1);
+                    const check = Object.keys(bot.commands).filter(c => bot.commands[c].commands.indexOf(args[0]) > -1);
                     if (check.length > 0) {
                         delete require.cache[path.normalize(__dirname + "/" + check[0] + ".js")];
                         try {

@@ -316,16 +316,14 @@ module.exports = {
                                         description: "Video selector cancelled by user."
                                     }
                                 });
+                                let newevent = Object.create(msg);
                                 if (m.first().content === "1") {
-                                    var newevent = Object.create(msg);
                                     newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[0].id.videoId;
                                     play.execute(bot, database, newevent, newevent.content.split(" ").slice(1));
                                 } else if (m.first().content === "2") {
-                                    var newevent = Object.create(msg);
                                     newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[1].id.videoId;
                                     play.execute(bot, database, newevent, newevent.content.split(" ").slice(1));
                                 } else if (m.first().content === "3") {
-                                    var newevent = Object.create(msg);
                                     newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[2].id.videoId;
                                     play.execute(bot, database, newevent, newevent.content.split(" ").slice(1));
                                 } else {

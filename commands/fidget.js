@@ -16,7 +16,7 @@ module.exports = {
                 description: "You spun a fidget spinner. Wait and see how long it spins for."
             }
         });
-        var spin_time = Math.floor(Math.random() * (300000 - 30000)) + 30000;
+        const spin_time = Math.floor(Math.random() * (300000 - 30000)) + 30000;
         setTimeout(() => {
             msg.channel.send("<@" + msg.author.id + ">", {
                 embed: {

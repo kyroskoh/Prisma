@@ -95,7 +95,7 @@ module.exports = {
                                                 description: "Either an error occured while fetching user summary or that Steam ID is invalid."
                                             }
                                         });
-                                        var most_played_game = games.games.sort((a, b) => b.playtime_forever - a.playtime_forever)[0];
+                                        const most_played_game = games.games.sort((a, b) => b.playtime_forever - a.playtime_forever)[0];
                                         msg.channel.send({
                                             embed: {
                                                 title: "Steam User Information",
@@ -261,7 +261,7 @@ module.exports = {
                                                     description: "Either an error occured while fetching steam level or your Steam ID that is linked is invalid. Please re-use the `linksteam` command and try again."
                                                 }
                                             });
-                                            var most_played_game = games.games.sort((a, b) => b.playtime_forever - a.playtime_forever)[0];
+                                            const most_played_game = games.games.sort((a, b) => b.playtime_forever - a.playtime_forever)[0];
                                             msg.channel.send({
                                                 embed: {
                                                     title: "Steam User Information",
@@ -421,7 +421,7 @@ module.exports = {
                                                     description: "Either an error occured while fetching steam level or your Steam ID that is linked is invalid. Please re-use the `linksteam` command and try again."
                                                 }
                                             });
-                                            var most_played_game = games.games.sort((a, b) => b.playtime_forever - a.playtime_forever)[0];
+                                            const most_played_game = games.games.sort((a, b) => b.playtime_forever - a.playtime_forever)[0];
                                             msg.channel.send({
                                                 embed: {
                                                     title: "Steam User Information",

@@ -16,7 +16,7 @@ module.exports = {
         if (config.trusted.indexOf(msg.author.id) > -1) {
             if (args.length > 0) {
                 try {
-                    var result = await eval(args.join(" "));
+                    let result = await eval(args.join(" "));
                     if (typeof(result) !== "string") result = util.inspect(result, {
                         depth: 3,
                         maxArrayLength: 2048
