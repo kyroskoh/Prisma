@@ -26,7 +26,7 @@ module.exports = {
                         files.forEach((c) => {
                             delete require.cache[path.normalize(__dirname + "/" + c)];
                             try {
-                                bot.commands[c.replace(/\..*/g, "")] = require(path.normalize("./" + c));
+                                bot.commands[c.replace(/\..*/g, "")] = require(path.normalize(__dirname + "/" + c));
                                 if (files.indexOf(c) === files.length - 1) {
                                     msg.channel.send({
                                         embed: {
@@ -52,7 +52,7 @@ module.exports = {
                     if (check.length > 0) {
                         delete require.cache[path.normalize(__dirname + "/" + check[0] + ".js")];
                         try {
-                            bot.commands[check[0]] = require(path.normalize("./" + check[0] + ".js"));
+                            bot.commands[check[0]] = require(path.normalize(__dirname + "/" + check[0] + ".js"));
                             msg.channel.send({
                                 embed: {
                                     title: "Reloaded!",
@@ -87,7 +87,7 @@ module.exports = {
                             });
                             delete require.cache[path.normalize(__dirname + "/" + args[0] + ".js")];
                             try {
-                                bot.commands[args[0]] = require(path.normalize("./" + args[0] + ".js"));
+                                bot.commands[args[0]] = require(path.normalize(__dirname + "/" + args[0] + ".js"));
                                 msg.channel.send({
                                     embed: {
                                         title: "Reloaded!",
