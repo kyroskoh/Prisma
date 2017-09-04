@@ -50,7 +50,7 @@ module.exports = {
                                 },
                                 {
                                     name: "Queue",
-                                    value: ((queue.length > 0) ? queue.join("\n") : "Empty"),
+                                    value: ((queue.length > 0) ? queue.slice(1).join("\n") : "Empty"),
                                     inline: true
                                 }
                             ]
