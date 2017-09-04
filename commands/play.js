@@ -17,13 +17,13 @@ module.exports = {
     category: "Music",
     hidden: false,
     execute: (bot, r, msg, args) => {
-        return msg.channel.send({
+        /* return msg.channel.send({
             embed: {
                 title: "Error!",
                 color: 0xE50000,
                 description: "Sorry, but our current VPS is unable to handle music. If you are able to donate, please do so at https://patreon.com/passthemayo."
             }
-        });
+        }); */
         if (msg.channel.type === "dm") return msg.channel.send({
             embed: {
                 title: "Error!",
