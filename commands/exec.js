@@ -18,6 +18,7 @@ module.exports = {
 					let result = out || err;
 					result = result.toString();
 					result = removeSensitiveInformation(result);
+					result = result.replace(/```/g, "´´´");
 					if (result.length > 1985) {
 						snekfetch.post("https://hastebin.com/documents").send(result).then((body) => {
 							msg.channel.send({
@@ -38,7 +39,7 @@ module.exports = {
 							console.error("Failed to generate hastebin link.", error.message);
 						});
 					} else {
-						msg.channel.send(result, { code: "sh" });
+						msg.channel.send("```sh\n" + result + "```");
 					}
 				});
 			} else {

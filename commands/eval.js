@@ -44,7 +44,7 @@ module.exports = {
 						msg.channel.send("```js\n" + result + "```");
 					}
 				} catch (e) {
-					msg.channel.send(e, { code: "js" });
+					msg.channel.send("```js\n" + e + "```");
 				}
 			} else {
 				msg.channel.send({
