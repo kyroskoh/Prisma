@@ -15,6 +15,7 @@ module.exports = {
 		snekfetch.get("https://www.reddit.com/r/dankmemes/top/.json").then((body) => {
 			if (body.body.data && body.body.data.children && body.body.data.children.length > 0) {
 				const meme = body.body.data.children[Math.floor(Math.random() * body.body.data.children.length) - 1];
+				console.log(body.body);
 				console.log(meme.url);
 				msg.channel.send({
 					embed: {
