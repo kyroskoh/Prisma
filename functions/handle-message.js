@@ -1,58 +1,6 @@
-const handleDatabaseError = require("./handle-database-error.js");
 const config = require("../config.json");
-const util = require("util");
 
 module.exports = (bot, r, msg) => {
-	r.table("user_statistics").filter({userID: msg.author.id}).run((error, response) => {
-		if (error) return handleDatabaseError(bot, error);
-		if (response.length > 0) {
-			r.table("user_statistics").filter({userID: msg.author.id}).update({messages: response[0].messages + 1}).run((error) => {
-				if (error) return handleDatabaseError(bot, error);
-			});
-		} else {
-			r.table("user_statistics").insert({
-				userID: msg.author.id,
-				messages: 1,
-				commands: 0
-			}).run((error) => {
-				if (error) return handleDatabaseError(bot, error);
-			});
-		}
-	});
-	if (msg.guild) {
-		r.table("server_statistics").filter({serverID: msg.guild.id}).run((error, response) => {
-			if (error) return handleDatabaseError(bot, error);
-			if (response.length > 0) {
-				r.table("server_statistics").filter({serverID: msg.guild.id}).update({messages: response[0].messages + 1}).run((error) => {
-					if (error) return handleDatabaseError(bot, error);
-				});
-			} else {
-				r.table("server_statistics").insert({
-					serverID: msg.guild.id,
-					messages: 1,
-					commands: 0
-				}).run((error) => {
-					if (error) return handleDatabaseError(bot, error);
-				});
-			}
-		});
-		r.table("channel_statistics").filter({channelID: msg.channel.id}).run((error, response) => {
-			if (error) return handleDatabaseError(bot, error);
-			if (response.length > 0) {
-				r.table("channel_statistics").filter({channelID: msg.channel.id}).update({messages: response[0].messages + 1}).run((error) => {
-					if (error) return handleDatabaseError(bot, error);
-				});
-			} else {
-				r.table("channel_statistics").insert({
-					channelID: msg.channel.id,
-					messages: 1,
-					commands: 0
-				}).run((error) => {
-					if (error) return handleDatabaseError(bot, error);
-				});
-			}
-		});
-	}
 	if (msg.author.bot) return;
 	if (!msg.content.startsWith(((msg.guild) ? msg.guild.data.prefix : config.prefix)) && !msg.content.startsWith("<@" + bot.user.id + "> ") && !msg.content.startsWith("<@!" + bot.user.id + "> ")) return;
 	let prefix;
@@ -73,56 +21,6 @@ module.exports = (bot, r, msg) => {
 				}
 			});
 			console.error("Failed to run '" + bot.commands[command[0]].commands[0] + "' command.", e);
-		}
-		r.table("user_statistics").filter({userID: msg.author.id}).run((error, response) => {
-			if (error) return handleDatabaseError(bot, error);
-			if (response.length > 0) {
-				r.table("user_statistics").filter({userID: msg.author.id}).update({commands: response[0].commands + 1}).run((error) => {
-					if (error) return handleDatabaseError(bot, error);
-				});
-			} else {
-				r.table("user_statistics").insert({
-					userID: msg.author.id,
-					messages: 1,
-					commands: 0
-				}).run((error) => {
-					if (error) return handleDatabaseError(bot, error);
-				});
-			}
-		});
-		if (msg.guild) {
-			r.table("server_statistics").filter({serverID: msg.guild.id}).run((error, response) => {
-				if (error) return handleDatabaseError(bot, error);
-				if (response.length > 0) {
-					r.table("server_statistics").filter({serverID: msg.guild.id}).update({commands: response[0].commands + 1}).run((error) => {
-						if (error) return handleDatabaseError(bot, error);
-					});
-				} else {
-					r.table("server_statistics").insert({
-						serverID: msg.guild.id,
-						messages: 1,
-						commands: 1
-					}).run((error) => {
-						if (error) return handleDatabaseError(bot, error);
-					});
-				}
-			});
-			r.table("channel_statistics").filter({channelID: msg.channel.id}).run((error, response) => {
-				if (error) return handleDatabaseError(bot, error);
-				if (response.length > 0) {
-					r.table("channel_statistics").filter({channelID: msg.channel.id}).update({commands: response[0].commands + 1}).run((error) => {
-						if (error) return handleDatabaseError(bot, error);
-					});
-				} else {
-					r.table("channel_statistics").insert({
-						channelID: msg.channel.id,
-						messages: 1,
-						commands: 1
-					}).run((error) => {
-						if (error) return handleDatabaseError(bot, error);
-					});
-				}
-			});
 		}
 	}
 };

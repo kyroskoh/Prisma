@@ -21,58 +21,45 @@ module.exports = {
 		});
 		if (args.length > 0) {
 			resolveChannel(bot, args.join(" ")).then((channel) => {
-				r.table("channel_statistics").filter({channelID: channel.id}).run((error, response) => {
-					if (error) return handleDatabaseError(bot, error, msg);
-					msg.channel.send({
-						embed: {
-							title: "Channel Information",
-							color: 3066993,
-							fields: [
-								{
-									name: "Name",
-									value: "#" + channel.name,
-									inline: true
-								},
-								{
-									name: "ID",
-									value: channel.id,
-									inline: true
-								},
-								{
-									name: "Topic",
-									value: ((channel.topic) ? channel.topic : "No Topic"),
-									inline: true
-								},
-								{
-									name: "Type",
-									value: ((channel.type === "text") ? "Text" : "Voice"),
-									inline: true
-								},
-								{
-									name: "Position",
-									value: "#" + (channel.position + 1),
-									inline: true
-								},
-								{
-									name: "Created At",
-									value: new Date(channel.createdAt).toUTCString(),
-									inline: true
-								},
-								{
-									name: "Messages",
-									value: ((response.length > 0) ? response[0].messages : "0"),
-									inline: true
-								},
-								{
-									name: "Commands",
-									value: ((response.length > 0) ? response[0].commands : "0"),
-									inline: true
-								}
-							]
-						}
-					});
+				msg.channel.send({
+					embed: {
+						title: "Channel Information",
+						color: 3066993,
+						fields: [
+							{
+								name: "Name",
+								value: "#" + channel.name,
+								inline: true
+							},
+							{
+								name: "ID",
+								value: channel.id,
+								inline: true
+							},
+							{
+								name: "Topic",
+								value: ((channel.topic) ? channel.topic : "No Topic"),
+								inline: true
+							},
+							{
+								name: "Type",
+								value: ((channel.type === "text") ? "Text" : "Voice"),
+								inline: true
+							},
+							{
+								name: "Position",
+								value: "#" + (channel.position + 1),
+								inline: true
+							},
+							{
+								name: "Created At",
+								value: new Date(channel.createdAt).toUTCString(),
+								inline: true
+							}
+						]
+					}
 				});
-			}).catch((e) => {
+			}).catch(() => {
 				msg.channel.send({
 					embed: {
 						title: "Error!",
@@ -82,56 +69,43 @@ module.exports = {
 				});
 			});
 		} else {
-			r.table("channel_statistics").filter({channelID: msg.channel.id}).run((error, response) => {
-				if (error) return handleDatabaseError(bot, error, msg);
-				msg.channel.send({
-					embed: {
-						title: "Channel Information",
-						color: 3066993,
-						fields: [
-							{
-								name: "Name",
-								value: "#" + msg.channel.name,
-								inline: true
-							},
-							{
-								name: "ID",
-								value: msg.channel.id,
-								inline: true
-							},
-							{
-								name: "Topic",
-								value: ((msg.channel.topic) ? msg.channel.topic : "No Topic"),
-								inline: true
-							},
-							{
-								name: "Type",
-								value: ((msg.channel.type === "text") ? "Text" : "Voice"),
-								inline: true
-							},
-							{
-								name: "Position",
-								value: "#" + (msg.channel.position + 1),
-								inline: true
-							},
-							{
-								name: "Created At",
-								value: new Date(msg.channel.createdAt).toUTCString(),
-								inline: true
-							},
-							{
-								name: "Messages",
-								value: ((response.length > 0) ? response[0].messages : "0"),
-								inline: true
-							},
-							{
-								name: "Commands",
-								value: ((response.length > 0) ? response[0].commands : "0"),
-								inline: true
-							}
-						]
-					}
-				});
+			msg.channel.send({
+				embed: {
+					title: "Channel Information",
+					color: 3066993,
+					fields: [
+						{
+							name: "Name",
+							value: "#" + msg.channel.name,
+							inline: true
+						},
+						{
+							name: "ID",
+							value: msg.channel.id,
+							inline: true
+						},
+						{
+							name: "Topic",
+							value: ((msg.channel.topic) ? msg.channel.topic : "No Topic"),
+							inline: true
+						},
+						{
+							name: "Type",
+							value: ((msg.channel.type === "text") ? "Text" : "Voice"),
+							inline: true
+						},
+						{
+							name: "Position",
+							value: "#" + (msg.channel.position + 1),
+							inline: true
+						},
+						{
+							name: "Created At",
+							value: new Date(msg.channel.createdAt).toUTCString(),
+							inline: true
+						}
+					]
+				}
 			});
 		}
 	}

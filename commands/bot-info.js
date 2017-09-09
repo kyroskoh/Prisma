@@ -129,7 +129,7 @@ module.exports = {
 						console.error("Failed to get information on bot.", e.message);
 					});
 				});
-			}).catch((error) => {
+			}).catch(() => {
 				msg.channel.send({
 					embed: {
 						title: "Error!",
