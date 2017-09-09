@@ -57,7 +57,7 @@ module.exports = {
 											});
 										}
 									});
-								}).catch((error) => {
+								}).catch(() => {
 									msg.channel.send({
 										embed: {
 											title: "Error!",

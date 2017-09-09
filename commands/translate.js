@@ -22,7 +22,7 @@ module.exports = {
 							description: response.text
 						}
 					});
-				}).catch((error) => {
+				}).catch(() => {
 					msg.channel.send({
 						embed: {
 							title: "Error!",

@@ -73,7 +73,7 @@ module.exports = {
 				} else {
 					resolveUser(bot, args.slice(1).join(" ")).then((user) => {
 						next(user.avatarURL);
-					}).catch((error) => {
+					}).catch(() => {
 						msg.channel.send({
 							embed: {
 								title: "Error!",

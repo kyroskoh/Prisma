@@ -80,6 +80,7 @@ module.exports = {
 						description: "An error occured while getting weather."
 					}
 				});
+				console.error("Failed to get the weather.", error.message);
 			});
 		} else {
 			msg.channel.send({

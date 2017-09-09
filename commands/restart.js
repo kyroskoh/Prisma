@@ -41,7 +41,7 @@ module.exports = {
 							description: "Shard `#" + args[0] + "` is restarting."
 						}
 					});
-				}).catch((e) => {
+				}).catch(() => {
 					msg.channel.send({
 						embed: {
 							title: "Error!",
@@ -58,7 +58,7 @@ module.exports = {
 						description: "All shards are currently restarting."
 					}
 				}).then(() => {
-					bot.shard.broadcastEval("process.exit()").catch((e) => {
+					bot.shard.broadcastEval("process.exit()").catch(() => {
 						msg.channel.send({
 							embed: {
 								title: "Error!",

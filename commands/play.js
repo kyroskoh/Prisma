@@ -3,7 +3,6 @@ const config = require("../config.json");
 const ytdl = require("ytdl-core");
 const getyoutubeid = require("get-youtube-id");
 const humanizeduration = require("humanize-duration");
-const util = require("util");
 const youtube = new youtubeNode();
 youtube.setKey(config.api_keys.youtube);
 
@@ -61,30 +60,14 @@ module.exports = {
 									delimiter: "",
 									languages: {
 										shortEn: {
-											y: function () {
-												return "y"
-											},
-											mo: function () {
-												return "mo"
-											},
-											w: function () {
-												return "w"
-											},
-											d: function () {
-												return "d"
-											},
-											h: function () {
-												return "h"
-											},
-											m: function () {
-												return "m"
-											},
-											s: function () {
-												return "s"
-											},
-											ms: function () {
-												return "ms"
-											},
+											y: "y",
+											mo: "mo",
+											w: "w",
+											d: "d",
+											h: "h",
+											m: "m",
+											s: "s",
+											ms: "ms"
 										}
 									}
 								})
@@ -108,30 +91,14 @@ module.exports = {
 										delimiter: "",
 										languages: {
 											shortEn: {
-												y: function () {
-													return "y"
-												},
-												mo: function () {
-													return "mo"
-												},
-												w: function () {
-													return "w"
-												},
-												d: function () {
-													return "d"
-												},
-												h: function () {
-													return "h"
-												},
-												m: function () {
-													return "m"
-												},
-												s: function () {
-													return "s"
-												},
-												ms: function () {
-													return "ms"
-												},
+												y: "y",
+												mo: "mo",
+												w: "w",
+												d: "d",
+												h: "h",
+												m: "m",
+												s: "s",
+												ms: "ms"
 											}
 										}
 									})
@@ -212,7 +179,7 @@ module.exports = {
 															color: 0xE50000,
 															description: "An unexpected error occured while playing audio. Skipping, but queue is empty, left voice channel."
 														}
-													})
+													});
 												}).catch(() => {
 													msg.channel.send({
 														embed: {
@@ -245,7 +212,7 @@ module.exports = {
 															color: 0xE50000,
 															description: "An unexpected error occured while playing audio. Skipping, but queue is empty, left voice channel."
 														}
-													})
+													});
 												}).catch(() => {
 													msg.channel.send({
 														embed: {
@@ -260,7 +227,7 @@ module.exports = {
 									});
 								};
 								checkqueue();
-							}).catch((e) => {
+							}).catch(() => {
 								msg.channel.send({
 									embed: {
 										title: "Error!",
@@ -320,12 +287,15 @@ module.exports = {
 								if (m.first().content === "1") {
 									newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[0].id.videoId;
 									play.execute(bot, r, newevent, newevent.content.split(" ").slice(1));
+									m.delete();
 								} else if (m.first().content === "2") {
 									newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[1].id.videoId;
 									play.execute(bot, r, newevent, newevent.content.split(" ").slice(1));
+									m.delete();
 								} else if (m.first().content === "3") {
 									newevent.content = config.prefix + "play http://youtube.com/watch?v=" + results.items[2].id.videoId;
 									play.execute(bot, r, newevent, newevent.content.split(" ").slice(1));
+									m.delete();
 								} else {
 									msg.channel.send({
 										embed: {
