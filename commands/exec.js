@@ -39,7 +39,7 @@ module.exports = {
 							console.error("Failed to generate hastebin link.", error.message);
 						});
 					} else {
-						msg.channel.send("```\n" + result + "```");
+						msg.channel.send(result, { code: "bash" });
 					}
 				});
 			} else {

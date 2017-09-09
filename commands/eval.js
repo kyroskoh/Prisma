@@ -12,12 +12,12 @@ module.exports = {
 	description: "Evalute code inside the bot.",
 	category: "Developers",
 	hidden: true,
-	execute: async(bot, r, msg, args) => {
+	execute: async (bot, r, msg, args) => {
 		if (config.trusted.indexOf(msg.author.id) > -1) {
 			if (args.length > 0) {
 				try {
 					let result = await eval(args.join(" "));
-					if (typeof(result) !== "string") result = util.inspect(result, {
+					if (typeof (result) !== "string") result = util.inspect(result, {
 						depth: 3,
 						maxArrayLength: 2048
 					});
@@ -28,7 +28,7 @@ module.exports = {
 								embed: {
 									title: "Warning!",
 									color: 0xFFA500,
-									description: "Result was over 2,000 characters, generated hastebin link instead. https://hastebin.com/" + body.body.key 
+									description: "Result was over 2,000 characters, generated hastebin link instead. https://hastebin.com/" + body.body.key
 								}
 							});
 						}).catch((error) => {
@@ -44,7 +44,7 @@ module.exports = {
 						msg.channel.send("```js\n" + result + "```");
 					}
 				} catch (e) {
-					msg.channel.send("```js\n" + e + "```");
+					msg.channel.send(e, { code: "js" });
 				}
 			} else {
 				msg.channel.send({
