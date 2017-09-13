@@ -1,6 +1,11 @@
 {
     "token": "",
     "prefix": "p!",
+    "rethink": {
+        "host": "",
+        "db": "prisma",
+        "silent": true
+    },
     "api_keys": {
         "bot_list": {
             "discordbots.org": "",
@@ -9,11 +14,6 @@
         "datadog": {
             "api_key": "",
             "app_key": ""
-        },
-        "rethink": {
-            "host": "",
-            "db": "prisma",
-            "silent": true
         },
         "cleverbot": [
             "",
