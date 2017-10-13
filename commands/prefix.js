@@ -29,10 +29,10 @@ module.exports = {
 					});
 				} else {
 					r.table("prefixes").filter({serverID: msg.guild.id}).count().run((error, count) => {
-						if (error) return handleDatabaseError(bot, error, msg);
+						if (error) return handleDatabaseError(error, msg);
 						if (count > 0) {
 							r.table("prefixes").filter({serverID: msg.guild.id}).update({prefix: args.join(" ")}).run((error) => {
-								if (error) return handleDatabaseError(bot, error, msg);
+								if (error) return handleDatabaseError(error, msg);
 								msg.guild.data.prefix = args.join(" ");
 								msg.channel.send({
 									embed: {
@@ -47,7 +47,7 @@ module.exports = {
 								serverID: msg.guild.id,
 								prefix: args.join(" ")
 							}).run((error) => {
-								if (error) return handleDatabaseError(bot, error, msg);
+								if (error) return handleDatabaseError(error, msg);
 								msg.guild.data.prefix = args.join(" ");
 								msg.channel.send({
 									embed: {

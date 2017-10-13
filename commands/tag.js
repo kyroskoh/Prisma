@@ -23,7 +23,7 @@ module.exports = {
 				if (args.length > 1) {
 					if (args.length > 2) {
 						r.table("tags").filter({serverID: msg.guild.id, name: args[2]}).run((error, response) => {
-							if (error) return handleDatabaseError(bot, error, msg);
+							if (error) return handleDatabaseError(error, msg);
 							if (response.length > 0) {
 								msg.channel.send({
 									embed: {
@@ -38,7 +38,7 @@ module.exports = {
 									name: args[1],
 									value: args.slice(2).join(" ")
 								}).run((error) => {
-									if (error) return handleDatabaseError(bot, error, msg);
+									if (error) return handleDatabaseError(error, msg);
 									msg.channel.send({
 										embed: {
 											title: "Added!",
@@ -69,7 +69,7 @@ module.exports = {
 				}
 			} else if (args[0] === "list") {
 				r.table("tags").filter({serverID: msg.guild.id}).run((error, response) => {
-					if (error) return handleDatabaseError(bot, error, msg);
+					if (error) return handleDatabaseError(error, msg);
 					if (response.length > 0) {
 						msg.channel.send({
 							embed: {
@@ -92,10 +92,10 @@ module.exports = {
 				if (args.length > 1) {
 					if (args.length > 2) {
 						r.table("tags").filter({serverID: msg.guild.id, name: args[1]}).run((error, response) => {
-							if (error) return handleDatabaseError(bot, error, msg);
+							if (error) return handleDatabaseError(error, msg);
 							if (response.length > 0) {
 								r.table("tags").filter({serverID: msg.guild.id, name: args[1]}).update({value: args.slice(2).join(" ")}).run((error) => {
-									if (error) return handleDatabaseError(bot, error, msg);
+									if (error) return handleDatabaseError(error, msg);
 									msg.channel.send({
 										embed: {
 											title: "Updated!",
@@ -135,10 +135,10 @@ module.exports = {
 			} else if (args[0] === "remove") {
 				if (args.length > 1) {
 					r.table("tags").filter({serverID: msg.guild.id, name: args[1]}).run((error, response) => {
-						if (error) return handleDatabaseError(bot, error, msg);
+						if (error) return handleDatabaseError(error, msg);
 						if (response.length > 0) {
 							r.table("tags").filter({serverID: msg.guild.id, name: args[1]}).delete().run((error) => {
-								if (error) return handleDatabaseError(bot, error, msg);
+								if (error) return handleDatabaseError(error, msg);
 								msg.channel.send({
 									embed: {
 										title: "Deleted!",
@@ -168,7 +168,7 @@ module.exports = {
 				}
 			} else {
 				r.table("tags").filter({serverID: msg.guild.id, name: args[0]}).run((error, response) => {
-					if (error) return handleDatabaseError(bot, error, msg);
+					if (error) return handleDatabaseError(error, msg);
 					if (response.length > 0) {
 						msg.channel.send(response[0].value);
 					} else {

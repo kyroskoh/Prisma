@@ -23,7 +23,7 @@ module.exports = (bot, r) => {
 		});
 		process.on("uncaughtException", console.error);
 		r.table("restart").run((error, response) => {
-			if (error) return handleDatabaseError(bot, error);
+			if (error) return handleDatabaseError(error);
 			if (response.length > 0) {
 				if (bot.channels.get(response[0].channelID)) bot.channels.get(response[0].channelID).send({
 					embed: {
@@ -33,7 +33,7 @@ module.exports = (bot, r) => {
 					}
 				});
 				r.table("restart").delete().run((error) => {
-					if (error) handleDatabaseError(bot, error);
+					if (error) handleDatabaseError(error);
 				});
 			}
 		});
@@ -79,7 +79,7 @@ module.exports = (bot, r) => {
 			g.data.prefix = config.prefix;
 		});
 		r.table("prefixes").run((error, response) => {
-			if (error) return handleDatabaseError(bot, error);
+			if (error) return handleDatabaseError(error);
 			response.map((v) => {
 				if (bot.guilds.get(v.serverID)) bot.guilds.get(v.serverID).data.prefix = v.prefix;
 			});

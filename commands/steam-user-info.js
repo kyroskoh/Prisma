@@ -348,7 +348,7 @@ module.exports = {
 			}
 		} else {
 			r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
-				if (error) return handleDatabaseError(bot, error, msg);
+				if (error) return handleDatabaseError(error, msg);
 				if (response.length > 0) {
 					steam.getPlayerSummaries({
 						steamids: response[0].id

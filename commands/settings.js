@@ -28,10 +28,10 @@ module.exports = {
 							if (args.length > 0) {
 								resolveUser(bot, args.slice(2).join(" ")).then((channel) => {
 									r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
-										if (error) return handleDatabaseError(bot, error, msg);
+										if (error) return handleDatabaseError(error, msg);
 										if (response.length > 0) {
 											r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).update({value: channel.id}).run((error) => {
-												if (error) return handleDatabaseError(bot, error, msg);
+												if (error) return handleDatabaseError(error, msg);
 												msg.channel.send({
 													embed: {
 														title: "Updated!",
@@ -46,7 +46,7 @@ module.exports = {
 												name: "log_channel",
 												value: channel.id
 											}).run((error) => {
-												if (error) return handleDatabaseError(bot, error, msg);
+												if (error) return handleDatabaseError(error, msg);
 												msg.channel.send({
 													embed: {
 														title: "Updated!",
@@ -68,10 +68,10 @@ module.exports = {
 								});
 							} else {
 								r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
-									if (error) return handleDatabaseError(bot, error, msg);
+									if (error) return handleDatabaseError(error, msg);
 									if (response.length > 0) {
 										r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).update({value: msg.channel.id}).run((error) => {
-											if (error) return handleDatabaseError(bot, error, msg);
+											if (error) return handleDatabaseError(error, msg);
 											msg.channel.send({
 												embed: {
 													title: "Updated!",
@@ -86,7 +86,7 @@ module.exports = {
 											name: "log_channel",
 											value: msg.channel.id
 										}).run((error) => {
-											if (error) return handleDatabaseError(bot, error, msg);
+											if (error) return handleDatabaseError(error, msg);
 											msg.channel.send({
 												embed: {
 													title: "Updated!",
@@ -120,10 +120,10 @@ module.exports = {
 					if (args.length > 1) {
 						if (args[1] === "logs") {
 							r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
-								if (error) return handleDatabaseError(bot, error, msg);
+								if (error) return handleDatabaseError(error, msg);
 								if (response.length > 0) {
 									r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).delete().run((error) => {
-										if (error) return handleDatabaseError(bot, error, msg);
+										if (error) return handleDatabaseError(error, msg);
 										msg.channel.send({
 											embed: {
 												title: "Updated!",

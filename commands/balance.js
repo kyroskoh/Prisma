@@ -22,7 +22,7 @@ module.exports = {
 					}
 				});
 				r.table("economy").filter({userID: msg.author.id}).run((error, response) => {
-					if (error) return handleDatabaseError(bot, error, msg);
+					if (error) return handleDatabaseError(error, msg);
 					msg.channel.send({
 						embed: {
 							title: user.tag + "'s Balance",
@@ -58,7 +58,7 @@ module.exports = {
 			});
 		} else {
 			r.table("economy").filter({userID: msg.author.id}).run((error, response) => {
-				if (error) return handleDatabaseError(bot, error, msg);
+				if (error) return handleDatabaseError(error, msg);
 				msg.channel.send({
 					embed: {
 						title: msg.author.tag + "'s Balance",

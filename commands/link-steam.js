@@ -39,10 +39,10 @@ module.exports = {
 						}
 					});
 					r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
-						if (error) return handleDatabaseError(bot, error, msg);
+						if (error) return handleDatabaseError(error, msg);
 						if (response.length > 0) {
 							r.table("steam_profiles").filter({userID: msg.author.id}).update({id: args[0]}).run((error) => {
-								if (error) return handleDatabaseError(bot, error, msg);
+								if (error) return handleDatabaseError(error, msg);
 								msg.channel.send({
 									embed: {
 										title: "Linked!",
@@ -56,7 +56,7 @@ module.exports = {
 								userID: msg.author.id,
 								id: args[0]
 							}).run((error) => {
-								if (error) return handleDatabaseError(bot, error, msg);
+								if (error) return handleDatabaseError(error, msg);
 								msg.channel.send({
 									embed: {
 										title: "Linked!",
@@ -98,10 +98,10 @@ module.exports = {
 							}
 						});
 						r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
-							if (error) return handleDatabaseError(bot, error, msg);
+							if (error) return handleDatabaseError(error, msg);
 							if (response.length > 0) {
 								r.table("steam_profiles").filter({userID: msg.author.id}).update({id: summary.players[0].steamid}).run((error) => {
-									if (error) return handleDatabaseError(bot, error, msg);
+									if (error) return handleDatabaseError(error, msg);
 									msg.channel.send({
 										embed: {
 											title: "Linked!",
@@ -115,7 +115,7 @@ module.exports = {
 									userID: msg.author.id,
 									id: summary.players[0].steamid
 								}).run((error) => {
-									if (error) return handleDatabaseError(bot, error, msg);
+									if (error) return handleDatabaseError(error, msg);
 									msg.channel.send({
 										embed: {
 											title: "Linked!",

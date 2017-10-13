@@ -4,7 +4,9 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const rethink = require("rethinkdbdash");
 
-let bot = new Discord.Client();
+let bot = new Discord.Client({
+	fetchAllMembers: true
+});
 
 const r = rethink(config.rethink);
 

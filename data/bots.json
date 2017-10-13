@@ -1,5 +1,45 @@
 [
     {
+        "name": "HelpBoat",
+        "ownerid": "137792552878342144",
+        "ownername": "devCodex",
+        "botid": "1",
+        "compliant": 0,
+        "servercount": "10"
+    },
+    {
+        "name": "Botwyniel",
+        "ownerid": "112836380245114880",
+        "ownername": "Etwyniel",
+        "botid": "1",
+        "compliant": 0,
+        "servercount": "0"
+    },
+    {
+        "name": "MoonBot",
+        "ownerid": "140886965359738880",
+        "ownername": "Master#0690",
+        "botid": "1",
+        "compliant": 0,
+        "servercount": "0"
+    },
+    {
+        "name": "SmartBot",
+        "ownerid": "101742709093445632",
+        "ownername": "Nevexo",
+        "botid": "1",
+        "compliant": 0,
+        "servercount": "0"
+    },
+    {
+        "name": "BlenderBot",
+        "ownerid": "145336402190663681",
+        "ownername": "TechDIN0",
+        "botid": "1",
+        "compliant": 0,
+        "servercount": "119"
+    },
+    {
         "name": "Christmas Spirit",
         "ownerid": "85257659694993408",
         "ownername": "Macdja38",
@@ -13,7 +53,7 @@
         "ownername": "2D3S3RT",
         "botid": "168424288548945920",
         "compliant": 1,
-        "servercount": "16461"
+        "servercount": "19623"
     },
     {
         "name": "dabBot",
@@ -21,15 +61,15 @@
         "ownername": "spong#3338",
         "botid": "270198738570444801",
         "compliant": 1,
-        "servercount": "157891"
+        "servercount": "182129"
     },
     {
         "name": "(ﾉ◕ヮ◕)ﾉ✧･ﾟ*✧spoo.py✧*･ﾟ✧ヽ(◕ヮ◕)ﾉ",
         "ownerid": "86607397321207808",
-        "ownername": "spoopy🍡",
+        "ownername": "spoopy?",
         "botid": "109379894718234624",
         "compliant": 1,
-        "servercount": "23949"
+        "servercount": "25198"
     },
     {
         "name": "Marshmallow",
@@ -77,7 +117,7 @@
         "ownername": "Aaron",
         "botid": "115385224119975941",
         "compliant": 1,
-        "servercount": "25501"
+        "servercount": "30525"
     },
     {
         "name": "HatBot",
@@ -85,7 +125,7 @@
         "ownername": "abalabahaha",
         "botid": "247262554072547338",
         "compliant": 1,
-        "servercount": "10186"
+        "servercount": "9324"
     },
     {
         "name": "PollBot",
@@ -93,7 +133,7 @@
         "ownername": "Aeka",
         "botid": "313929155496378371",
         "compliant": 1,
-        "servercount": "1744"
+        "servercount": "2294"
     },
     {
         "name": "RoVerify",
@@ -109,15 +149,15 @@
         "ownername": "Ague",
         "botid": "240729664035880961",
         "compliant": 1,
-        "servercount": "7210"
+        "servercount": "11070"
     },
     {
-        "name": "0",
+        "name": "KawaiiBot",
         "ownerid": "86477779717066752",
-        "ownername": "0",
-        "botid": "323510457724043274",
+        "ownername": "AlexFlipnote#0021",
+        "botid": "195244363339530240",
         "compliant": 0,
-        "servercount": "0"
+        "servercount": "135460"
     },
     {
         "name": "Max-Bot",
@@ -136,12 +176,20 @@
         "servercount": "39"
     },
     {
+        "name": "Nemu",
+        "ownerid": "188571987835092992",
+        "ownername": "Alyzza",
+        "botid": "1",
+        "compliant": 0,
+        "servercount": "0"
+    },
+    {
         "name": "amybot",
         "ownerid": "128316294742147072",
         "ownername": "amy ♥",
         "botid": "251930037673132032",
         "compliant": 1,
-        "servercount": "8334"
+        "servercount": "16797"
     },
     {
         "name": "snake",
@@ -149,7 +197,7 @@
         "ownername": "AnonymousDapper",
         "botid": "181584790980526081",
         "compliant": 0,
-        "servercount": "2924"
+        "servercount": "54"
     },
     {
         "name": "AnthBot",
@@ -163,17 +211,17 @@
         "name": "Copycat",
         "ownerid": "115134128717955080",
         "ownername": "Arraying",
-        "botid": "273121537132068884",
+        "botid": "1",
         "compliant": 1,
         "servercount": "1722"
     },
     {
         "name": "Arraybot",
         "ownerid": "115134128717955080",
-        "ownername": "Arraying",
+        "ownername": "Arraying#7363",
         "botid": "177735619668213760",
         "compliant": 1,
-        "servercount": "4383"
+        "servercount": "5001"
     },
     {
         "name": "Clay",
@@ -189,55 +237,7 @@
         "ownername": "Avalon & Maeyrl",
         "botid": "201503408652419073",
         "compliant": 1,
-        "servercount": "59116"
-    },
-    {
-        "name": "WebShotBot",
-        "ownerid": "101475937589166080",
-        "ownername": "averysumner#7294",
-        "botid": "234895303759757312",
-        "compliant": 1,
-        "servercount": "547"
-    },
-    {
-        "name": "HelpBoat",
-        "ownerid": "137792552878342144",
-        "ownername": "devCodex",
-        "botid": "1",
-        "compliant": 0,
-        "servercount": "10"
-    },
-    {
-        "name": "Botwyniel",
-        "ownerid": "112836380245114880",
-        "ownername": "Etwyniel",
-        "botid": "1",
-        "compliant": 0,
-        "servercount": "0"
-    },
-    {
-        "name": "MoonBot",
-        "ownerid": "140886965359738880",
-        "ownername": "Master#0690",
-        "botid": "1",
-        "compliant": 0,
-        "servercount": "0"
-    },
-    {
-        "name": "SmartBot",
-        "ownerid": "101742709093445632",
-        "ownername": "Nevexo",
-        "botid": "1",
-        "compliant": 0,
-        "servercount": "0"
-    },
-    {
-        "name": "BlenderBot",
-        "ownerid": "145336402190663681",
-        "ownername": "TechDIN0",
-        "botid": "1",
-        "compliant": 0,
-        "servercount": "119"
+        "servercount": "89946"
     },
     {
         "name": "AIRHORN SOLUTIONS",
@@ -248,10 +248,10 @@
         "servercount": "0"
     },
     {
-        "name": "Skye",
-        "ownerid": "112732946774962176",
-        "ownername": "Beta and FireController",
-        "botid": "335638133427404801",
+        "name": "Axle",
+        "ownerid": "143194991886467072",
+        "ownername": " Beta ツ",
+        "botid": "342763451568881666",
         "compliant": 0,
         "servercount": "0"
     },
@@ -269,7 +269,7 @@
         "ownername": "billyoyo",
         "botid": "205653475298639872",
         "compliant": 1,
-        "servercount": "41067"
+        "servercount": "45153"
     },
     {
         "name": "blargbot",
@@ -277,7 +277,7 @@
         "ownername": "stupid cat",
         "botid": "134133271750639616",
         "compliant": 1,
-        "servercount": "11934"
+        "servercount": "11013"
     },
     {
         "name": "BooBot",
@@ -293,7 +293,7 @@
         "ownername": "Bluetail7",
         "botid": "241768807276740608",
         "compliant": 0,
-        "servercount": "294"
+        "servercount": "243"
     },
     {
         "name": "Uptime.exe",
@@ -314,10 +314,10 @@
     {
         "name": "Mirai",
         "ownerid": "95286900801146880",
-        "ownername": "brussell98",
+        "ownername": "Brussell#0660",
         "botid": "125367104336691200",
         "compliant": 1,
-        "servercount": "19769"
+        "servercount": "27126"
     },
     {
         "name": "Rythm",
@@ -325,7 +325,7 @@
         "ownername": "ImBursting#8667",
         "botid": "235088799074484224",
         "compliant": 0,
-        "servercount": "128481"
+        "servercount": "323285"
     },
     {
         "name": "Trade Bot",
@@ -333,20 +333,20 @@
         "ownername": "Carbonitex [Matt]",
         "botid": "223878767116812289",
         "compliant": 1,
-        "servercount": "2413"
-    },
-    {
-        "name": "FILLME",
-        "ownerid": "0",
-        "ownername": null,
-        "botid": "5",
-        "compliant": 0,
-        "servercount": "17"
+        "servercount": "799"
     },
     {
         "name": "OAuth Test",
         "ownerid": "68396159596503040",
         "ownername": "Carbonitex [Matt]",
+        "botid": "1",
+        "compliant": 0,
+        "servercount": "0"
+    },
+    {
+        "name": "ChewieBot",
+        "ownerid": "252566091237163008",
+        "ownername": "Chewie",
         "botid": "1",
         "compliant": 0,
         "servercount": "0"
@@ -378,10 +378,10 @@
     {
         "name": "Mee6",
         "ownerid": "138362511190786048",
-        "ownername": "Cookie",
+        "ownername": "Cookie#8566",
         "botid": "159985870458322944",
         "compliant": 1,
-        "servercount": "380709"
+        "servercount": "507491"
     },
     {
         "name": "FILLME",
@@ -405,15 +405,15 @@
         "ownername": "Danny",
         "botid": "80528701850124288",
         "compliant": 0,
-        "servercount": "2626"
+        "servercount": "3228"
     },
     {
         "name": "Yappy, the Github Monitor",
         "ownerid": "175008284263186437",
-        "ownername": "datitisev",
+        "ownername": "datitisev#7559",
         "botid": "219218963647823872",
         "compliant": 1,
-        "servercount": "939"
+        "servercount": "1018"
     },
     {
         "name": "CONTACT CARBON",
@@ -429,7 +429,7 @@
         "ownername": "David",
         "botid": "172002275412279296",
         "compliant": 1,
-        "servercount": "194267"
+        "servercount": "260101"
     },
     {
         "name": "DecoraterBot",
@@ -442,10 +442,10 @@
     {
         "name": "Nitro",
         "ownerid": "163735744995655680",
-        "ownername": "Funnbot",
+        "ownername": "Funnbot#8830",
         "botid": "264087705124601856",
         "compliant": 0,
-        "servercount": "5716"
+        "servercount": "7777"
     },
     {
         "name": "Pancake",
@@ -453,7 +453,7 @@
         "ownername": "DevinThePancake, thewsomeguy",
         "botid": "239631525350604801",
         "compliant": 1,
-        "servercount": "20052"
+        "servercount": "29386"
     },
     {
         "name": "deeBot",
@@ -461,7 +461,7 @@
         "ownername": "dinos",
         "botid": "137904252214444032",
         "compliant": 1,
-        "servercount": "8012"
+        "servercount": "8702"
     },
     {
         "name": "WildBot",
@@ -469,7 +469,7 @@
         "ownername": "Dougley",
         "botid": "110462073074388992",
         "compliant": 1,
-        "servercount": "72194"
+        "servercount": "74632"
     },
     {
         "name": "OverwatchBot",
@@ -477,7 +477,7 @@
         "ownername": "Downy",
         "botid": "188064764008726528",
         "compliant": 1,
-        "servercount": "16429"
+        "servercount": "16768"
     },
     {
         "name": "XiaoBot",
@@ -485,15 +485,15 @@
         "ownername": "dragonfire535",
         "botid": "278305350804045834",
         "compliant": 0,
-        "servercount": "5369"
+        "servercount": "7041"
     },
     {
         "name": "Adonis",
         "ownerid": "116293018742554625",
-        "ownername": "DoctorDarkMagic",
+        "ownername": "Jake#0532",
         "botid": "216242989041713152",
         "compliant": 1,
-        "servercount": "5732"
+        "servercount": "6852"
     },
     {
         "name": "MathBot",
@@ -501,15 +501,7 @@
         "ownername": "DXsmiley",
         "botid": "134073775925886976",
         "compliant": 0,
-        "servercount": "1857"
-    },
-    {
-        "name": "Hexacircle",
-        "ownerid": "106876115586383872",
-        "ownername": "EdibleDerpy#9121",
-        "botid": "173283825944625152",
-        "compliant": 1,
-        "servercount": "11873"
+        "servercount": "1954"
     },
     {
         "name": "iHeartRadio",
@@ -526,6 +518,14 @@
         "botid": "133718676741292033",
         "compliant": 0,
         "servercount": "784"
+    },
+    {
+        "name": "Guilded",
+        "ownerid": "105765006313816064",
+        "ownername": "iEchoic#1502",
+        "botid": "216816090712506378",
+        "compliant": 1,
+        "servercount": "0"
     },
     {
         "name": "Chitoge",
@@ -549,7 +549,7 @@
         "ownername": "Fabricio20",
         "botid": "119482224713269248",
         "compliant": 1,
-        "servercount": "72121"
+        "servercount": "80405"
     },
     {
         "name": "Pandora Radio",
@@ -557,15 +557,15 @@
         "ownername": "FireController#1847",
         "botid": "255933783293820928",
         "compliant": 1,
-        "servercount": "6002"
+        "servercount": "7557"
     },
     {
-        "name": "FlexBot",
+        "name": "HiddenPhox",
         "ownerid": "150745989836308480",
         "ownername": "Flex",
         "botid": "152172984373608449",
         "compliant": 0,
-        "servercount": "1661"
+        "servercount": "1566"
     },
     {
         "name": "YouTube",
@@ -581,7 +581,7 @@
         "ownername": "Fre_d",
         "botid": "184405311681986560",
         "compliant": 1,
-        "servercount": "325819"
+        "servercount": "440828"
     },
     {
         "name": "RuneInfo",
@@ -589,13 +589,13 @@
         "ownername": "AoDude",
         "botid": "169116410331529216",
         "compliant": 1,
-        "servercount": "5850"
+        "servercount": "6835"
     },
     {
-        "name": "Hibiki",
+        "name": "Momiji Developer Team",
         "ownerid": "241445525574909953",
         "ownername": "Flandre Scarlet",
-        "botid": "1",
+        "botid": "339287184383410177",
         "compliant": 0,
         "servercount": "7"
     },
@@ -605,7 +605,7 @@
         "ownername": "Gawdl3y",
         "botid": "204777316621090816",
         "compliant": 0,
-        "servercount": "10357"
+        "servercount": "13784"
     },
     {
         "name": "Gravebot",
@@ -613,7 +613,7 @@
         "ownername": "Gravestorm",
         "botid": "81026656365453312",
         "compliant": 1,
-        "servercount": "22789"
+        "servercount": "22448"
     },
     {
         "name": "Dogecointipbot",
@@ -640,20 +640,12 @@
         "servercount": "19435"
     },
     {
-        "name": "Serum",
-        "ownerid": "104360151208706048",
-        "ownername": "Hk.",
-        "botid": "202143355696578561",
-        "compliant": 1,
-        "servercount": "515"
-    },
-    {
         "name": "Ayana",
         "ownerid": "145162973910925312",
         "ownername": "HcgRandon",
         "botid": "185476724627210241",
         "compliant": 1,
-        "servercount": "145659"
+        "servercount": "188383"
     },
     {
         "name": "HyperCast",
@@ -669,7 +661,7 @@
         "ownername": "InkxtheSquid",
         "botid": "245648163837444097",
         "compliant": 0,
-        "servercount": "312"
+        "servercount": "387"
     },
     {
         "name": "Keystone",
@@ -677,7 +669,7 @@
         "ownername": "iopred",
         "botid": "251190798039777291",
         "compliant": 0,
-        "servercount": "894"
+        "servercount": "875"
     },
     {
         "name": "Septapus",
@@ -685,7 +677,7 @@
         "ownername": "iopred",
         "botid": "127296623779774464",
         "compliant": 1,
-        "servercount": "28858"
+        "servercount": "32817"
     },
     {
         "name": "osu!bot",
@@ -693,7 +685,7 @@
         "ownername": "Jack",
         "botid": "272341587856588800",
         "compliant": 0,
-        "servercount": "1714"
+        "servercount": "1839"
     },
     {
         "name": "Hammer",
@@ -712,12 +704,12 @@
         "servercount": "0"
     },
     {
-        "name": "💾❗",
+        "name": "?❗",
         "ownerid": "113156185389092864",
         "ownername": "jagrosh",
         "botid": "159133099806949376",
         "compliant": 1,
-        "servercount": "4887"
+        "servercount": "5404"
     },
     {
         "name": "Yggdrasil",
@@ -725,7 +717,7 @@
         "ownername": "jagrosh",
         "botid": "247283454440374274",
         "compliant": 1,
-        "servercount": "32133"
+        "servercount": "53215"
     },
     {
         "name": "Lopez",
@@ -741,7 +733,7 @@
         "ownername": "jakeoid",
         "botid": "271186557396975626",
         "compliant": 0,
-        "servercount": "5413"
+        "servercount": "6200"
     },
     {
         "name": "One Punch Bot",
@@ -757,7 +749,7 @@
         "ownername": "jcool.friedman",
         "botid": "236949446091472896",
         "compliant": 0,
-        "servercount": "4838"
+        "servercount": "2480"
     },
     {
         "name": "Retronic",
@@ -773,7 +765,7 @@
         "ownername": "jonas747",
         "botid": "204255221017214977",
         "compliant": 1,
-        "servercount": "2910"
+        "servercount": "4714"
     },
     {
         "name": "PyButt",
@@ -781,7 +773,7 @@
         "ownername": "Joseph ツ",
         "botid": "238731446469132294",
         "compliant": 0,
-        "servercount": "855"
+        "servercount": "1026"
     },
     {
         "name": "DJBot",
@@ -813,10 +805,10 @@
         "ownername": "Kodehawa",
         "botid": "213466096718708737",
         "compliant": 1,
-        "servercount": "49960"
+        "servercount": "78645"
     },
     {
-        "name": "HaNadeko🎶",
+        "name": "HaNadeko?",
         "ownerid": "105635576866156544",
         "ownername": "Kwoth",
         "botid": "1",
@@ -829,7 +821,7 @@
         "ownername": "Kwoth",
         "botid": "116275390695079945",
         "compliant": 1,
-        "servercount": "94710"
+        "servercount": "72981"
     },
     {
         "name": "Lapzbot",
@@ -869,23 +861,23 @@
         "ownername": "luke",
         "botid": "228537642583588864",
         "compliant": 1,
-        "servercount": "43052"
+        "servercount": "55484"
     },
     {
-        "name": "Maya",
+        "name": "Maya [FIXME]",
         "ownerid": "180731582049550336",
         "ownername": "Luna",
-        "botid": "276767408688201728",
+        "botid": "1",
         "compliant": 0,
         "servercount": "712"
     },
     {
-        "name": "KawaiiBot",
+        "name": "CuteForce",
         "ownerid": "180731582049550336",
-        "ownername": "KawaiiBot Hangout",
-        "botid": "195244341038546948",
+        "ownername": "CuteForceOne",
+        "botid": "348239001431572482",
         "compliant": 1,
-        "servercount": "102057"
+        "servercount": "928"
     },
     {
         "name": "PvPCraft",
@@ -893,7 +885,7 @@
         "ownername": "```Macdja38",
         "botid": "103607047383166976",
         "compliant": 1,
-        "servercount": "45339"
+        "servercount": "50811"
     },
     {
         "name": "DueUtil",
@@ -901,7 +893,7 @@
         "ownername": "MacDue",
         "botid": "213271889760616449",
         "compliant": 0,
-        "servercount": "1882"
+        "servercount": "7423"
     },
     {
         "name": "Sledgehammer",
@@ -917,7 +909,7 @@
         "ownername": "Mackan",
         "botid": "170915625722576896",
         "compliant": 1,
-        "servercount": "45364"
+        "servercount": "52341"
     },
     {
         "name": "BakaBot",
@@ -933,15 +925,7 @@
         "ownername": "AlexFlipnote & Martmists",
         "botid": "323510457724043274",
         "compliant": 1,
-        "servercount": "1183"
-    },
-    {
-        "name": "Clyde",
-        "ownerid": "140886965359738880",
-        "ownername": "Master#0907",
-        "botid": "232318380441468929",
-        "compliant": 0,
-        "servercount": "151"
+        "servercount": "2705"
     },
     {
         "name": "CouchBot",
@@ -949,15 +933,7 @@
         "ownername": "Dawgeth",
         "botid": "308371905667140000",
         "compliant": 1,
-        "servercount": "4600"
-    },
-    {
-        "name": "Napstabot",
-        "ownerid": "125367412370440192",
-        "ownername": "Maxie",
-        "botid": "131111244651298817",
-        "compliant": 0,
-        "servercount": "18155"
+        "servercount": "8500"
     },
     {
         "name": "HoloBot",
@@ -973,7 +949,7 @@
         "ownername": "Melmsie",
         "botid": "270904126974590976",
         "compliant": 0,
-        "servercount": "18276"
+        "servercount": "46794"
     },
     {
         "name": "Spoti-Search",
@@ -981,7 +957,7 @@
         "ownername": "Mercy",
         "botid": "303904389968560129",
         "compliant": 0,
-        "servercount": "1401"
+        "servercount": "3999"
     },
     {
         "name": "Oxyl",
@@ -989,15 +965,15 @@
         "ownername": "minemidnight",
         "botid": "255832257519026178",
         "compliant": 1,
-        "servercount": "13993"
+        "servercount": "16784"
     },
     {
-        "name": "Tiger",
-        "ownerid": "84117866944663552",
-        "ownername": "troot",
-        "botid": "225079733799485441",
+        "name": "Virium",
+        "ownerid": "84388454456127488",
+        "ownername": "kev",
+        "botid": "177118024166408192",
         "compliant": 1,
-        "servercount": "4311"
+        "servercount": "4617"
     },
     {
         "name": "Hashtag",
@@ -1016,12 +992,12 @@
         "servercount": "955"
     },
     {
-        "name": "Yuki-chan",
+        "name": "Yuki",
         "ownerid": "87600987040120832",
-        "ownername": "hsiW",
+        "ownername": "mei#5429 & zeyla#5479",
         "botid": "136107769680887808",
         "compliant": 1,
-        "servercount": "12359"
+        "servercount": "14992"
     },
     {
         "name": "UB3R-B0T",
@@ -1029,15 +1005,15 @@
         "ownername": "moiph",
         "botid": "85614143951892480",
         "compliant": 1,
-        "servercount": "15827"
+        "servercount": "20152"
     },
     {
-        "name": "Tony from Smash Battles",
+        "name": "Alice | Multiverse Mashups",
         "ownerid": "180339602798804992",
-        "ownername": "NekoTony#0047",
+        "ownername": "? ＮｅｋｏＴｏｎｙｙ ?#0047",
         "botid": "274620011744854029",
         "compliant": 1,
-        "servercount": "3420"
+        "servercount": "3689"
     },
     {
         "name": "Rotom",
@@ -1058,10 +1034,10 @@
     {
         "name": "Dyno",
         "ownerid": "155037590859284481",
-        "ownername": "NoobLance™",
+        "ownername": "NoobLance™#3500",
         "botid": "155149108183695360",
         "compliant": 1,
-        "servercount": "331241"
+        "servercount": "453773"
     },
     {
         "name": "NotSoBot",
@@ -1069,15 +1045,7 @@
         "ownername": "NotSoSuper",
         "botid": "170903342199865344",
         "compliant": 1,
-        "servercount": "52457"
-    },
-    {
-        "name": "Yandere-Chan",
-        "ownerid": "103478695460626432",
-        "ownername": "z0ne",
-        "botid": "122289191185809409",
-        "compliant": 0,
-        "servercount": "0"
+        "servercount": "79218"
     },
     {
         "name": "Red Panda",
@@ -1093,14 +1061,14 @@
         "ownername": "PassTheMayo#1281",
         "botid": "307994108792799244",
         "compliant": 0,
-        "servercount": "1426"
+        "servercount": "2569"
     },
     {
         "name": "Baba",
         "ownerid": "237947982769553408",
         "ownername": "perronosaurio (Waxtz) #1767",
         "botid": "273463982625652737",
-        "compliant": 0,
+        "compliant": 1,
         "servercount": "0"
     },
     {
@@ -1108,8 +1076,8 @@
         "ownerid": "115997555619266561",
         "ownername": "Phantom",
         "botid": "183749087038930944",
-        "compliant": 0,
-        "servercount": "8734"
+        "compliant": 1,
+        "servercount": "8839"
     },
     {
         "name": "PikaGirl",
@@ -1117,21 +1085,13 @@
         "ownername": "PikaDude",
         "botid": "169678500893163520",
         "compliant": 0,
-        "servercount": "7425"
-    },
-    {
-        "name": "snekbot",
-        "ownerid": "69089633215979520",
-        "ownername": "SplitPixl",
-        "botid": "174568226733293569",
-        "compliant": 0,
-        "servercount": "62"
+        "servercount": "8429"
     },
     {
         "name": "Pixl'd",
         "ownerid": "69089633215979520",
         "ownername": "SplitPixl",
-        "botid": "168146272660881409",
+        "botid": "1",
         "compliant": 0,
         "servercount": "1416"
     },
@@ -1144,22 +1104,6 @@
         "servercount": "0"
     },
     {
-        "name": "Aethex",
-        "ownerid": "80801429802983424",
-        "ownername": "Programmix",
-        "botid": "150300454708838401",
-        "compliant": 1,
-        "servercount": "140114"
-    },
-    {
-        "name": "Botwinder",
-        "ownerid": "89805412676681728",
-        "ownername": "Rhea",
-        "botid": "140307918200242176",
-        "compliant": 0,
-        "servercount": "67"
-    },
-    {
         "name": "RH1-N0",
         "ownerid": "77511942717046784",
         "ownername": "SexualRhinoceros",
@@ -1170,18 +1114,18 @@
     {
         "name": "Wikipedia",
         "ownerid": "116138050710536192",
-        "ownername": "Roadcrosser",
+        "ownername": "Roadcrosser#3657",
         "botid": "242191257202458624",
         "compliant": 0,
-        "servercount": "0"
+        "servercount": "896"
     },
     {
         "name": "xyzzy",
         "ownerid": "116138050710536192",
-        "ownername": "Roadcrosser",
+        "ownername": "Roadcrosser#3657",
         "botid": "171288238659600384",
         "compliant": 0,
-        "servercount": "866"
+        "servercount": "1016"
     },
     {
         "name": "AngelBot",
@@ -1197,7 +1141,7 @@
         "ownername": "Ryu",
         "botid": "200431291848589312",
         "compliant": 0,
-        "servercount": "0"
+        "servercount": "2407"
     },
     {
         "name": "Quika",
@@ -1218,10 +1162,10 @@
     {
         "name": "Ruby Rose",
         "ownerid": "169597963507728384",
-        "ownername": "Seth",
+        "ownername": "ZeroEpoch1969",
         "botid": "209470164633124864",
         "compliant": 0,
-        "servercount": "2312"
+        "servercount": "2258"
     },
     {
         "name": "Wolver",
@@ -1229,7 +1173,7 @@
         "ownername": "Shigehiro",
         "botid": "226393343385403403",
         "compliant": 1,
-        "servercount": "6823"
+        "servercount": "8147"
     },
     {
         "name": "Aru",
@@ -1245,7 +1189,7 @@
         "ownername": "Silicon Valley",
         "botid": "222853335877812224",
         "compliant": 0,
-        "servercount": "15466"
+        "servercount": "1"
     },
     {
         "name": "Pokedex",
@@ -1253,7 +1197,7 @@
         "ownername": "Sir Skaro",
         "botid": "206147275775279104",
         "compliant": 1,
-        "servercount": "4563"
+        "servercount": "3828"
     },
     {
         "name": "Discord Cards",
@@ -1261,7 +1205,7 @@
         "ownername": "Snazzah",
         "botid": "275388037817696287",
         "compliant": 0,
-        "servercount": "3579"
+        "servercount": "5413"
     },
     {
         "name": "Trello",
@@ -1269,7 +1213,7 @@
         "ownername": "Snazzah",
         "botid": "202930020396564480",
         "compliant": 1,
-        "servercount": "2300"
+        "servercount": "2668"
     },
     {
         "name": "Konata",
@@ -1277,7 +1221,7 @@
         "ownername": "Steven",
         "botid": "304789135124594698",
         "compliant": 0,
-        "servercount": "7876"
+        "servercount": "15049"
     },
     {
         "name": "FIX DESCRIPTION",
@@ -1293,7 +1237,7 @@
         "ownername": "aStonedPenguin",
         "botid": "218921854662868993",
         "compliant": 0,
-        "servercount": "1092"
+        "servercount": "2657"
     },
     {
         "name": "Parallax",
@@ -1309,7 +1253,7 @@
         "ownername": "TheEpTic",
         "botid": "189702078958927872",
         "compliant": 1,
-        "servercount": "228139"
+        "servercount": "234472"
     },
     {
         "name": "FrostWalker",
@@ -1317,13 +1261,13 @@
         "ownername": "Thewsomeguy",
         "botid": "205190545914462208",
         "compliant": 0,
-        "servercount": "7120"
+        "servercount": "8895"
     },
     {
-        "name": "Thyy",
+        "name": "Rikka",
         "ownerid": "105484726235607040",
-        "ownername": "ThyLeader",
-        "botid": "243020624547676160",
+        "ownername": "thy",
+        "botid": "319571495666057227",
         "compliant": 0,
         "servercount": "0"
     },
@@ -1332,7 +1276,7 @@
         "ownerid": "76685590585671680",
         "ownername": "Tobiah",
         "botid": "123591822579597315",
-        "compliant": 1,
+        "compliant": 0,
         "servercount": "313"
     },
     {
@@ -1365,7 +1309,7 @@
         "ownername": "Tyler",
         "botid": "183845505279852545",
         "compliant": 1,
-        "servercount": "5172"
+        "servercount": "5037"
     },
     {
         "name": "ListenOnRepeat",
@@ -1381,7 +1325,7 @@
         "ownername": "HyperCoder",
         "botid": "153613756348366849",
         "compliant": 1,
-        "servercount": "49768"
+        "servercount": "53060"
     },
     {
         "name": "Hifumi",
@@ -1397,7 +1341,7 @@
         "ownername": "Veld",
         "botid": "160105994217586689",
         "compliant": 1,
-        "servercount": "40431"
+        "servercount": "49714"
     },
     {
         "name": "Xavio",
@@ -1416,6 +1360,14 @@
         "servercount": "20846"
     },
     {
+        "name": "FlareBot",
+        "ownerid": "158310004187725824",
+        "ownername": "Walshy#9060",
+        "botid": "225652110493089792",
+        "compliant": 0,
+        "servercount": "10983"
+    },
+    {
         "name": "SquidBot",
         "ownerid": "111655405708455936",
         "ownername": "Will",
@@ -1429,7 +1381,7 @@
         "ownername": "Witty",
         "botid": "168231080439185417",
         "compliant": 1,
-        "servercount": "6013"
+        "servercount": "6503"
     },
     {
         "name": "Rem",
@@ -1440,18 +1392,18 @@
         "servercount": "-1"
     },
     {
-        "name": "Ice Cream",
-        "ownerid": "204073983769968640",
-        "ownername": "Pixl",
-        "botid": "292139791016001537",
+        "name": "lepeli",
+        "ownerid": "261912303132344320",
+        "ownername": "Yvan#5761",
+        "botid": "307653150515658753",
         "compliant": 0,
         "servercount": "0"
     },
     {
-        "name": "Magic",
+        "name": "spacefruit",
         "ownerid": "138862213527109632",
-        "ownername": "Zachary#6047 & Chearful#9721",
-        "botid": "218263228629778432",
+        "ownername": "Zachary",
+        "botid": "350868257026080770",
         "compliant": 0,
         "servercount": "0"
     },

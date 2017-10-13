@@ -11,10 +11,6 @@
             "discordbots.org": "",
             "bots.discord.pw": ""
         },
-        "datadog": {
-            "api_key": "",
-            "app_key": ""
-        },
         "cleverbot": [
             "",
             ""
