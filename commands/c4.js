@@ -79,8 +79,7 @@ module.exports = {
 							});
 						}
 					});
-				}).catch((error) => {
-					console.error(error)
+				}).catch(() => {
 					msg.channel.send({
 						embed: {
 							title: "Error!",
@@ -95,7 +94,7 @@ module.exports = {
 				embed: {
 					title: "Error!",
 					color: 0xE50000,
-					description: "Missing `<@user   |   userID   |   username>` option."
+					description: "Missing `<@user | userID | username>` option."
 				}
 			});
 		}

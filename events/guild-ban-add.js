@@ -9,7 +9,8 @@ module.exports = (bot, r) => {
 					embed: {
 						title: "Member Banned",
 						color: 15880993,
-						fields: [{
+						fields: [
+							{
 								name: "Username",
 								value: user.tag,
 								inline: false
