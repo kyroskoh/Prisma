@@ -9,26 +9,25 @@ const editGame = (reaction, response, r, user) => {
 				if (response.game[col][row + 1] !== 0 && response.game[col][row + 1] === response.game[col][row]) {
 					if (response.game[col][row + 2] !== 0 && response.game[col][row + 2] === response.game[col][row + 1]) {
 						if (response.game[col][row + 3] !== 0 && response.game[col][row + 3] === response.game[col][row + 2]) {
-							console.log("win via going right");
 							win = [[col, row], [col, row + 1], [col, row + 2], [col, row + 3]];
 						}
 					}
-				}
-			} else if (response.game[col][row] !== 0) {
-				if (response.game[col + 1] && response.game[col + 1][row] !== 0 && response.game[col + 1][row] === response.game[col][row]) {
+				} else if (response.game[col + 1] && response.game[col + 1][row] !== 0 && response.game[col + 1][row] === response.game[col][row]) {
 					if (response.game[col + 2] && response.game[col + 2][row] !== 0 && response.game[col + 2][row] === response.game[col][row + 1]) {
 						if (response.game[col + 3] && response.game[col + 3][row] !== 0 && response.game[col + 3][row] === response.game[col][row + 2]) {
-							console.log("win via going up");
 							win = [[col, row], [col + 1, row], [col + 2, row], [col + 3, row]];
 						}
 					}
-				}
-			} else if (response.game[col][row] !== 0) {
-				if (response.game[col + 1] && response.game[col + 1][row + 1] && response.game[col + 1][row + 1] === response.game[col][row]) {
+				} else if (response.game[col + 1] && response.game[col + 1][row + 1] && response.game[col + 1][row + 1] === response.game[col][row]) {
 					if (response.game[col + 2] && response.game[col + 2][row + 2] !== 0 && response.game[col + 2][row + 2] === response.game[col + 1][row + 1]) {
 						if (response.game[col + 3] && response.game[col + 3][row + 3] !== 0 && response.game[col + 3][row + 3] === response.game[col + 2][row + 2]) {
-							console.log("win via going top right");
 							win = [[col, row], [col + 1, row + 1], [col + 2, row + 2], [col + 3, row + 3]];
+						}
+					}
+				} else if (response.game[col - 1] && response.game[col - 1][row - 1] && response.game[col - 1][row - 1] === response.game[col][row]) {
+					if (response.game[col - 2] && response.game[col - 2][row - 2] && response.game[col - 2][row - 2] === response.game[col - 1][row - 1]) {
+						if (response.game[col - 3] && response.game[col - 3][row - 3] && response.game[col - 3][row - 3] === response.game[col - 2][row - 2]) {
+							win = [[col, row], [col - 1, row - 1], [col - 2, row - 2], [col - 3, row - 3]];
 						}
 					}
 				}
