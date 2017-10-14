@@ -5,6 +5,7 @@ const steam = require("../functions/steam.js");
 const updatePresence = require("../functions/update-presence.js");
 const config = require("../config.json");
 const handleDatabaseError = require("../functions/handle-database-error.js");
+const c4 = require("../functions/connect-4.js");
 
 module.exports = (bot, r) => {
 	bot.on("ready", () => {
@@ -65,6 +66,12 @@ module.exports = (bot, r) => {
 			if (error) return handleDatabaseError(error);
 			response.map((v) => {
 				if (bot.guilds.get(v.serverID)) bot.guilds.get(v.serverID).data.prefix = v.prefix;
+			});
+		});
+		r.table("connect4").run((error, response) => {
+			if (error) return handleDatabaseError(error);
+			response.map((v) => {
+				c4.add(v.id);
 			});
 		});
 		updatePresence(bot);
