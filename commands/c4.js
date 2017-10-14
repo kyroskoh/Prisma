@@ -33,6 +33,13 @@ module.exports = {
 				});
 			} else {
 				resolveUser(bot, args.join(" ")).then((user) => {
+					if (user.id === msg.author.id) return msg.channel.send({
+						embed: {
+							title: "Error!",
+							color: 0xE50000,
+							description: "You can't start a Connect 4 game with yourself!"
+						}
+					});
 					r.table("connect4").filter(r.row("user1")("id").eq(msg.author.id).or(r.row("user2")("id").eq(msg.author.id))).run((error, response) => {
 						if (error) return handleDatabaseError(error, msg);
 						if (response.length > 0) {
