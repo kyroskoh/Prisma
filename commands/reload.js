@@ -15,7 +15,7 @@ module.exports = {
 		if (config.trusted.indexOf(msg.author.id) > -1) {
 			if (args.length > 0) {
 				if (args[0] === "all") {
-					const commands = fs.readdir("./commands/", (error, files) => {
+					fs.readdir("./commands/", (error, files) => {
 						if (error) return msg.channel.send({
 							embed: {
 								title: "Error!",

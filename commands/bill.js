@@ -9,7 +9,7 @@ module.exports = {
 	usage: "bill",
 	category: "Image",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		snekfetch.get("http://belikebill.azurewebsites.net/billgen-API.php?default=1").then((body) => {
 			msg.channel.send({
 				files: [{

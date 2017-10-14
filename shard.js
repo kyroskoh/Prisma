@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const dateformat = require("dateformat");
 const config = require("./config.json");
 const log = require("./managers/logger.js");
 

@@ -1,5 +1,4 @@
 const snekfetch = require("snekfetch");
-const util = require("util");
 
 module.exports = {
 	commands: [

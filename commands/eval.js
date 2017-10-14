@@ -1,6 +1,5 @@
 const config = require("../config.json");
 const util = require("util");
-const fs = require("fs");
 const snekfetch = require("snekfetch");
 const removeSensitiveInformation = require("../functions/remove-sensitive-information.js");
 

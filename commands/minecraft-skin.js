@@ -27,7 +27,7 @@ module.exports = {
 					});
 					console.error("Failed to get information on a Minecraft skin.", error.message);
 				});
-			})
+			});
 		} else {
 			msg.channel.send({
 				embed: {

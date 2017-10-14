@@ -68,7 +68,7 @@ module.exports = {
 		}
 		if (args.length > 0) {
 			if (args.length > 1) {
-				if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[1])) {
+				if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(args[1])) {
 					next(args[1]);
 				} else {
 					resolveUser(bot, args.slice(1).join(" ")).then((user) => {

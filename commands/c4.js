@@ -10,7 +10,7 @@ module.exports = {
 		"connectfour"
 	],
 	description: "Play Connect 4 with another person.",
-	usage: "c4 <@user   |   userID   |   username   |   cancel>",
+	usage: "c4 <@user | userID | username | cancel>",
 	category: "Fun",
 	hidden: false,
 	execute: (bot, r, msg, args) => {

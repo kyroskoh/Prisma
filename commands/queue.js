@@ -1,4 +1,5 @@
 const humanizeduration = require("humanize-duration");
+const config = require("../config.json");
 
 module.exports = {
 	commands: [
@@ -9,7 +10,7 @@ module.exports = {
 	usage: "queue",
 	category: "Music",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		if (msg.channel.type === "dm") return msg.channel.send({
 			embed: {
 				title: "Error!",

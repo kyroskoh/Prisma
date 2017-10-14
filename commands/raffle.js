@@ -6,7 +6,7 @@ module.exports = {
 	usage: "raffle",
 	category: "Random",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		if (msg.channel.type === "dm") return msg.channel.send({
 			embed: {
 				title: "Error!",
@@ -14,13 +14,15 @@ module.exports = {
 				description: "This command cannot be used in a Direct Message."
 			}
 		});
-		const user = msg.guild.members.filter((u) => !u.user.bot).random();
-		msg.channel.send({
-			embed: {
-				title: "Random User",
-				color: 3066993,
-				description: (user.nickname) ? "<@!" + user.user.id + ">" : "<@" + user.user.id + ">"
-			}
+		msg.guild.fetchMembers().then((guild) => {
+			const user = guild.members.filter((u) => !u.user.bot).random();
+			msg.channel.send({
+				embed: {
+					title: "Random User",
+					color: 3066993,
+					description: user.user.tag
+				}
+			});
 		});
 	}
 };

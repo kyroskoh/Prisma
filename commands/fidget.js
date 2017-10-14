@@ -8,7 +8,7 @@ module.exports = {
 	usage: "fidget",
 	category: "Fun",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		msg.channel.send({
 			embed: {
 				title: "Fidget Spinner",

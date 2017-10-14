@@ -9,4 +9,4 @@ module.exports = (bot) => {
 		server.data = {};
 		server.data.prefix = config.prefix;
 	});
-}
+};

@@ -8,7 +8,7 @@ module.exports = {
 	description: "See how long the bot has been running.",
 	category: "Information",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		msg.channel.send({
 			embed: {
 				title: "Uptime",

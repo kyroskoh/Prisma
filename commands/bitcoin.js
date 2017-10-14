@@ -9,7 +9,7 @@ module.exports = {
 	usage: "bitcoin",
 	category: "Economy",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		snekfetch.get("https://blockchain.info/ticker").then((body) => {
 			msg.channel.send({
 				embed: {

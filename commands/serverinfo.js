@@ -1,4 +1,3 @@
-const handleDatabaseError = require("../functions/handle-database-error.js");
 const resolveServer = require("../functions/resolve-server.js");
 
 module.exports = {

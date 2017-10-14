@@ -1,6 +1,6 @@
-const snekfetch = require("snekfetch");
-const gm = require("gm");
-const resolveUser = require("../functions/resolve-user.js");
+// const snekfetch = require("snekfetch");
+// const gm = require("gm");
+// const resolveUser = require("../functions/resolve-user.js");
 
 module.exports = {
 	commands: [
@@ -12,8 +12,15 @@ module.exports = {
 	usage: "quality [amount] [url | @user | username | userID]",
 	category: "Image",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
-		function next(url) {
+	execute: (bot, r, msg/*, args*/) => {
+		msg.channel.send({
+			embed: {
+				title: "Error!",
+				color: 0xE50000,
+				description: "The quality command currently does not work."
+			}
+		});
+		/* function next(url) {
 			let amount = 25;
 			if (args.length > 1) {
 				if (isNaN(Number(args[0]))) return msg.channel.send({
@@ -71,13 +78,6 @@ module.exports = {
 				});
 			});
 		}
-		return msg.channel.send({
-			embed: {
-				title: "Error!",
-				color: 0xE50000,
-				description: "The quality command currently does not work."
-			}
-		});
 		if (args.length > 1) {
 			if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[1])) {
 				next(args[1]);
@@ -96,6 +96,6 @@ module.exports = {
 			}
 		} else {
 			next(msg.author.avatarURL);
-		}
+		} */
 	}
 };

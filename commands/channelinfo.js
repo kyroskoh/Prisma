@@ -1,4 +1,3 @@
-const handleDatabaseError = require("../functions/handle-database-error.js");
 const resolveChannel = require("../functions/resolve-channel.js");
 
 module.exports = {

@@ -1,6 +1,3 @@
-const snekfetch = require("snekfetch");
-const config = require("../config.json");
-
 module.exports = {
 	commands: [
 		"discriminator",

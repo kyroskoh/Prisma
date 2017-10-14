@@ -6,7 +6,7 @@ module.exports = {
 	description: "See how long it takes to ping the bot.",
 	category: "General",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		const start = Date.now();
 		msg.channel.send({
 			embed: {

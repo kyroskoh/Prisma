@@ -1,5 +1,3 @@
-const aids = require("aids");
-
 module.exports = {
 	commands: [
 		"mods",
@@ -11,7 +9,7 @@ module.exports = {
 	usage: " <text>",
 	category: "Fun",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		if (msg.channel.type === "dm") return msg.channel.send({
 			embed: {
 				title: "Error!",
@@ -43,10 +41,10 @@ module.exports = {
 				});
 				const keys = Object.keys(sorted);
 				keys.sort((a, b) => {
-					if (a.status === "online") return -1;
-					if (a.status === "idle") return 0;
-					if (a.status === "dnd") return 1;
-					if (a.status === "offline") return 2;
+					if (b.status === "online") return -1;
+					if (b.status === "idle") return 0;
+					if (b.status === "dnd") return 1;
+					if (b.status === "offline") return 2;
 				});
 				msg.channel.send({
 					embed: {
@@ -57,7 +55,13 @@ module.exports = {
 				});
 			}
 		} else {
-
+			msg.channel.send({
+				embed: {
+					title: "Error!",
+					color: 0xE50000,
+					description: "There is no moderator or admins on this server."
+				}
+			});
 		}
 	}
 };

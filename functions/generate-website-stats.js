@@ -1,5 +1,4 @@
 const humanizeduration = require("humanize-duration");
-const os = require("os");
 
 module.exports = (bot, r) => {
 	return new Promise((resolve, reject) => {

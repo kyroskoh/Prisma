@@ -1,18 +1,14 @@
 const log = require("../managers/logger.js");
-const util = require("util");
-const humanizeduration = require("humanize-duration");
 const express = require("express");
 const generateWebsiteStats = require("../functions/generate-website-stats.js");
-const https = require("https");
-const fs = require("fs");
 const steam = require("../functions/steam.js");
 const updatePresence = require("../functions/update-presence.js");
 const config = require("../config.json");
+const handleDatabaseError = require("../functions/handle-database-error.js");
 
 module.exports = (bot, r) => {
 	bot.on("ready", () => {
 		log(bot.user.username + " is ready! (" + (Date.now() - bot.startuptime) + "ms)");
-		const startload = Date.now();
 		process.on("unhandledRejection", (error) => {
 			if (error.name === "DiscordAPIError") {
 				if (error.code === 50013) return;
@@ -22,21 +18,6 @@ module.exports = (bot, r) => {
 			console.error(error);
 		});
 		process.on("uncaughtException", console.error);
-		r.table("restart").run((error, response) => {
-			if (error) return handleDatabaseError(error);
-			if (response.length > 0) {
-				if (bot.channels.get(response[0].channelID)) bot.channels.get(response[0].channelID).send({
-					embed: {
-						title: "Restarted!",
-						color: 3066993,
-						description: "Took `" + humanizeduration(Date.now() - response[0].time) + "`."
-					}
-				});
-				r.table("restart").delete().run((error) => {
-					if (error) handleDatabaseError(error);
-				});
-			}
-		});
 		if (bot.shard.id === 0) {
 			const app = express();
 			app.use((req, res, next) => {
@@ -69,7 +50,9 @@ module.exports = (bot, r) => {
 				res.send(categorized);
 			});
 			app.listen(83, (error) => {
-				if (error) throw new error;
+				if (error) {
+					if (error.code !== "EADDRINUSE" && error.code !== "EACCES") throw new error;
+				}
 				log("Express server listening on port 83.");
 			});
 		}

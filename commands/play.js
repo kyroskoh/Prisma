@@ -1,10 +1,10 @@
-const youtubeNode = require("youtube-node");
-const config = require("../config.json");
-const ytdl = require("ytdl-core");
-const getyoutubeid = require("get-youtube-id");
-const humanizeduration = require("humanize-duration");
-const youtube = new youtubeNode();
-youtube.setKey(config.api_keys.youtube);
+// const youtubeNode = require("youtube-node");
+// const config = require("../config.json");
+// const ytdl = require("ytdl-core");
+// const getyoutubeid = require("get-youtube-id");
+// const humanizeduration = require("humanize-duration");
+// const youtube = new youtubeNode();
+// youtube.setKey(config.api_keys.youtube);
 
 module.exports = {
 	commands: [
@@ -15,15 +15,15 @@ module.exports = {
 	usage: "play <YouTube URL | search query>",
 	category: "Music",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
-		/* return msg.channel.send({
+	execute: (bot, r, msg/*, args*/) => {
+		return msg.channel.send({
 			embed: {
 				title: "Error!",
 				color: 0xE50000,
 				description: "Sorry, but our current VPS is unable to handle music. If you are able to donate, please do so at https://patreon.com/passthemayo."
 			}
-		}); */
-		if (msg.channel.type === "dm") return msg.channel.send({
+		});
+		/* if (msg.channel.type === "dm") return msg.channel.send({
 			embed: {
 				title: "Error!",
 				color: 0xE50000,
@@ -326,8 +326,8 @@ module.exports = {
 					description: "You must be in a voice channel to use this command."
 				}
 			});
-		}
+		} */
 	}
 };
 
-const play = require("./play.js");
+// const play = require("./play.js");

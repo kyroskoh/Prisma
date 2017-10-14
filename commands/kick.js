@@ -2,10 +2,10 @@ const resolveMember = require("../functions/resolve-member.js");
 
 module.exports = {
 	commands: [
-		"ban"
+		"kick"
 	],
-	description: "Bans a user from the server.",
-	usage: "ban [@user | user ID]",
+	description: "Kicks a user from the server.",
+	usage: "kick [@user | user ID]",
 	category: "Moderation",
 	hidden: false,
 	execute: (bot, r, msg, args) => {
@@ -16,18 +16,16 @@ module.exports = {
 				description: "This command cannot be used in a Direct Message."
 			}
 		});
-		if (msg.member.hasPermission("BAN_MEMBERS")) {
-			if (msg.guild.me.hasPermission("BAN_MEMBERS")) {
-				resolveMember(msg.guild, args.join(" ")).then((member) => {
+		if (msg.member.hasPermission("KICK_MEMBERS")) {
+			if (msg.guild.me.hasPermission("KICK_MEMBERS")) {
+				resolveMember(msg.guild, args.join(" "), false).then((member) => {
 					if (member.bannable) {
-						member.ban({
-							reason: "Banned by " + msg.author.tag + " - " + ((args.length > 0) ? "Reason: " + args.join(" ") : "No reason specified.")
-						}).then(() => {
+						member.kick("Kicked by " + msg.author.tag + " - " + ((args.length > 0) ? "Reason: " + args.join(" ") : "No reason specified.")).then(() => {
 							msg.channel.send({
 								embed: {
-									title: "Banned!",
+									title: "Kicked!",
 									color: 0xE50000,
-									description: "That user has been banned. Reason: `" + ((args.length > 0) ? args.join(" ") : "No reason specified.") + "`"
+									description: "That user has been kicked. Reason: `" + ((args.length > 0) ? args.join(" ") : "No reason specified.") + "`"
 								}
 							});
 						}).catch(() => {
@@ -35,7 +33,7 @@ module.exports = {
 								embed: {
 									title: "Error!",
 									color: 0xE50000,
-									description: "An unexpected error occured while trying to ban user."
+									description: "An unexpected error occured while trying to kick user."
 								}
 							});
 						});
@@ -44,7 +42,7 @@ module.exports = {
 							embed: {
 								title: "Error!",
 								color: 0xE50000,
-								description: "I am unable to ban that user because they are a higher or has the same role as me."
+								description: "I am unable to kick that user because they are a higher or has the same role as me."
 							}
 						});
 					}
@@ -62,7 +60,7 @@ module.exports = {
 					embed: {
 						title: "Error!",
 						color: 0xE50000,
-						description: "I do not have permission to ban members. Please give me the `Ban Members` command."
+						description: "I do not have permission to kick members. Please give me the `Kick Members` command."
 					}
 				});
 			}
@@ -71,7 +69,7 @@ module.exports = {
 				embed: {
 					title: "Error!",
 					color: 0xE50000,
-					description: "You do not have permission to use this command. This command requires the `Ban Members` permission."
+					description: "You do not have permission to use this command. This command requires the `Kick Members` permission."
 				}
 			});
 		}

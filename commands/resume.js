@@ -8,7 +8,7 @@ module.exports = {
 	usage: "resume",
 	category: "Music",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		if (msg.channel.type === "dm") return msg.channel.send({
 			embed: {
 				title: "Error!",

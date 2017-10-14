@@ -5,4 +5,4 @@ module.exports = {
 	execute: (bot) => {
 		updatePresence(bot);
 	}
-}
+};

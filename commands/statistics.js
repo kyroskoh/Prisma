@@ -1,4 +1,3 @@
-const util = require("util");
 const humanizeduration = require("humanize-duration");
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
 	usage: "stats",
 	category: "Information",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		bot.shard.broadcastEval("[this.guilds.size, this.users.size, this.voiceConnections.size, (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(1)]").then((data) => {
 			let newdata = [0, 0, 0, 0];
 			data.forEach((v) => {

@@ -1,4 +1,3 @@
-const config = require("../config.json");
 const snekfetch = require("snekfetch");
 
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
 	description: "Returns a random meme from reddit's /r/DankMemes.",
 	category: "Fun",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg) => {
 		snekfetch.get("https://www.reddit.com/r/dankmemes/top/.json").then((body) => {
 			if (body.body.data && body.body.data.children && body.body.data.children.length > 0) {
 				const meme = body.body.data.children[Math.floor(Math.random() * body.body.data.children.length)];
@@ -42,6 +41,6 @@ module.exports = {
 				}
 			});
 			console.error("Failed to get a random Reddit meme.", error.message);
-		})
+		});
 	}
 };

@@ -46,7 +46,7 @@ module.exports = {
 			});
 		}
 		if (args.length > 0) {
-			if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(args[0])) {
+			if (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/.test(args[0])) {
 				next(args[0]);
 			} else {
 				resolveUser(bot, args[0]).then((user) => {

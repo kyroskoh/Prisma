@@ -17,7 +17,7 @@ module.exports = (bot, channel) => {
 		} else if (/^#.+$/.test(channel)) {
 			const newchannel = bot.channels.find("name", channel.match(/[^#]+/)[0]);
 			if (newchannel) {
-				resolve(channels);
+				resolve(newchannel);
 			} else {
 				reject();
 			}

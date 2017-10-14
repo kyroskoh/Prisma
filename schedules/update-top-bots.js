@@ -8,4 +8,4 @@ module.exports = {
 			fs.writeFileSync("./data/bots.json", JSON.stringify(body.body, null, 4));
 		});
 	}
-}
+};

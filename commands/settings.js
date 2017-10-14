@@ -26,7 +26,14 @@ module.exports = {
 					if (args.length > 1) {
 						if (args[1] === "logs") {
 							if (args.length > 0) {
-								resolveUser(bot, args.slice(2).join(" ")).then((channel) => {
+								resolveChannel(bot, args.slice(2).join(" ")).then((channel) => {
+									if (!msg.guild.channels.get(channel.id)) return msg.channel.send({
+										embed: {
+											title: "Error!",
+											color: 0xE50000,
+											description: "That channel does not exist within this server."
+										}
+									});
 									r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
 										if (error) return handleDatabaseError(error, msg);
 										if (response.length > 0) {

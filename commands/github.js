@@ -1,5 +1,4 @@
 const snekfetch = require("snekfetch");
-const dateformat = require("dateformat");
 
 module.exports = {
 	commands: [

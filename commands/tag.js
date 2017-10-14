@@ -1,5 +1,5 @@
 const handleDatabaseError = require("../functions/handle-database-error.js");
-const prefix = require("../config.json");
+const config = require("../config.json");
 
 module.exports = {
 	commands: [

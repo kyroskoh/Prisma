@@ -18,24 +18,11 @@ module.exports = {
 	hidden: false,
 	execute: (bot, r, msg, args) => {
 		if (args.length > 0) {
-			clever.ask(args.join(" "), (error, response) => {
-				if (error) {
-					msg.channel.send({
-						embed: {
-							title: "Error!",
-							color: 0xE50000,
-							description: "An unexpected error occured while asking cleverbot a question."
-						}
-					});
-					console.error("Failed to ask cleverbot a question.", response);
-				} else {
-					msg.channel.send({
-						embed: {
-							title: "Cleverbot Response",
-							color: 3066993,
-							description: response
-						}
-					});
+			msg.channel.send({
+				embed: {
+					title: "Error!",
+					color: 0xE50000,
+					description: "Cleverbot API is currently broken. Please try again later."
 				}
 			});
 		} else {

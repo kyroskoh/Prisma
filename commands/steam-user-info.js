@@ -1,7 +1,7 @@
-const steam = require("../functions/steam.js")();
-const humanizeduration = require("humanize-duration");
-const handleDatabaseError = require("../functions/handle-database-error.js");
-const config = require("../config.json");
+// const steam = require("../functions/steam.js")();
+// const humanizeduration = require("humanize-duration");
+// const handleDatabaseError = require("../functions/handle-database-error.js");
+// const config = require("../config.json");
 
 module.exports = {
 	commands: [
@@ -14,7 +14,7 @@ module.exports = {
 	usage: "steamuserinfo [vanity URL | steamID]",
 	category: "Utility",
 	hidden: false,
-	execute: (bot, r, msg, args) => {
+	execute: (bot, r, msg/*, args*/) => {
 		return msg.channel.send({
 			embed: {
 				title: "Information!",
@@ -22,7 +22,7 @@ module.exports = {
 				description: "This command has been disabled because of instability."
 			}
 		});
-		if (args.length > 0) {
+		/* if (args.length > 0) {
 			if (/^\d+$/.test(args[0])) {
 				steam.getPlayerSummaries({
 					steamids: args[0]
@@ -514,6 +514,6 @@ module.exports = {
 					});
 				}
 			});
-		}
+		} */
 	}
 };
