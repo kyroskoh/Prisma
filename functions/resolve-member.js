@@ -16,7 +16,7 @@ module.exports = (server, user, allowUsernames = true) => {
 		} else if (allowUsernames) {
 			server.members.fetchMembers().then((guild) => {
 				const users = guild.members.filter((u) => u.user.username.toLowerCase().includes(user.toLowerCase()));
-				if (users) {
+				if (users.first()) {
 					resolve(users.first());
 				} else {
 					reject();

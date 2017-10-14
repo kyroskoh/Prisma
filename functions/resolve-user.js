@@ -15,8 +15,8 @@ module.exports = (bot, user) => {
 			}
 		} else {
 			const users = bot.users.filter((u) => u.username.toLowerCase().includes(user.toLowerCase()));
-			if (users) {
-				resolve(users);
+			if (users.first()) {
+				resolve(users.first());
 			} else {
 				reject();
 			}
