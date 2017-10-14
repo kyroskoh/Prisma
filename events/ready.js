@@ -72,6 +72,14 @@ module.exports = (bot, r) => {
 			if (error) return handleDatabaseError(error);
 			response.map((v) => {
 				c4.add(v.id);
+				const channel = bot.channels.get(v.channelID);
+				if (channel) {
+					channel.fetchMessage(v.id).then((m) => {
+						m.data = {
+							connect4: true
+						};
+					}).catch(() => {});
+				}
 			});
 		});
 		updatePresence(bot);

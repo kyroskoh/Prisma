@@ -24,10 +24,10 @@ const editGame = (reaction, response, r, user) => {
 							win = [[col, row], [col + 1, row + 1], [col + 2, row + 2], [col + 3, row + 3]];
 						}
 					}
-				} else if (response.game[col - 1] && response.game[col - 1][row - 1] && response.game[col - 1][row - 1] === response.game[col][row]) {
-					if (response.game[col - 2] && response.game[col - 2][row - 2] && response.game[col - 2][row - 2] === response.game[col - 1][row - 1]) {
-						if (response.game[col - 3] && response.game[col - 3][row - 3] && response.game[col - 3][row - 3] === response.game[col - 2][row - 2]) {
-							win = [[col, row], [col - 1, row - 1], [col - 2, row - 2], [col - 3, row - 3]];
+				} else if (response.game[col - 1] && response.game[col - 1][row + 1] && response.game[col - 1][row + 1] === response.game[col][row]) {
+					if (response.game[col - 2] && response.game[col - 2][row + 2] && response.game[col - 2][row + 2] === response.game[col - 1][row + 1]) {
+						if (response.game[col - 3] && response.game[col - 3][row + 3] && response.game[col - 3][row + 3] === response.game[col - 2][row + 2]) {
+							win = [[col, row], [col - 1, row + 1], [col - 2, row + 2], [col - 3, row + 3]];
 						}
 					}
 				}
