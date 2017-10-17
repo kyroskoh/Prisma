@@ -55,7 +55,7 @@ module.exports = (bot, r) => {
 	});
 	
 	app.get("/dashboard", (req, res) => {
-		if (!req.user) res.redirect("/auth");
+		if (!req.user) res.redirect("/prisma/auth");
 		bot.shard.broadcastEval("this.guilds.filter(g => g.members.get('" + req.user.id + "') && g.members.get('" + req.user.id + "').hasPermission('MANAGE_GUILD')).map(g => ({name: g.name, icon: g.icon, id: g.id}))").then(guilds => {
 			guilds = [].concat.apply([], guilds);
 			res.render("dashboard/index.pug", {
@@ -66,7 +66,7 @@ module.exports = (bot, r) => {
 	});
 	
 	app.get("/dashboard/:id", (req, res) => {
-		if (!req.user) res.redirect("/auth");
+		if (!req.user) res.redirect("/prisma/auth");
 		bot.shard.broadcastEval("this.guilds.get('" + req.params.id + "') && this.guilds.get('" + req.params.id + "').members.get('" + req.user.id + "') && this.guilds.get('" + req.params.id + "').members.get('" + req.user.id + "').hasPermission('MANAGE_GUILD') && { name: this.guilds.get('" + req.params.id + "').name, memberCount: this.guilds.get('" + req.params.id + "').memberCount, channelCount: this.guilds.get('" + req.params.id + "').channels.size, roleCount: this.guilds.get('" + req.params.id + "').roles.size, avatar: this.guilds.get('" + req.params.id + "').avatar }").then(guilds => {
 			guilds = guilds.filter(v => v)[0];
 			if (guilds) {
@@ -118,12 +118,12 @@ module.exports = (bot, r) => {
 	app.get("/auth", passport.authenticate("discord"));
 
 	app.get("/auth/callback", passport.authenticate("discord"), (req, res) => {
-		res.redirect("/dashboard");
+		res.redirect("/prisma/dashboard");
 	});
 
 	app.get("/auth/logout", (req, res) => {
 		req.logout();
-		res.redirect("/");
+		res.redirect("/prisma/");
 	});
 
 	app.use("/assets", express.static(__dirname + "/static"));
