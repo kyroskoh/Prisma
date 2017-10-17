@@ -1,11 +1,10 @@
 const log = require("../managers/logger.js");
-const express = require("express");
-const generateWebsiteStats = require("../functions/generate-website-stats.js");
 const steam = require("../functions/steam.js");
 const updatePresence = require("../functions/update-presence.js");
 const config = require("../config.json");
 const handleDatabaseError = require("../functions/handle-database-error.js");
 const c4 = require("../functions/connect-4.js");
+const dashboard = require("../website/index.js");
 
 module.exports = (bot, r) => {
 	bot.on("ready", () => {
@@ -19,44 +18,7 @@ module.exports = (bot, r) => {
 			console.error(error);
 		});
 		process.on("uncaughtException", console.error);
-		if (bot.shard.id === 0) {
-			const app = express();
-			app.use((req, res, next) => {
-				res.setHeader("Access-Control-Allow-Origin", "*");
-				res.setHeader("Access-Control-Allow-Methods", "GET");
-				res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
-				res.setHeader("Access-Control-Allow-Credentials", true);
-				next();
-			});
-			app.get("/stats", (req, res) => {
-				generateWebsiteStats(bot, r).then((r) => res.send(r)).catch((error) => {
-					console.error(error);
-					res.send({
-						error
-					});
-				});
-			});
-			app.get("/commands", (req, res) => {
-				let commands = Object.keys(bot.commands).filter((c) => !bot.commands[c].hidden);
-				let categorized = {};
-				commands.map((c) => {
-					if (!(bot.commands[c].category in categorized)) categorized[bot.commands[c].category] = [];
-					categorized[bot.commands[c].category].push({
-						usage: bot.commands[c].usage,
-						command: bot.commands[c].commands[0],
-						aliases: bot.commands[c].commands.slice(1),
-						description: bot.commands[c].description
-					});
-				});
-				res.send(categorized);
-			});
-			app.listen(83, (error) => {
-				if (error) {
-					if (error.code !== "EADDRINUSE" && error.code !== "EACCES") throw new error;
-				}
-				log("Express server listening on port 83.");
-			});
-		}
+		if (bot.shard.id === 0) dashboard(bot, r);
 		steam();
 		bot.guilds.map((g) => {
 			g.data = {};

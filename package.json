@@ -33,7 +33,12 @@
         "dogapi": "^2.8.0",
         "gm": "^1.23.0",
         "image-size": "^0.6.1",
-        "uws": "^8.14.1"
+        "uws": "^8.14.1",
+        "passport": "^0.4.0",
+        "passport-discord": "^0.1.2",
+        "cookie-parser": "^1.4.3",
+        "cookie-session": "^2.0.0-beta.3",
+        "pug": "^2.0.0-rc.4"
     },
     "homepage": "https://jacobgunther12.github.io/Prisma/",
     "main": "index.js",

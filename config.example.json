@@ -1,5 +1,7 @@
 {
     "token": "",
+    "secret": "",
+    "website_port": 3000,
     "prefix": "p!",
     "rethink": {
         "host": "",
@@ -31,9 +33,6 @@
         "paypal": "https://www.paypal.me/JacobGunther",
         "patreon": "https://www.patreon.com/passthemayo",
         "discordbots.org": "https://goo.gl/7Ctpdr",
-        "feedback": {
-            "form": "https://goo.gl/forms/jEfoFtHxodfcEy762",
-            "responses": "https://goo.gl/xXB8RX"
-        }
+        "contact": "https://passthemayo.space/contact"
     }
 }
