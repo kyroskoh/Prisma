@@ -140,6 +140,10 @@ module.exports = (bot, r) => {
 		});
 	});
 	
+	app.get("/invite", (req, res) => {
+		res.redirect("https://discordapp.com/oauth2/authorize?client_id=300018853830721538&scope=bot");
+	});
+	
 	app.get("/auth", passport.authenticate("discord"));
 
 	app.get("/auth/callback", passport.authenticate("discord"), (req, res) => {
@@ -152,6 +156,14 @@ module.exports = (bot, r) => {
 	});
 
 	app.use("/assets", express.static(__dirname + "/static"));
+
+	app.use("*", (req, res) => {
+		res.render("error.pug", {
+			user: req.user,
+			code: 404,
+			message: "The requested page or resource was not found."
+		});
+	});
 
 	app.listen(config.website_port, (error) => {
 		if (error) throw error;
