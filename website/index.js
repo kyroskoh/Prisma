@@ -46,7 +46,7 @@ module.exports = (bot, r) => {
 	app.use(passport.initialize());
 	app.use(passport.session());
 	app.set("view engine", "pug");
-	app.set("views", __dirname + "/dynamic");
+	app.set("views", __dirname + "/website/dynamic");
 
 	app.get("/", (req, res) => {
 		res.render("index.pug", {
@@ -126,7 +126,7 @@ module.exports = (bot, r) => {
 		res.redirect("/");
 	});
 
-	app.use("/assets", express.static(__dirname + "/static"));
+	app.use("/assets", express.static(__dirname + "/website/static"));
 
 	app.listen(config.website_port, (error) => {
 		if (error) throw error;
