@@ -62,11 +62,22 @@ module.exports = (bot, r) => {
 				user: req.user,
 				servers: guilds
 			});
+		}).catch(() => {
+			res.render("error.pug", {
+				user: req.user,
+				code: 500,
+				message: "An unknown error occured."
+			});
 		});
 	});
 	
 	app.get("/dashboard/:id", (req, res) => {
 		if (!req.user) res.redirect("/prisma/auth");
+		if (!/^\d+$/.test(req.user.id)) return res.render("error.pug", {
+			user: req.user,
+			code: 400,
+			message: "That is not a valid Discord server ID."
+		});
 		bot.shard.broadcastEval("this.guilds.get('" + req.params.id + "') && this.guilds.get('" + req.params.id + "').members.get('" + req.user.id + "') && this.guilds.get('" + req.params.id + "').members.get('" + req.user.id + "').hasPermission('MANAGE_GUILD') && { name: this.guilds.get('" + req.params.id + "').name, memberCount: this.guilds.get('" + req.params.id + "').memberCount, channelCount: this.guilds.get('" + req.params.id + "').channels.size, roleCount: this.guilds.get('" + req.params.id + "').roles.size, avatar: this.guilds.get('" + req.params.id + "').avatar }").then(guilds => {
 			guilds = guilds.filter(v => v)[0];
 			if (guilds) {
@@ -76,9 +87,17 @@ module.exports = (bot, r) => {
 				});
 			} else {
 				res.render("error.pug", {
-					user: req.user
+					user: req.user,
+					code: "404",
+					message: "Either that server doesn't exist or you don't have permission to manage it."
 				});
 			}
+		}).catch(() => {
+			res.render("error.pug", {
+				user: req.user,
+				code: 500,
+				message: "An unknown error occured."
+			});
 		});
 	});
 	
@@ -99,6 +118,12 @@ module.exports = (bot, r) => {
 			res.render("statistics.pug", {
 				user: req.user,
 				stats: statistics
+			});
+		}).catch(() => {
+			res.render("error.pug", {
+				user: req.user,
+				code: 500,
+				message: "An unknown error occured."
 			});
 		});
 	});
