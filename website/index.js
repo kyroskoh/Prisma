@@ -73,7 +73,7 @@ module.exports = (bot, r) => {
 	
 	app.get("/dashboard/:id", (req, res) => {
 		if (!req.user) res.redirect("/prisma/auth");
-		if (!/^\d+$/.test(req.user.id)) return res.render("error.pug", {
+		if (!/^\d+$/.test(req.params.id)) return res.render("error.pug", {
 			user: req.user,
 			code: 400,
 			message: "That is not a valid Discord server ID."
