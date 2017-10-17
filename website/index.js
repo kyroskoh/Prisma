@@ -33,6 +33,7 @@ module.exports = (bot, r) => {
 
 	const app = express();
 
+	console.log(__dirname);
 	app.use(cookieSession({
 		name: "session",
 		secret: config.secret,
