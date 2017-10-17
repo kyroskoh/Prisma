@@ -49,7 +49,6 @@ module.exports = (bot, r) => {
 	app.set("views", __dirname + "/dynamic");
 
 	app.get("/", (req, res) => {
-		console.log("/");
 		res.render("index.pug", {
 			user: req.user
 		});
