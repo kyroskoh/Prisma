@@ -140,7 +140,7 @@ module.exports = (bot, r) => {
 			if (reaction.message.data.userID !== user.id) return;
 			if (reaction._emoji.name === "⬅") reaction.message.data.page--;
 			if (reaction._emoji.name === "➡") reaction.message.data.page++;
-			if (reaction.message.data.page >= pi.length || reaction.message.data.page < -1) return;
+			if (reaction.message.data.page >= pi.length || reaction.message.data.page < 0) return;
 			reaction.message.edit({
 				embed: {
 					title: "Pi",
