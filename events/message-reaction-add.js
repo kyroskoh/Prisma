@@ -1,5 +1,6 @@
 const handleDatabaseError = require("../functions/handle-database-error.js");
 const c4 = require("../functions/connect-4.js");
+const pi = require("../data/pi.js");
 
 const editGame = (reaction, response, r, user) => {
 	let win = false;
@@ -59,6 +60,7 @@ const editGame = (reaction, response, r, user) => {
 
 module.exports = (bot, r) => {
 	bot.on("messageReactionAdd", (reaction, user) => {
+		if (user.bot) return;
 		if (c4.inGame(reaction.message.id)) {
 			r.table("connect4").filter(r.row("user1")("id").eq(user.id).or(r.row("user2")("id").eq(user.id))).run((error, response) => {
 				if (error) return handleDatabaseError(error, reaction.message);
@@ -131,6 +133,21 @@ module.exports = (bot, r) => {
 							if (error) return handleDatabaseError(error, reaction.message);
 							editGame(reaction, response, r, user);
 						});
+					}
+				}
+			});
+		} else if (reaction.message.data && reaction.message.data.pi) {
+			if (reaction.message.data.userID !== user.id) return;
+			if (reaction._emoji.name === "⬅") reaction.message.data.page--;
+			if (reaction._emoji.name === "➡") reaction.message.data.page++;
+			if (reaction.message.data.page >= pi.length || reaction.message.data.page < -1) return;
+			reaction.message.edit({
+				embed: {
+					title: "Pi",
+					color: 3066993,
+					description: "```\n" + pi[reaction.message.data.page - 1] + "```",
+					footer: {
+						text: "Page " + reaction.message.data.page + " / " + pi.length
 					}
 				}
 			});
