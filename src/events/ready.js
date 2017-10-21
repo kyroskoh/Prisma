@@ -27,7 +27,9 @@ module.exports = (bot, r) => {
 		r.table("prefixes").run((error, response) => {
 			if (error) return handleDatabaseError(error);
 			response.map((v) => {
-				if (bot.guilds.get(v.serverID)) bot.guilds.get(v.serverID).data.prefix = v.prefix;
+				if (bot.guilds.get(v.serverID)) bot.guilds.get(v.serverID).data = {
+					prefix: v.prefix
+				};
 			});
 		});
 		r.table("connect4").run((error, response) => {
