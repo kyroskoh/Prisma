@@ -5,6 +5,14 @@ html
 		link(rel="stylesheet" href="/prisma/assets/css/bootstrap.min.css")
 		link(rel="stylesheet" href="/prisma/assets/css/lato.css")
 		link(rel="stylesheet" href="/prisma/assets/css/style.css")
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-104913718-1")
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag("js", new Date());
+
+			gtag("config", "UA-104913718-1");
 	body
 		nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
 			.container
