@@ -48,6 +48,15 @@ module.exports = (bot, r) => {
 	app.set("view engine", "pug");
 	app.set("views", __dirname + "/dynamic");
 
+	app.use((req, res, next) => {
+		if (!bot.user) return res.render("error.pug", {
+			user: req.user,
+			code: 503,
+			message: "The bot is still starting, meaning the website is unavailable due to features that require the bot to function are needed."
+		});
+		next();
+	});
+
 	app.get("/", (req, res) => {
 		res.render("index.pug", {
 			user: req.user
