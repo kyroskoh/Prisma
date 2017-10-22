@@ -64,7 +64,7 @@ module.exports = (bot, r) => {
 	});
 	
 	app.get("/dashboard", (req, res) => {
-		if (!req.user) res.redirect("/prisma/auth");
+		if (!req.user) return res.redirect("/prisma/auth");
 		bot.shard.broadcastEval("this.guilds.filter(g => g.members.get('" + req.user.id + "') && g.members.get('" + req.user.id + "').hasPermission('MANAGE_GUILD')).map(g => ({name: g.name, icon: g.icon, id: g.id}))").then(guilds => {
 			guilds = [].concat.apply([], guilds);
 			res.render("dashboard/index.pug", {
@@ -81,7 +81,7 @@ module.exports = (bot, r) => {
 	});
 	
 	app.get("/dashboard/:id", (req, res) => {
-		if (!req.user) res.redirect("/prisma/auth");
+		if (!req.user) return res.redirect("/prisma/auth");
 		if (!/^\d+$/.test(req.params.id)) return res.render("error.pug", {
 			user: req.user,
 			code: 400,
