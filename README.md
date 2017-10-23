@@ -1,4 +1,5 @@
 # Prisma
+![Dependencies](https://david-dm.org/PassTheMayo/Prisma.svg "Dependencies")
 Another multi-purpose Discord bot. Many utility and fun commands for engaging content.
 
 # Getting Started
