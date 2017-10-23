@@ -1,5 +1,6 @@
 # Prisma
 ![Dependencies](https://david-dm.org/PassTheMayo/Prisma.svg "Dependencies")
+![Build Status](https://api.travis-ci.org/PassTheMayo/Prisma.svg?branch=master "Build Status")
 
 ## About
 Another multi-purpose Discord bot. Many utility and fun commands for engaging content.
