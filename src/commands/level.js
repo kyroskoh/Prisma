@@ -8,7 +8,7 @@ module.exports = {
 	],
 	description: "Check your level and XP.",
 	usage: "level [@user | userID | username]",
-	category: "",
+	category: "Information",
 	hidden: false,
 	execute: (bot, r, msg, args) => {
 		msg.channel.send({
