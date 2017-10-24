@@ -19,18 +19,18 @@ module.exports = {
 					description: "`" + args[1] + "` is not a valid number."
 				}
 			});
-			if (Number(args[0]) > 100) return msg.channel.send({
+			if (Number(args[0]) > 360) return msg.channel.send({
 				embed: {
 					title: "Error!",
 					color: 0xE50000,
-					description: "The blur amount cannot be greater than 100%."
+					description: "The rotation amount cannot be greater than 360 degrees."
 				}
 			});
 			if (Number(args[0]) < 1) return msg.channel.send({
 				embed: {
 					title: "Error!",
 					color: 0xE50000,
-					description: "The blur amount cannot be less than 1%."
+					description: "The rotation amount cannot be less than 1 degree."
 				}
 			});
 			const amount = Number(args[0]);
