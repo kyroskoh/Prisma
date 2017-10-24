@@ -38,10 +38,10 @@ module.exports = {
 							description: "Your profile is private. I cannot get information on a profile that is private."
 						}
 					});
-					r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
+					r.table("steam_profiles").get(msg.author.id).run((error, response) => {
 						if (error) return handleDatabaseError(error, msg);
 						if (response.length > 0) {
-							r.table("steam_profiles").filter({userID: msg.author.id}).update({id: args[0]}).run((error) => {
+							r.table("steam_profiles").get(msg.author.id).update({id: args[0]}).run((error) => {
 								if (error) return handleDatabaseError(error, msg);
 								msg.channel.send({
 									embed: {
@@ -53,8 +53,8 @@ module.exports = {
 							});
 						} else {
 							r.table("steam_profiles").insert({
-								userID: msg.author.id,
-								id: args[0]
+								id: msg.author.id,
+								steamID: args[0]
 							}).run((error) => {
 								if (error) return handleDatabaseError(error, msg);
 								msg.channel.send({
@@ -97,10 +97,10 @@ module.exports = {
 								description: "Your profile is private. I cannot get information on a profile that is private."
 							}
 						});
-						r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
+						r.table("steam_profiles").get(msg.author.id).run((error, response) => {
 							if (error) return handleDatabaseError(error, msg);
-							if (response.length > 0) {
-								r.table("steam_profiles").filter({userID: msg.author.id}).update({id: summary.players[0].steamid}).run((error) => {
+							if (response) {
+								r.table("steam_profiles").get(msg.author.id).update({id: summary.players[0].steamid}).run((error) => {
 									if (error) return handleDatabaseError(error, msg);
 									msg.channel.send({
 										embed: {
@@ -112,8 +112,8 @@ module.exports = {
 								});
 							} else {
 								r.table("steam_profiles").insert({
-									userID: msg.author.id,
-									id: summary.players[0].steamid
+									id: msg.author.id,
+									steamID: summary.players[0].steamid
 								}).run((error) => {
 									if (error) return handleDatabaseError(error, msg);
 									msg.channel.send({

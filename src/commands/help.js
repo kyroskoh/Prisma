@@ -66,22 +66,6 @@ module.exports = {
 						});
 					}
 				});
-			} else if (fields.map((f) => f.name.split(" — ")[0]).indexOf(args[0]) > -1) {
-				const field = fields.filter((f) => f.name.split(" — ")[0] === args[0])[0];
-				msg.channel.send({
-					embed: {
-						title: "Command List",
-						description: "Displaying all commands for category `" + field.name.split(" — ")[0] + "`.",
-						color: 3066993,
-						fields: field.value.split(",").map((v) => v.replace(/`/g, "")).map((v) => {
-							return {
-								name: v,
-								value: Object.keys(bot.commands).filter((c) => bot.commands[c].commands.indexOf(v) > -1)[0].description,
-								inline: true
-							};
-						})
-					}
-				});
 			} else {
 				msg.channel.send({
 					embed: {
@@ -121,7 +105,7 @@ module.exports = {
 			msg.channel.send({
 				embed: {
 					title: "Command List",
-					description: "To view specific information about a command, run `" + ((msg.guild) ? msg.guild.data.prefix : config.prefix) + "help <command>`. You can additionally use `" + ((msg.guild) ? msg.guild.data.prefix : config.prefix) + "help <category>` to view all commands and information in a category.",
+					description: "To view specific information about a command, run `" + ((msg.guild) ? msg.guild.data.prefix : config.prefix) + "help <command>`.",
 					color: 3066993,
 					fields,
 					footer: {

@@ -21,7 +21,7 @@ module.exports = {
 						color: 0xE50000
 					}
 				});
-				r.table("economy").filter({userID: msg.author.id}).run((error, response) => {
+				r.table("economy").get(msg.author.id).run((error, response) => {
 					if (error) return handleDatabaseError(error, msg);
 					msg.channel.send({
 						embed: {
@@ -30,17 +30,17 @@ module.exports = {
 							fields: [
 								{
 									name: "Wallet",
-									value: ((response.length > 0) ? "$" + response[0].wallet : "$0"),
+									value: "$" + ((response) ? response[0].wallet : 0),
 									inline: true
 								},
 								{
 									name: "Bank",
-									value: ((response.length > 0) ? "$" + response[0].bank : "$0"),
+									value: "$" + ((response) ? response[0].bank : 0),
 									inline: true
 								},
 								{
 									name: "Net Worth",
-									value: ((response.length > 0) ? "$" + (response[0].wallet + response[0].bank) : "$0"),
+									value: "$" + ((response) ? (response[0].wallet + response[0].bank) : 0),
 									inline: true
 								}
 							]
@@ -57,7 +57,7 @@ module.exports = {
 				});
 			});
 		} else {
-			r.table("economy").filter({userID: msg.author.id}).run((error, response) => {
+			r.table("economy").get(msg.author.id).run((error, response) => {
 				if (error) return handleDatabaseError(error, msg);
 				msg.channel.send({
 					embed: {
@@ -66,17 +66,17 @@ module.exports = {
 						fields: [
 							{
 								name: "Wallet",
-								value: ((response.length > 0) ? "$" + response[0].wallet : "$0"),
+								value: "$" + ((response) ? response[0].wallet : 0),
 								inline: true
 							},
 							{
 								name: "Bank",
-								value: ((response.length > 0) ? "$" + response[0].bank : "$0"),
+								value: "$" + ((response) ? response[0].bank : 0),
 								inline: true
 							},
 							{
 								name: "Net Worth",
-								value: ((response.length > 0) ? "$" + (response[0].wallet + response[0].bank) : "$0"),
+								value: "$" + ((response) ? (response[0].wallet + response[0].bank) : 0),
 								inline: true
 							}
 						]

@@ -10,7 +10,7 @@ module.exports = {
 	],
 	description: "Submit a bug or a feature request to the developers.",
 	usage: "feedback",
-	category: "General",
+	category: "Information",
 	hidden: false,
 	execute: (bot, r, msg) => {
 		msg.channel.send({

@@ -7,7 +7,7 @@ module.exports = {
 	],
 	usage: "upvote",
 	description: "Upvote the bot on popular bot lists.",
-	category: "General",
+	category: "Information",
 	hidden: false,
 	execute: (bot, r, msg) => {
 		msg.channel.send({

@@ -8,7 +8,7 @@ module.exports = {
 	],
 	usage: "invite",
 	description: "Invite this bot to your server.",
-	category: "General",
+	category: "Information",
 	hidden: false,
 	execute: (bot, r, msg) => {
 		msg.channel.send({

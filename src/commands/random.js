@@ -4,7 +4,7 @@ module.exports = {
 	],
 	description: "Generates a random number from 1 to 10.",
 	usage: "random [max | min] [max]",
-	category: "Random",
+	category: "Utility",
 	hidden: false,
 	execute: (bot, r, msg, args) => {
 		if (args.length > 0) {

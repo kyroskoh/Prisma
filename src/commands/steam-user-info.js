@@ -347,11 +347,11 @@ module.exports = {
 				});
 			}
 		} else {
-			r.table("steam_profiles").filter({userID: msg.author.id}).run((error, response) => {
+			r.table("steam_profiles").get(msg.author.id).run((error, response) => {
 				if (error) return handleDatabaseError(error, msg);
-				if (response.length > 0) {
+				if (response) {
 					steam.getPlayerSummaries({
-						steamids: response[0].id
+						steamids: response.steamID
 					}, (error, summary) => {
 						if (error || summary.players.length < 1) return msg.channel.send({
 							embed: {
@@ -368,7 +368,7 @@ module.exports = {
 							}
 						});
 						steam.getUserGroupList({
-							steamid: response[0].id
+							steamid: response.steamID
 						}, (error, groups) => {
 							if (error) return msg.channel.send({
 								embed: {
@@ -378,7 +378,7 @@ module.exports = {
 								}
 							});
 							steam.getFriendList({
-								steamid: response[0].id
+								steamid: response.steamID
 							}, (error, friends) => {
 								if (error) return msg.channel.send({
 									embed: {
@@ -388,7 +388,7 @@ module.exports = {
 									}
 								});
 								steam.getRecentlyPlayedGames({
-									steamid: response[0].id,
+									steamid: response.steamID,
 									count: 1
 								}, (error, recetlyplayed) => {
 									if (error) return msg.channel.send({
@@ -399,7 +399,7 @@ module.exports = {
 										}
 									});
 									steam.getOwnedGames({
-										steamid: response[0].id,
+										steamid: response.steamID,
 										include_appinfo: true,
 										include_played_free_games: true,
 										appids_filter: 0
@@ -412,7 +412,7 @@ module.exports = {
 											}
 										});
 										steam.getSteamLevel({
-											steamid: response[0].id
+											steamid: response.steamID
 										}, (error, level) => {
 											if (error) return msg.channel.send({
 												embed: {

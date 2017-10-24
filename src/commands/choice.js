@@ -5,7 +5,7 @@ module.exports = {
 	],
 	description: "Have the bot choose one thing over another.",
 	usage: "choose <choice 1>; <choice 2>; <choice 3>",
-	category: "Random",
+	category: "Utility",
 	hidden: false,
 	execute: (bot, r, msg, args) => {
 		if (args.length > 0) {

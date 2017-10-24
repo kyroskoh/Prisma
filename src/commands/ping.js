@@ -4,7 +4,7 @@ module.exports = {
 	],
 	usage: "ping",
 	description: "See how long it takes to ping the bot.",
-	category: "General",
+	category: "Information",
 	hidden: false,
 	execute: (bot, r, msg) => {
 		const start = Date.now();

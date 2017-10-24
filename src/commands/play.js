@@ -81,28 +81,30 @@ module.exports = {
 							});
 						} else {
 							msg.member.voiceChannel.queue = {
-								songs: [{
-									userID: msg.author.id,
-									videoID: getyoutubeid(msg.content.split(" ").slice(1).join(" ")),
-									title: callback.title,
-									duration: humanizeduration(callback.length_seconds * 1000, {
-										language: "shortEn",
-										spacer: "",
-										delimiter: "",
-										languages: {
-											shortEn: {
-												y: "y",
-												mo: "mo",
-												w: "w",
-												d: "d",
-												h: "h",
-												m: "m",
-												s: "s",
-												ms: "ms"
+								songs: [
+									{
+										userID: msg.author.id,
+										videoID: getyoutubeid(msg.content.split(" ").slice(1).join(" ")),
+										title: callback.title,
+										duration: humanizeduration(callback.length_seconds * 1000, {
+											language: "shortEn",
+											spacer: "",
+											delimiter: "",
+											languages: {
+												shortEn: {
+													y: "y",
+													mo: "mo",
+													w: "w",
+													d: "d",
+													h: "h",
+													m: "m",
+													s: "s",
+													ms: "ms"
+												}
 											}
-										}
-									})
-								}],
+										})
+									}
+								],
 								vote_skips: [],
 								leave: false,
 								ytdl: null,

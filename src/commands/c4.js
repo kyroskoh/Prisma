@@ -60,6 +60,7 @@ module.exports = {
 							}).then((m) => {
 								r.table("connect4").insert({
 									id: m.id,
+									channelID: m.channel.id,
 									user1: {
 										id: msg.author.id,
 										tag: msg.author.tag,

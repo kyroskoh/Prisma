@@ -34,10 +34,10 @@ module.exports = {
 											description: "That channel does not exist within this server."
 										}
 									});
-									r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
+									r.table("settings").filter({id: msg.guild.id, name: "log_channel"}).run((error, response) => {
 										if (error) return handleDatabaseError(error, msg);
 										if (response.length > 0) {
-											r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).update({value: channel.id}).run((error) => {
+											r.table("settings").filter({id: msg.guild.id, name: "log_channel"}).update({value: channel.id}).run((error) => {
 												if (error) return handleDatabaseError(error, msg);
 												msg.channel.send({
 													embed: {
@@ -49,7 +49,7 @@ module.exports = {
 											});
 										} else {
 											r.table("settings").insert({
-												serverID: msg.guild.id,
+												id: msg.guild.id,
 												name: "log_channel",
 												value: channel.id
 											}).run((error) => {
@@ -74,10 +74,10 @@ module.exports = {
 									});
 								});
 							} else {
-								r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
+								r.table("settings").filter({id: msg.guild.id, name: "log_channel"}).run((error, response) => {
 									if (error) return handleDatabaseError(error, msg);
 									if (response.length > 0) {
-										r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).update({value: msg.channel.id}).run((error) => {
+										r.table("settings").filter({id: msg.guild.id, name: "log_channel"}).update({value: msg.channel.id}).run((error) => {
 											if (error) return handleDatabaseError(error, msg);
 											msg.channel.send({
 												embed: {
@@ -89,7 +89,7 @@ module.exports = {
 										});
 									} else {
 										r.table("settings").insert({
-											serverID: msg.guild.id,
+											id: msg.guild.id,
 											name: "log_channel",
 											value: msg.channel.id
 										}).run((error) => {
@@ -126,10 +126,10 @@ module.exports = {
 				} else if (args[0] === "unset") {
 					if (args.length > 1) {
 						if (args[1] === "logs") {
-							r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).run((error, response) => {
+							r.table("settings").filter({id: msg.guild.id, name: "log_channel"}).run((error, response) => {
 								if (error) return handleDatabaseError(error, msg);
 								if (response.length > 0) {
-									r.table("settings").filter({serverID: msg.guild.id, name: "log_channel"}).delete().run((error) => {
+									r.table("settings").filter({id: msg.guild.id, name: "log_channel"}).delete().run((error) => {
 										if (error) return handleDatabaseError(error, msg);
 										msg.channel.send({
 											embed: {

@@ -2,7 +2,7 @@ const handleDatabaseError = require("../functions/handle-database-error.js");
 
 module.exports = (bot, r) => {
 	bot.on("guildBanAdd", (guild, user) => {
-		r.table("settings").filter({serverID: guild.id, name: "log_channel"}).run((error, response) => {
+		r.table("settings").filter({ id: guild.id, name: "log_channel" }).run((error, response) => {
 			if (error) return handleDatabaseError(error);
 			if (response.length > 0) {
 				if (bot.channels.get(response[0].value)) bot.channels.get(response[0].value).send({

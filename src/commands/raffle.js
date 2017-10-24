@@ -4,7 +4,7 @@ module.exports = {
 	],
 	description: "Pick a random user from the server's member list.",
 	usage: "raffle",
-	category: "Random",
+	category: "Utility",
 	hidden: false,
 	execute: (bot, r, msg) => {
 		if (msg.channel.type === "dm") return msg.channel.send({

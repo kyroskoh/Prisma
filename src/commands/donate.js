@@ -8,7 +8,7 @@ module.exports = {
 	],
 	usage: "donate",
 	description: "Get the donation links to support the creator.",
-	category: "General",
+	category: "Information",
 	hidden: false,
 	execute: (bot, r, msg) => {
 		msg.channel.send({

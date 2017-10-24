@@ -4,7 +4,7 @@ module.exports = {
 	],
 	description: "Flips a coin.",
 	usage: "coinflip",
-	category: "Random",
+	category: "Fun",
 	hidden: false,
 	execute: (bot, r, msg) => {
 		const result = Math.round(Math.random());
