@@ -1,58 +1,54 @@
 {
     "name": "prisma",
-    "description": "Another multi-purpose Discord bot. Many utility and fun commands for engaging content. Bot is still in development. Use \"&feedback <message>\" if bug found.",
-    "version": "1.3.2",
-    "keywords": [],
+    "description": "Another multi-purpose Discord bot. Many utility and fun commands for engaging content.",
+    "version": "1.0.0",
     "maintainers": [
-        "Jacob Gunther <jacobgunther12@gmail.com>"
+        "PassTheMayo"
     ],
     "dependencies": {
+        "aids": "^0.1.0",
         "cleverbot.io": "^1.0.4",
+        "cookie-parser": "^1.4.3",
+        "cookie-session": "^2.0.0-beta.3",
         "dateformat": "^2.0.0",
-        "discord.js": "^11.1.0",
+        "discord.js": "^11.2.1",
+        "dogapi": "^2.8.0",
         "express": "^4.15.3",
         "figlet": "^1.2.0",
         "get-folder-size": "^1.0.0",
         "get-youtube-id": "^1.0.0",
+        "gm": "^1.23.0",
+        "google-translate-api": "^2.3.0",
         "humanize-duration": "^3.10.0",
+        "image-size": "^0.6.1",
         "jimp": "^0.2.28",
-        "rethinkdbdash": "^2.3.31",
+        "node-dogstatsd": "^0.0.6",
         "node-opus": "^0.2.6",
+        "passport": "^0.4.0",
+        "passport-discord": "^0.1.2",
         "pm2": "^2.4.6",
+        "pug": "^2.0.0-rc.4",
+        "rethinkdbdash": "^2.3.31",
         "simplerandom.js": "^1.0.0",
         "snekfetch": "^3.1.8",
         "steam-api": "^1.1.3",
         "steam-webapi": "^0.6.5",
         "strip-bom-buf": "^1.0.0",
         "table": "^4.0.1",
-        "youtube-node": "^1.3.0",
-        "ytdl-core": "^0.14.2",
-        "aids": "^0.1.0",
-        "node-dogstatsd": "^0.0.6",
-        "google-translate-api": "^2.3.0",
-        "dogapi": "^2.8.0",
-        "gm": "^1.23.0",
-        "image-size": "^0.6.1",
         "uws": "^8.14.1",
-        "passport": "^0.4.0",
-        "passport-discord": "^0.1.2",
-        "cookie-parser": "^1.4.3",
-        "cookie-session": "^2.0.0-beta.3",
-        "pug": "^2.0.0-rc.4"
+        "youtube-node": "^1.3.0",
+        "ytdl-core": "^0.14.2"
     },
-    "homepage": "https://jacobgunther12.github.io/Prisma/",
-    "main": "index.js",
-    "devDependencies": {},
+    "homepage": "https://passthemayo.space/prisma",
+    "main": "shard.js",
     "scripts": {
         "start": "pm2 start shard.js --name Prisma",
-        "restart": "pm2 restart Prisma && pm2 logs",
-        "post": "git add . && git commit -m 'Commit' && git push",
-        "get": "git pull && pm2 restart Prisma && pm2 logs"
+        "restart": "pm2 restart Prisma && pm2 logs"
     },
-    "author": "Jacob Gunther",
-    "license": "UNLICENSED",
+    "author": "PassTheMayo",
+    "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://PassTheMayo@git.larkin.space/PassTheMayo/prisma.git"
+        "url": "https://github.com/PassTheMayo/Prisma"
     }
 }
