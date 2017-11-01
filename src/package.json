@@ -40,7 +40,7 @@
         "ytdl-core": "^0.14.2"
     },
     "homepage": "https://passthemayo.space/prisma",
-    "main": "shard.js",
+    "main": "src/shard.js",
     "scripts": {
         "start": "pm2 start shard.js --name Prisma",
         "restart": "pm2 restart Prisma && pm2 logs"
