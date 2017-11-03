@@ -6,6 +6,8 @@
     "rethink": {
         "host": "",
         "db": "prisma",
+        "user": "admin",
+        "password": "",
         "silent": true
     },
     "api_keys": {
